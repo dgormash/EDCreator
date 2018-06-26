@@ -5,10 +5,50 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EDCreator.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="181.6" d:DesignWidth="618.4"
+     
       Title="Login">
 
-    <Grid>
-        <TextBlock Text="Login page" FontWeight="Bold"/>
-    </Grid>
+    <StackPanel>
+        <TextBlock Text="Введите данные" FontWeight="Bold" Margin="20 10 0 0"  HorizontalAlignment="Left"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Margin="5 0 0 0">
+
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                    <TextBlock Text="Client:" Width="auto" Margin="45,0, 0 ,0"/>
+                    <TextBox x:Name="Client" Width="200" Margin="11 0 0 0" Padding="1"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                    <TextBlock Text="Field/Pad/Well:" Width="auto" />
+                    <TextBox x:Name="FieldPadWell" Width="200" Margin="10 0 0 0" Padding="1"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                    <TextBlock Text="Location:" Width="auto" Margin="30, 0, 0, 0"/>
+                    <TextBox x:Name="Location" Width="200" Margin="11 0 0 0" Padding="1"/>
+                </StackPanel>
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                    <TextBlock Text="DD Engineer:" Width="auto" Margin="20 0 0 0"/>
+                    <TextBox x:Name="DdEngineer" Width="200" Margin="11 0 0 0" Padding="1"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                    <TextBlock Text="Date:" Width="auto" Margin="60 0 0 0"/>
+                    <TextBox x:Name="Date" Width="200" Margin="13 0 0 0" Padding="1"/>
+                </StackPanel>
+                
+            </StackPanel>
+        </Grid>
+        <Button Content="Принять" HorizontalAlignment="Right" Margin="0 10 10 0" MinWidth="100" Click="Button_Click"/>
+    </StackPanel>
 </Page>

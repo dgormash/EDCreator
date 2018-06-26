@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EDCreator.Misc;
 
 namespace EDCreator.Pages
 {
@@ -23,6 +24,20 @@ namespace EDCreator.Pages
         public Login()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var loginData = new LoginData
+            {
+                ClientField = Client.Text,
+                DateField = Date.Text,
+                DdEngineerField = DdEngineer.Text,
+                FieldPadWellField = FieldPadWell.Text,
+                LocationField = Location.Text
+            };
+
+            this.NavigationService.Navigate(new WorkshopArea());
         }
     }
 }
