@@ -52,7 +52,8 @@ namespace EDCreator.Pages
             if (_opener.FileNames.Length != 0)
             {
                 //вызов парсера и передача ему строк, содержащих путь к выбранным файлам
-                var parser = new FilterSubParser();
+                //var parser = new FilterSubParser();
+                var parser = new TestPdfParser();
                 FileList.Text=parser.ParseFile(_opener.FileNames[0]).ToString();
             }
         }
