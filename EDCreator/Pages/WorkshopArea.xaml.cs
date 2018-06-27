@@ -25,30 +25,32 @@ namespace EDCreator.Pages
     /// </summary>
     public partial class WorkshopArea : Page
     {
+        private OpenFileDialog _opener;
         public WorkshopArea()
         {
             InitializeComponent();
+            //Настраиваем окно диалога выбора файлов
+            _opener = new OpenFileDialog
+            {
+                Multiselect = true, //выбор нескольких файлов
+                Filter = "PDF files (*.pdf)|*.pdf", //задаётся маска файла поумолчанию
+                InitialDirectory = $"{System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\in" //Задаётся каталог, который будет
+                //каталогом поумолчанию при показе диалога
+            };
         }
 
         private void Choose_Click(object sender, RoutedEventArgs e)
         {
-            var openFileDlg = new OpenFileDialog
-            {
-                Multiselect = true,
-                Filter = "PDF files (*.pdf)|*.pdf",
-                InitialDirectory = $"{System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\in"
-            };
+            //Показываем диалог выбора файлов
+            _opener.ShowDialog();
+        }
 
-            if (openFileDlg.ShowDialog() == true)
+        private void Proceed_Click(object sender, RoutedEventArgs e)
+        {
+            //Если были выбраны файлы (или один файл) - здесь под Length понимается размер массива, который содержит имена выбранных файлов
+            if (_opener.FileNames.Length != 0)
             {
-                var pdfReader = new PdfReader(openFileDlg.FileName);
-                var sb = new StringBuilder();
-                for (int i = 1; i <= pdfReader.NumberOfPages; i++)
-                {
-                    sb.Append(PdfTextExtractor.GetTextFromPage(pdfReader, i));
-                }
-                FileList.Text = sb.ToString();
-                pdfReader.Close();
+                //вызов парсера и передача ему строк, содержащих путь к выбранным файлам
             }
         }
     }
