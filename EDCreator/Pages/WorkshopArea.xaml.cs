@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EDCreator.Logic;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 using Microsoft.Win32;
@@ -51,6 +52,8 @@ namespace EDCreator.Pages
             if (_opener.FileNames.Length != 0)
             {
                 //вызов парсера и передача ему строк, содержащих путь к выбранным файлам
+                var parser = new FilterSubParser();
+                FileList.Text=parser.ParseFile(_opener.FileNames[0]).ToString();
             }
         }
     }
