@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="C5, Version=2.5.0.0, Culture=neutral, PublicKeyToken=282361b99ded7e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\C5.2.5.3\lib\net45\C5.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
       <Private>True</Private>
@@ -69,6 +73,7 @@
     </Compile>
     <Compile Include="Logic\AbstractPdfParser.cs" />
     <Compile Include="Logic\FilterSubParser.cs" />
+    <Compile Include="Logic\MyTextExtractionStrategy.cs" />
     <Compile Include="Logic\TestPdfParser.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

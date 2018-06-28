@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDCreator", "EDCreator\EDCreator.csproj", "{D28ED2F1-9347-4BB8-AD22-43086A0CF227}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfReader", "PdfReader\PdfReader.csproj", "{4A8CA170-5040-47BA-9325-66BDAC4D67EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D28ED2F1-9347-4BB8-AD22-43086A0CF227}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D28ED2F1-9347-4BB8-AD22-43086A0CF227}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D28ED2F1-9347-4BB8-AD22-43086A0CF227}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A8CA170-5040-47BA-9325-66BDAC4D67EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A8CA170-5040-47BA-9325-66BDAC4D67EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A8CA170-5040-47BA-9325-66BDAC4D67EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A8CA170-5040-47BA-9325-66BDAC4D67EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

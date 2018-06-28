@@ -15,7 +15,7 @@ namespace EDCreator.Logic
         {
             var parsedData = new ParsedData();
             var reader = new PdfReader(file);
-            var extractorStrategy = new SimpleTextExtractionStrategy();
+            var extractorStrategy = new LocationTextExtractionStrategy();
 
             var sb = new StringBuilder();
             for (int i = 1; i<= reader.NumberOfPages; i++)
