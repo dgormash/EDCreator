@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace EDCreator.Misc
 {
-    class LoginData
+    internal class LoginData
     {
         public string ClientField { get; set; }
         public string FieldPadWellField { get; set; }

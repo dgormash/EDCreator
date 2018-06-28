@@ -89,6 +89,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Misc\Connection.cs" />
     <Compile Include="Misc\LoginData.cs" />
     <Compile Include="Misc\ParsedData.cs" />
     <Compile Include="Pages\Login.xaml.cs">

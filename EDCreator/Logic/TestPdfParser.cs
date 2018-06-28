@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using EDCreator.Misc;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 
@@ -8,7 +9,7 @@ namespace EDCreator.Logic
 {
     public class TestPdfParser:AbstractPdfParser
     {
-        public override StringBuilder ParseFile(string file)
+        public override ParsedData ParseFile(string file)
         {
             string currentText = string.Empty;
             StringBuilder sb = new StringBuilder();
