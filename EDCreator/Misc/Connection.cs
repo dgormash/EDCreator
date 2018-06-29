@@ -10,7 +10,6 @@ namespace EDCreator.Misc
     {
         public string Od { get; set; }
         public string Id { get; set; }
-        public string Box { get; set; }
-        public string Pin { get; set; }
+        public string TreadSize { get; set; }
     }
 }

@@ -51,10 +51,11 @@ namespace EDCreator.Pages
             //Если были выбраны файлы (или один файл) - здесь под Length понимается размер массива, который содержит имена выбранных файлов
             if (_opener.FileNames.Length != 0)
             {
-                //вызов парсера и передача ему строк, содержащих путь к выбранным файлам
-                var parser = new FilterSubParser();
-                //var parser = new TestPdfParser();
-                parser.ParseFile(_opener.FileNames[0]);
+                foreach (var fileName in _opener.FileNames)
+                {
+                    var client = new Client();
+                    client.Run(fileName);
+                }
             }
         }
     }

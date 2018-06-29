@@ -72,9 +72,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logic\AbstractPdfParser.cs" />
-    <Compile Include="Logic\FilterSubParser.cs" />
-    <Compile Include="Logic\MyTextExtractionStrategy.cs" />
-    <Compile Include="Logic\TestPdfParser.cs" />
+    <Compile Include="Logic\Client.cs" />
+    <Compile Include="Logic\FloatPdfProcessor.cs" />
+    <Compile Include="Logic\FloatSubPdfParser.cs" />
+    <Compile Include="Logic\IPdfParser.cs" />
+    <Compile Include="Logic\PdfParser.cs" />
+    <Compile Include="Logic\PdfProcessor.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -92,6 +95,7 @@
     <Compile Include="Misc\Connection.cs" />
     <Compile Include="Misc\LoginData.cs" />
     <Compile Include="Misc\ParsedData.cs" />
+    <Compile Include="Misc\PdfProcessorType.cs" />
     <Compile Include="Pages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>

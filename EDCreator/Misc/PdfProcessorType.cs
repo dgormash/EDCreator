@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EDCreator.Logic
+namespace EDCreator.Misc
 {
-    class FilterSubParser:AbstractPdfParser
+    internal enum PdfProcessorType
     {
+        FilterSub,
+        FloatSub,
+        Nmpc,
+        Stabilizer
     }
 }
