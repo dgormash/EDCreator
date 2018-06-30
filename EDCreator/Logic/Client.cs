@@ -62,9 +62,8 @@ namespace EDCreator.Logic
                 case PdfProcessorType.FilterSub:
                     return new PdfProcessor();
                 case PdfProcessorType.Stabilizer:
-                    //todo StabilizerPdfProcessor
-                    return null;
-             }
+                    return new StabilizerPdfProcessor();
+            }
 
             return null;
         }

@@ -4,12 +4,12 @@ namespace EDCreator.Logic
 {
     public class PdfProcessor
     {
-        private readonly IPdfParser _parser;
-        public string File { set; private get; }
+        protected readonly IPdfParser Parser;
+        public string File { set; protected get; }
 
         public PdfProcessor()
         {
-            _parser = new PdfParser();
+            Parser = new PdfParser();
         }
         public virtual ParsedData GetPdfData()
         {
@@ -17,20 +17,20 @@ namespace EDCreator.Logic
 
             //SerialNumber
             var  rect = new iTextSharp.text.Rectangle(437, 722, 460, 728);
-            transferingData.SerialNumber = _parser.GetStringValueFromRegion(File, rect);
+            transferingData.SerialNumber = Parser.GetStringValueFromRegion(File, rect);
 
             //Length shoulder to shoulder
             rect = new iTextSharp.text.Rectangle(148, 640, 165, 647);
-            transferingData.Length = _parser.GetStringValueFromRegion(File, rect);
+            transferingData.Length = Parser.GetStringValueFromRegion(File, rect);
 
             //Connection 1 TreadSize, Outer diameter
             rect = new iTextSharp.text.Rectangle(103, 564, 130, 606);
-            var connectionColumn = _parser.GetStringValueFromRegion(File, rect).Split('\n');
+            var connectionColumn = Parser.GetStringValueFromRegion(File, rect).Split('\n');
             transferingData.ConnectionOne = FillConnectionInfo(connectionColumn);
 
             //Connection 2 TreadSize, Outer diameter
             rect = new iTextSharp.text.Rectangle(339, 548, 368, 606);
-            connectionColumn = _parser.GetStringValueFromRegion(File, rect).Split('\n');
+            connectionColumn = Parser.GetStringValueFromRegion(File, rect).Split('\n');
             transferingData.ConnectionTwo = FillConnectionInfo(connectionColumn);
 
             return transferingData;

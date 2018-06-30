@@ -17,7 +17,7 @@ namespace PdfReader
         {
             //https://stackoverflow.com/a/23915452/9051104
             //Create our test file, nothing special
-            var testFile = $"{System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\in\\FilterSub Inspection.pdf";
+            var testFile = $"{System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\in\\Stabilizer Inspection.pdf";
             //using (var fs = new FileStream(testFile, FileMode.Create, FileAccess.Write, FileShare.None))
             //{
             //    using (var doc = new Document())

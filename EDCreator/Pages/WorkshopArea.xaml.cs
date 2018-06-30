@@ -53,7 +53,7 @@ namespace EDCreator.Pages
             {
                 foreach (var fileName in _opener.FileNames)
                 {
-                    var client = new Client();
+                    var client = new Client(null);
                     client.Run(fileName);
                 }
             }

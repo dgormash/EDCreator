@@ -1,8 +1,6 @@
-﻿
-
-namespace EDCreator.Misc
+﻿namespace EDCreator.Misc
 {
-    internal class LoginData
+    public class LoginData
     {
         public string ClientField { get; set; }
         public string FieldPadWellField { get; set; }
