@@ -19,19 +19,29 @@ namespace EDCreator.Logic
             var name = GetInspectionNameFromPdf(file, rect);
 
             PdfProcessor processor;
+            ExcelProcessor excel = null;
+            //ExcelDiagramType //diagramType = 0;
             switch (name)
             {
                 case "MFS6-AB":
                     processor = GetPdfProcessor(PdfProcessorType.FilterSub);
+                    excel = GetExcelProcessor(ExcelProcessorType.ExcelProcessor);
+                    //diagramType = ExcelDiagramType.FilterSubDiagram;
                     break;
                 case "SFS8N":
                     processor = GetPdfProcessor(PdfProcessorType.FloatSub);
+                    excel = GetExcelProcessor(ExcelProcessorType.ExcelProcessor);
+                    //diagramType = ExcelDiagramType.FloatSubDiagram;
                     break;
                 case "NMPC8":
                     processor = GetPdfProcessor(PdfProcessorType.Nmpc);
+                    excel = GetExcelProcessor(ExcelProcessorType.ExcelProcessor);
+                    //diagramType = ExcelDiagramType.NmpcDiagram;
                     break;
                 case "SZS9N-IBS":
                     processor = GetPdfProcessor(PdfProcessorType.Stabilizer);
+                    excel = GetExcelProcessor(ExcelProcessorType.StabilizerExcelProcessor);
+                    //diagramType = ExcelDiagramType.StabilizerDiagram;
                     break;
                 default:
                     //todo Сделать EmtpyPdfProcessor с переопредлёнными методами, которые просто будут показывать сообщения, что что-то не так
@@ -43,7 +53,7 @@ namespace EDCreator.Logic
             var parsedData = processor.GetPdfData();
             parsedData.Name = name;
             parsedData.Header = _header;
-            //todo Передача в Excel
+            excel.PassDataToExcel(parsedData);//todo Передача в Excel
         }
 
         private string GetInspectionNameFromPdf(string file, iTextSharp.text.Rectangle rectangle)
@@ -63,9 +73,26 @@ namespace EDCreator.Logic
                     return new PdfProcessor();
                 case PdfProcessorType.Stabilizer:
                     return new StabilizerPdfProcessor();
+                default:
+                    return null;
             }
+        }
 
-            return null;
+        private ExcelProcessor GetExcelProcessor(ExcelProcessorType type)
+        {
+            switch (type)
+            {
+                case ExcelProcessorType.FilterExcelProcessor:
+                    return new FilterExcelProcessor();
+                case ExcelProcessorType.StabilizerExcelProcessor:
+                    return new StabilizerExcelProcessor();
+                case ExcelProcessorType.FloatExcelProcessor:
+                    return  new FloatExcelProcessor();
+                case ExcelProcessorType.NmpcExcelProcessor:
+                    return new NmpcExcelProcessor();
+                default:
+                    return null;
+            }
         }
     }
 }

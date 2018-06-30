@@ -39,8 +39,28 @@
       <HintPath>..\packages\C5.2.5.3\lib\net45\C5.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OOXML.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -72,10 +92,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logic\Client.cs" />
+    <Compile Include="Logic\ExcelProcessor.cs" />
+    <Compile Include="Logic\FilterExcelProcessor.cs" />
+    <Compile Include="Logic\FloatExcelProcessor.cs" />
     <Compile Include="Logic\FloatPdfProcessor.cs" />
     <Compile Include="Logic\IPdfParser.cs" />
+    <Compile Include="Logic\NmpcExcelProcessor.cs" />
     <Compile Include="Logic\PdfParser.cs" />
     <Compile Include="Logic\PdfProcessor.cs" />
+    <Compile Include="Logic\StabilizerExcelProcessor.cs" />
     <Compile Include="Logic\StabilizerPdfProcessor.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -92,6 +117,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Misc\Connection.cs" />
+    <Compile Include="Misc\ExcelDiagramType.cs" />
+    <Compile Include="Misc\ExcelProcessorType.cs" />
     <Compile Include="Misc\LoginData.cs" />
     <Compile Include="Misc\ParsedData.cs" />
     <Compile Include="Misc\PdfProcessorType.cs" />
