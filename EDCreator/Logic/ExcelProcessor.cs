@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
-using System.Windows;
 using EDCreator.Misc;
+using Microsoft.Office.Interop.Excel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
+using Application = System.Windows.Application;
 
 namespace EDCreator.Logic
 {
@@ -36,23 +37,26 @@ namespace EDCreator.Logic
             //Заполнение заголовка (сам метод внизу)
             FillHeader(data);
 
-            //Номер ячейки (в контексте таблицы - столбца), в которую вставляются данные
-            var cellNum = 3;
+            //Номер ячейки (в контексте таблицы - столбца), в которую вставляются данные (нумерация ячеек в коде начинается с 0)
+            //Поэтому от номера строки и столбца нужно отнимать 1
+            var cellNum = 2;
             
 
             //SerialNumber
-            SetCellValue(22, cellNum, data.SerialNumber);
+            SetCellValue(21, cellNum, data.SerialNumber); //соответствует 22 строке в шаблоне и т.д.
             //L
-            SetCellValue(23, cellNum, data.Length);
+            SetCellValue(22, cellNum, data.Length);
             //OD
-            SetCellValue(24, cellNum, data.ConnectionOne.Od);
+            SetCellValue(23, cellNum, data.ConnectionOne.Od);
             //ID
-            SetCellValue(25, cellNum, data.ConnectionTwo.Id);
+            SetCellValue(24, cellNum, data.ConnectionTwo.Id);
             //BOX
-            SetCellValue(26, cellNum, data.ConnectionOne.TreadSize);
+            SetCellValue(25, cellNum, data.ConnectionOne.TreadSize);
             //PIN
-            SetCellValue(27, cellNum, data.ConnectionTwo.TreadSize);
+            SetCellValue(26, cellNum, data.ConnectionTwo.TreadSize); //соответствует 27 строке в шаблоне
 
+            var fileName = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\out\{
+                data.Name}_{data.SerialNumber}_FinishedDiagram.xlsx";
             //Сохранение изменённого файла
             using (
                 var file =
@@ -63,6 +67,7 @@ namespace EDCreator.Logic
             {
                 Book.Write(file);
             }
+            OpenExcelApp(fileName);
         }
 
         protected void SetCellValue(int rowNum, int cellNum, string value)
@@ -74,16 +79,25 @@ namespace EDCreator.Logic
 
         protected void FillHeader(ParsedData data)
         {
-            var cellNum = 3;
+            var cellNum = 2;
 
             //Запись заголовка
-            SetCellValue(5, cellNum, data.Header.ClientField);
-            SetCellValue(6, cellNum, data.Header.FieldPadWellField);
-            SetCellValue(7, cellNum, data.Header.LocationField);
+            SetCellValue(4, cellNum, data.Header.ClientField);
+            SetCellValue(5, cellNum, data.Header.FieldPadWellField);
+            SetCellValue(6, cellNum, data.Header.LocationField);
 
-            cellNum = 9;
-            SetCellValue(5, cellNum, data.Header.DdEngineerField);
-            SetCellValue(6, cellNum, data.Header.DateField);
+            cellNum = 8;
+            SetCellValue(4, cellNum, data.Header.DdEngineerField);
+            SetCellValue(5, cellNum, data.Header.DateField);
+        }
+
+        protected void OpenExcelApp(string file)
+        {
+            Microsoft.Office.Interop.Excel.Application excelObj = null;
+            excelObj = new Microsoft.Office.Interop.Excel.Application();
+
+            var theWorkbook = excelObj.Workbooks.Open(file);
+            
         }
     }
 }

@@ -28,7 +28,7 @@ namespace EDCreator.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var loginData = new LoginData
+            var loginData = new HeaderData
             {
                 ClientField = Client.Text,
                 DateField = Date.Text,
@@ -36,8 +36,6 @@ namespace EDCreator.Pages
                 FieldPadWellField = FieldPadWell.Text,
                 LocationField = Location.Text
             };
-
-            this.NavigationService.Navigate(new WorkshopArea());
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace EDCreator.Misc
 {
-    public class LoginData
+    public class HeaderData
     {
         public string ClientField { get; set; }
         public string FieldPadWellField { get; set; }

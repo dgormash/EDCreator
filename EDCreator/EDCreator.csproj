@@ -47,6 +47,9 @@
       <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="NPOI, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.dll</HintPath>
       <Private>True</Private>
@@ -119,7 +122,7 @@
     <Compile Include="Misc\Connection.cs" />
     <Compile Include="Misc\ExcelDiagramType.cs" />
     <Compile Include="Misc\ExcelProcessorType.cs" />
-    <Compile Include="Misc\LoginData.cs" />
+    <Compile Include="Misc\HeaderData.cs" />
     <Compile Include="Misc\ParsedData.cs" />
     <Compile Include="Misc\PdfProcessorType.cs" />
     <Compile Include="Misc\StabilizerParsedData.cs" />

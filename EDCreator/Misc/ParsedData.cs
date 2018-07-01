@@ -2,7 +2,7 @@
 {
     public class ParsedData
     {
-        internal LoginData Header { get; set; }
+        internal HeaderData Header { get; set; }
         public string Name { get; set; }
         public string SerialNumber { get; set; }
         public string Length { get; set; }

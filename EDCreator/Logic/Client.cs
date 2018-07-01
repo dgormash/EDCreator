@@ -1,13 +1,14 @@
-﻿using EDCreator.Misc;
+﻿using System.Windows;
+using EDCreator.Misc;
 
 namespace EDCreator.Logic
 {
     public class Client
     {
         private readonly IPdfParser _pdfParser;
-        private readonly LoginData _header;
+        private readonly HeaderData _header;
 
-        public Client(LoginData header)
+        public Client(HeaderData header)
         {
             _pdfParser = new PdfParser();
             _header = header;
@@ -25,22 +26,24 @@ namespace EDCreator.Logic
             {
                 case "MFS6-AB":
                     processor = GetPdfProcessor(PdfProcessorType.FilterSub);
-                    excel = GetExcelProcessor(ExcelProcessorType.ExcelProcessor);
+                    excel = GetExcelProcessor(ExcelProcessorType.FilterExcelProcessor);
                     //diagramType = ExcelDiagramType.FilterSubDiagram;
                     break;
                 case "SFS8N":
                     processor = GetPdfProcessor(PdfProcessorType.FloatSub);
-                    excel = GetExcelProcessor(ExcelProcessorType.ExcelProcessor);
+                    excel = GetExcelProcessor(ExcelProcessorType.FloatExcelProcessor);
                     //diagramType = ExcelDiagramType.FloatSubDiagram;
                     break;
                 case "NMPC8":
                     processor = GetPdfProcessor(PdfProcessorType.Nmpc);
-                    excel = GetExcelProcessor(ExcelProcessorType.ExcelProcessor);
+                    excel = GetExcelProcessor(ExcelProcessorType.NmpcExcelProcessor);
                     //diagramType = ExcelDiagramType.NmpcDiagram;
                     break;
                 case "SZS9N-IBS":
                     processor = GetPdfProcessor(PdfProcessorType.Stabilizer);
-                    excel = GetExcelProcessor(ExcelProcessorType.StabilizerExcelProcessor);
+                    //excel = GetExcelProcessor(ExcelProcessorType.StabilizerExcelProcessor);
+
+                    excel = GetExcelProcessor(ExcelProcessorType.FilterExcelProcessor);
                     //diagramType = ExcelDiagramType.StabilizerDiagram;
                     break;
                 default:
@@ -53,7 +56,8 @@ namespace EDCreator.Logic
             var parsedData = processor.GetPdfData();
             parsedData.Name = name;
             parsedData.Header = _header;
-            excel.PassDataToExcel(parsedData);//todo Передача в Excel
+            
+            excel?.PassDataToExcel(parsedData);
         }
 
         private string GetInspectionNameFromPdf(string file, iTextSharp.text.Rectangle rectangle)

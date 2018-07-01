@@ -5,12 +5,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EDCreator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="260" Width="630">
-    <Grid>
-        <StackPanel Orientation="Horizontal" Height="35" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10 0 0 0">
-            <Button Content="Login" MinWidth="100" Click="Button_Click"/>
-            <Button Content="Workshop"  MinWidth="100" Margin="10 0 0 0" Click="Button_Click_1"/>
+        Title="MainWindow" Height="469.6" Width="630">
+    <StackPanel>
+        <StackPanel>
+            <TextBlock Text="Введите данные" FontWeight="Bold" Margin="20 10 0 0"  HorizontalAlignment="Left"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="5 0 0 0">
+
+                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                        <TextBlock Text="Client:" Width="auto" Margin="45,0, 0 ,0"/>
+                        <TextBox x:Name="Client" Width="200" Margin="11 0 0 0" Padding="1"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                        <TextBlock Text="Field/Pad/Well:" Width="auto" />
+                        <TextBox x:Name="FieldPadWell" Width="200" Margin="10 0 0 0" Padding="1"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                        <TextBlock Text="Location:" Width="auto" Margin="30, 0, 0, 0"/>
+                        <TextBox x:Name="Location" Width="200" Margin="11 0 0 0" Padding="1"/>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                        <TextBlock Text="DD Engineer:" Width="auto" Margin="20 0 0 0"/>
+                        <TextBox x:Name="DdEngineer" Width="200" Margin="11 0 0 0" Padding="1"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                        <TextBlock Text="Date:" Width="auto" Margin="60 0 0 0"/>
+                        <TextBox x:Name="Date" Width="200" Margin="13 0 0 0" Padding="1"/>
+                    </StackPanel>
+
+                </StackPanel>
+            </Grid>
         </StackPanel>
-        <Frame x:Name="Main" Margin="0,35, 0,0" NavigationUIVisibility="Hidden"/>
-    </Grid>
+        
+        <StackPanel Margin="0 30 0 0">
+            <TextBlock Text="Выбор файлов" FontWeight="Bold"/>
+            <TextBlock Text="Путь к файлам инспекций" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="PathString" IsEnabled="False" HorizontalAlignment="Left" Width="500" Padding="1">
+                    [пусто...]
+                </TextBox>
+                <Button x:Name ="Choose" Content="..." Width="50" Margin="10 0 0 0" Click="Choose_Click"/>
+            </StackPanel>
+            <Button x:Name="Proceed" Content="Обработать" MaxWidth="100" HorizontalAlignment="Right" Margin="0 10 10 0" Click="Proceed_Click"></Button>
+
+            <TextBox x:Name="FileList" IsEnabled="true" Width="300" Height="100" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"/>
+        </StackPanel>
+    </StackPanel>
 </Window>
