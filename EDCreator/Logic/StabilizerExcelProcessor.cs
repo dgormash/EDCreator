@@ -61,20 +61,19 @@ namespace EDCreator.Logic
             SetCellValue(32, cellNum, stabilizerData.LobeLength);
             //BladeWidth
             SetCellValue(34, cellNum, stabilizerData.LobeWidth);
-            var name = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\out\{
-                stabilizerData.Name}_{stabilizerData.SerialNumber}_F.xlsx";
+
+            var fileName = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\out\{
+                stabilizerData.Name}_{stabilizerData.SerialNumber}_FinishedDiagram.xlsx";
             //Сохранение изменённого файла
             using (
                 var file =
-                    new FileStream(
-                        $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\out\{
-                            stabilizerData.Name}_{stabilizerData.SerialNumber}_F.xlsx",
-                        FileMode.Create, FileAccess.Write))
+                    new FileStream(fileName, FileMode.Create, FileAccess.Write))
             {
                 Book.Write(file);
             }
 
-            
+            OpenExcelApp(fileName);
+
             //var zipName = Path.ChangeExtension(name, ".zip");
             //File.Move(name, Path.ChangeExtension(name, ".zip"));
             //ExtractZipFile(zipName, null, $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\out\");

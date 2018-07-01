@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 using EDCreator.Misc;
-using Microsoft.Office.Interop.Excel;
+using Excel = Microsoft.Office.Interop.Excel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using Application = System.Windows.Application;
@@ -16,6 +16,9 @@ namespace EDCreator.Logic
         protected ISheet Sheet;
         protected IRow Row;
         protected ICell Cell;
+
+        protected Excel.Application ExcelApp;
+        protected Excel.Window ExcelWindow;
 
 
         public virtual void PassDataToExcel(ParsedData data)
@@ -60,13 +63,11 @@ namespace EDCreator.Logic
             //Сохранение изменённого файла
             using (
                 var file =
-                    new FileStream(
-                        $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\out\{
-                            data.Name}_{data.SerialNumber}_FinishedDiagram.xlsx",
-                        FileMode.Create, FileAccess.Write))
+                    new FileStream(fileName, FileMode.Create, FileAccess.Write))
             {
                 Book.Write(file);
             }
+
             OpenExcelApp(fileName);
         }
 
@@ -93,11 +94,9 @@ namespace EDCreator.Logic
 
         protected void OpenExcelApp(string file)
         {
-            Microsoft.Office.Interop.Excel.Application excelObj = null;
-            excelObj = new Microsoft.Office.Interop.Excel.Application();
-
-            var theWorkbook = excelObj.Workbooks.Open(file);
-            
+            ExcelApp = new Excel.Application {Visible = true};
+            ExcelApp.Workbooks.Open(file);
+            //ExcelWindow.Visible = true;
         }
     }
 }

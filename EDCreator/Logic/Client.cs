@@ -41,10 +41,7 @@ namespace EDCreator.Logic
                     break;
                 case "SZS9N-IBS":
                     processor = GetPdfProcessor(PdfProcessorType.Stabilizer);
-                    //excel = GetExcelProcessor(ExcelProcessorType.StabilizerExcelProcessor);
-
-                    excel = GetExcelProcessor(ExcelProcessorType.FilterExcelProcessor);
-                    //diagramType = ExcelDiagramType.StabilizerDiagram;
+                    excel = GetExcelProcessor(ExcelProcessorType.StabilizerExcelProcessor);
                     break;
                 default:
                     //todo Сделать EmtpyPdfProcessor с переопредлёнными методами, которые просто будут показывать сообщения, что что-то не так
