@@ -22,16 +22,15 @@
                         <TextBox x:Name="Client" Width="200" Margin="11 0 0 0" Padding="1"/>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
                         <TextBlock Text="Field/Pad/Well:" Width="auto" />
                         <TextBox x:Name="FieldPadWell" Width="200" Margin="10 0 0 0" Padding="1"/>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
                         <TextBlock Text="Location:" Width="auto" Margin="30, 0, 0, 0"/>
                         <TextBox x:Name="Location" Width="200" Margin="11 0 0 0" Padding="1"/>
                     </StackPanel>
-
                 </StackPanel>
 
                 <StackPanel Grid.Column="1">
@@ -40,7 +39,7 @@
                         <TextBox x:Name="DdEngineer" Width="200" Margin="11 0 0 0" Padding="1"/>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
                         <TextBlock Text="Date:" Width="auto" Margin="60 0 0 0"/>
                         <TextBox x:Name="Date" Width="200" Margin="13 0 0 0" Padding="1"/>
                     </StackPanel>
@@ -49,17 +48,17 @@
             </Grid>
         </StackPanel>
         
-        <StackPanel Margin="0 30 0 0">
-            <TextBlock Text="Выбор файлов" FontWeight="Bold"/>
-            <TextBlock Text="Путь к файлам инспекций" FontWeight="Bold"/>
+        <StackPanel Margin="0 10 0 0">
+            <TextBlock Text="Выберите файлы" FontWeight="Bold" Margin="20 10 0 0"/>
+            <TextBlock Foreground="CornflowerBlue" Text="Указать путь к файлам инспекций" FontWeight="Bold" Margin="20 -5 115 0" HorizontalAlignment="right"/>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="PathString" IsEnabled="False" HorizontalAlignment="Left" Width="500" Padding="1">
+                <TextBox x:Name="PathString" IsEnabled="False" HorizontalAlignment="Left" Width="500" Padding="1" Margin="10 0 0 0">
                     [пусто...]
                 </TextBox>
-                <Button x:Name ="Choose" Content="..." Width="50" Margin="10 0 0 0" Click="Choose_Click"/>
+                <Button Background="CornflowerBlue" x:Name ="Choose" Content="..." Width="50" Margin="10 0 0 0" Click="Choose_Click"/>
             </StackPanel>
             <Button x:Name="Proceed" Content="Обработать" MaxWidth="100" HorizontalAlignment="Right" Margin="0 10 10 0" Click="Proceed_Click"></Button>
-
+            <TextBlock Text="Выбранные файлы" FontWeight="Bold" Margin="20 10 0 0"/>
             <TextBox x:Name="FileList" IsEnabled="true" Width="300" Height="100" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"/>
         </StackPanel>
     </StackPanel>
