@@ -26,7 +26,7 @@ namespace EDCreator
     public partial class MainWindow : Window
     {
         private readonly OpenFileDialog _opener;
-        private List<string> _files;
+        private readonly List<string> _files;
         public MainWindow()
         {
             InitializeComponent();
@@ -37,6 +37,8 @@ namespace EDCreator
                 InitialDirectory = $"{System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\in" //Задаётся каталог, который будет
                 //каталогом поумолчанию при показе диалога
             };
+
+            _files = new List<string>();
         }
         private void Choose_Click(object sender, RoutedEventArgs e)
         {
@@ -67,17 +69,6 @@ namespace EDCreator
             MessageBox.Show("Всё!!!");
         }
 
-        private void FileList_DragEnter(object sender, DragEventArgs e)
-        {
-            if (!e.Data.GetDataPresent(DataFormats.FileDrop)) return;
-            var dropedFiles = (string[])e.Data.GetData(DataFormats.FileDrop);
-            if (dropedFiles == null) return;
-            foreach (var file in dropedFiles)
-            {
-                e.Effects = CheckFileExtention(file) ? DragDropEffects.Copy : DragDropEffects.None;
-            }
-        }
-
         private void FileList_Drop(object sender, DragEventArgs e)
         {
             if (!e.Data.GetDataPresent(DataFormats.FileDrop)) return;
@@ -96,6 +87,13 @@ namespace EDCreator
         private void FileList_PreviewDragOver(object sender, DragEventArgs e)
         {
             e.Handled = true;
+            if (!e.Data.GetDataPresent(DataFormats.FileDrop)) return;
+            var dropedFiles = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (dropedFiles == null) return;
+            foreach (var file in dropedFiles)
+            {
+                e.Effects = CheckFileExtention(file) ? DragDropEffects.Copy : DragDropEffects.None;
+            }
         }
 
         private static bool CheckFileExtention(string file)
