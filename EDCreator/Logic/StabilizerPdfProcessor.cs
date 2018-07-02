@@ -4,6 +4,7 @@ namespace EDCreator.Logic
 {
     public class StabilizerPdfProcessor:PdfProcessor
     {
+        //Здесь переопределяются оба метода базового класса PdfProcessor, так как нужно больше данных, чем в других инспекциях
         public override ParsedData GetPdfData()
         {
             var transferingData = new StabilizerParsedData();

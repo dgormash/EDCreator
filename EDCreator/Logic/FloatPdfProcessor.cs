@@ -4,6 +4,7 @@ namespace EDCreator.Logic
 {
     public class FloatPdfProcessor:PdfProcessor
     {
+        //Это пример того, как переопределяется метод FillConnectionInfo
         protected override Connection FillConnectionInfo(string[] stringArray)
         {
             var connectionInfo = new Connection();

@@ -17,7 +17,12 @@ namespace PdfReader
         {
             //https://stackoverflow.com/a/23915452/9051104
             //Create our test file, nothing special
-            var testFile = $"{System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\in\\Stabilizer Inspection.pdf";
+            //Не стал тут париться и делать так, чтобы можно было подставлять файл в качестве параметра коммандной строки, если хотите
+            //попробуйте сделать, это не сложно, делается это через string[] args. Пока для того, чтобы посмотреть координаты кидаете 
+            //файл в каталог in и здесь прописываете имя файла и запускаете проект. Откроется консоль и для каждого из кусков текста
+            //будут отображены координаты. Остаётся набраться терпения, их записать, если данные друг под другом, можно по координатам
+            //нескольких блоков построить большой прямоугольник. Я так делал для данных из столбцов Connection
+            var testFile = $"{System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\in\\FilterSub Inspection.pdf";
             //using (var fs = new FileStream(testFile, FileMode.Create, FileAccess.Write, FileShare.None))
             //{
             //    using (var doc = new Document())
@@ -37,16 +42,24 @@ namespace PdfReader
             var t = new RectTextExtractionStrategy();
 
             //Parse page 1 of the document above
-            using (var r = new iTextSharp.text.pdf.PdfReader(testFile))
+            try
             {
-                var ex = PdfTextExtractor.GetTextFromPage(r, 1, t);
-            }
+                using (var r = new iTextSharp.text.pdf.PdfReader(testFile))
+                {
+                    var ex = PdfTextExtractor.GetTextFromPage(r, 1, t);
+                }
 
-            //Loop through each chunk found
-            foreach (var p in t.Collection)
-            {
-                Console.WriteLine("Found text {0} at lx: {1}; ly: {2}; rx: {3}; ry: {4}", p.Text, p.Rect.Left, p.Rect.Bottom, p.Rect.Right,p.Rect.Top);
+                //Loop through each chunk found
+                foreach (var p in t.Collection)
+                {
+                    Console.WriteLine("Found text {0} at lx: {1}; ly: {2}; rx: {3}; ry: {4}", p.Text, p.Rect.Left, p.Rect.Bottom, p.Rect.Right,p.Rect.Top);
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            Console.ReadKey();
         }
     }
 }
