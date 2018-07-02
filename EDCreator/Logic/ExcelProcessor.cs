@@ -6,7 +6,6 @@ using EDCreator.Misc;
 using Excel = Microsoft.Office.Interop.Excel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using Application = System.Windows.Application;
 
 namespace EDCreator.Logic
 {

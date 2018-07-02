@@ -4,15 +4,18 @@ using System.Reflection;
 using EDCreator.Misc;
 using ICSharpCode.SharpZipLib.Core;
 using ICSharpCode.SharpZipLib.Zip;
+using NPOI.HSSF.UserModel;
 using NPOI.XSSF.UserModel;
 
 namespace EDCreator.Logic
 {
     public class StabilizerExcelProcessor : ExcelProcessor
     {
+
+        private HSSFWorkbook _xlsBook;
         public StabilizerExcelProcessor()
         {
-            TemplateFileName = "Stabilizer Diagram.xlsx";
+            TemplateFileName = "Stabilizer Diagram.xls";
         }
 
         //В шаблоне Stabilizer Diagram.xlsx прям совсем другая структура, поэтому методе PassDataToExcel необходимо переопределить
@@ -30,10 +33,11 @@ namespace EDCreator.Logic
                     new FileStream(filePath,
                         FileMode.Open, FileAccess.Read))
             {
-                Book = new XSSFWorkbook(file);
+                //Book = new XSSFWorkbook(file);
+                _xlsBook = new HSSFWorkbook(file);
             }
 
-            Sheet = Book.GetSheetAt(0);
+            Sheet = _xlsBook.GetSheetAt(0);
 
             //Запись заголовка
             FillHeader(stabilizerData);
@@ -63,13 +67,13 @@ namespace EDCreator.Logic
             SetCellValue(34, cellNum, stabilizerData.LobeWidth);
 
             var fileName = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\out\{
-                stabilizerData.Name}_{stabilizerData.SerialNumber}_FinishedDiagram.xlsx";
+                stabilizerData.Name}_{stabilizerData.SerialNumber}_FinishedDiagram.xls";
             //Сохранение изменённого файла
             using (
                 var file =
                     new FileStream(fileName, FileMode.Create, FileAccess.Write))
             {
-                Book.Write(file);
+                _xlsBook.Write(file);
             }
 
             OpenExcelApp(fileName);
