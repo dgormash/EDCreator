@@ -26,6 +26,7 @@ namespace EDCreator
     public partial class MainWindow : Window
     {
         private readonly OpenFileDialog _opener;
+        private List<string> _files;
         public MainWindow()
         {
             InitializeComponent();
@@ -65,5 +66,44 @@ namespace EDCreator
             }
             MessageBox.Show("Всё!!!");
         }
+
+        private void FileList_DragEnter(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent(DataFormats.FileDrop)) return;
+            var dropedFiles = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (dropedFiles == null) return;
+            foreach (var file in dropedFiles)
+            {
+                e.Effects = CheckFileExtention(file) ? DragDropEffects.Copy : DragDropEffects.None;
+            }
+        }
+
+        private void FileList_Drop(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent(DataFormats.FileDrop)) return;
+            var dropedFiles = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+            if (dropedFiles == null) return;
+
+            foreach (var file in  dropedFiles)
+            {
+                if ( CheckFileExtention(file))
+                    FileList.Text += $"{System.IO.Path.GetFileName(file)}\n";
+                _files.Add(file);
+            }
+        }
+
+        private void FileList_PreviewDragOver(object sender, DragEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private static bool CheckFileExtention(string file)
+        {
+            var ext = System.IO.Path.GetExtension(file);
+
+            return ext != null && ext.ToUpper() == ".PDF";
+        }
+        
     }
 }
