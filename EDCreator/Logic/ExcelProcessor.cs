@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Windows;
 using EDCreator.Misc;
 using Excel = Microsoft.Office.Interop.Excel;
 using NPOI.SS.UserModel;
@@ -94,8 +95,21 @@ namespace EDCreator.Logic
 
         protected void OpenExcelApp(string file)
         {
-            ExcelApp = new Excel.Application {Visible = true};
-            ExcelApp.Workbooks.Open(file);
+            try
+            {
+                ExcelApp = new Excel.Application {Visible = true};
+                ExcelApp.Workbooks.Open(file);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Что-то пошло не так: {e.Message}; октрываемый файл: {TemplateFileName}", "Ошибка открытия приложения Excel",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                ExcelApp.Quit();
+            }
+            finally
+            {
+                ExcelApp = null;
+            }
             //ExcelWindow.Visible = true;
         }
     }
