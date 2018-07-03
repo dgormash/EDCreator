@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:EDCreator"
         mc:Ignorable="d"
         Title="Excel Diagram Creator" Height="410" Width="640" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <StackPanel>
+    <StackPanel PreviewKeyDown="Container_PreviewKeyDown">
         <StackPanel>
             <TextBlock Text="Введите данные" FontWeight="Bold" Margin="20 10 0 0"  HorizontalAlignment="Left"/>
             <Grid>

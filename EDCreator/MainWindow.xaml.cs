@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using EDCreator.Logic;
 using EDCreator.Misc;
 using Microsoft.Win32;
@@ -115,6 +117,19 @@ namespace EDCreator
 
             return ext != null && ext.ToUpper() == ".PDF";
         }
-        
+
+        void Container_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            var tb = e.Source as TextBox;
+            if (tb == null) return;
+            switch (e.Key)
+            {
+                case Key.Enter:
+                    tb.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
