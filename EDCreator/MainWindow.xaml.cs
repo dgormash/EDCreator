@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using EDCreator.Logic;
 using EDCreator.Misc;
 using Microsoft.Win32;
@@ -83,7 +81,7 @@ namespace EDCreator
             {
                 client.Run(file);
             }
-            MessageBox.Show("Файлы обработаны", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            MessageBox.Show("Работа программы завершена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Asterisk);
         }
 
         private void FileList_Drop(object sender, DragEventArgs e)
