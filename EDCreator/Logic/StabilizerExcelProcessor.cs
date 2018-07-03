@@ -23,7 +23,8 @@ namespace EDCreator.Logic
 
         public override void PassDataToExcel(ParsedData data)
         {
-            var stabilizerData = (StabilizerParsedData) data;
+            var stabilizerData = (StabilizerParsedData) data; //... (прдолжение) чтобы использовать поля из StabilizerParsedData, необходимо вот так вот
+            //как здесь выполнить приведение к призводному типу. Просто небольшой нюанс, если вы будете делать свои версии класса ParsedData
             string fileName;
             if (string.IsNullOrEmpty(TemplateFileName)) return;
 

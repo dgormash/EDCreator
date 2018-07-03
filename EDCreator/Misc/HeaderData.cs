@@ -2,6 +2,7 @@
 {
     public class HeaderData
     {
+        //Данные, которые будут прописаны в шапке файла
         public string ClientField { get; set; }
         public string FieldPadWellField { get; set; }
         public string LocationField { get; set; }
