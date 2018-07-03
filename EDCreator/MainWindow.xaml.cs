@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using EDCreator.Logic;
 using EDCreator.Misc;
 using Microsoft.Win32;
@@ -130,6 +132,18 @@ namespace EDCreator
                 default:
                     break;
             }
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            Client.Text = string.Empty;
+            FieldPadWell.Text = string.Empty;
+            Location.Text = string.Empty;
+            DdEngineer.Text = string.Empty;
+            Date.Text = string.Empty;
+            PathString.Text = string.Empty;
+            FileList.Text = string.Empty;
+            _files.Clear();
         }
     }
 }
