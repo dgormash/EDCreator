@@ -1,4 +1,4 @@
-﻿namespace EDCreator.Misc
+﻿namespace FDCreator.Misc
 {
     public class Connection
     {

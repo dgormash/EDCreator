@@ -3,9 +3,10 @@ using System.IO;
 using System.Reflection;
 using System.Windows;
 using EDCreator.Misc;
-using NPOI.HSSF.UserModel;
+using FDCreator.Misc;
+using NPOI.XSSF.UserModel;
 
-namespace EDCreator.Logic
+namespace FDCreator.Logic
 {
     public class StabilizerExcelProcessor : ExcelProcessor
     {
@@ -13,10 +14,10 @@ namespace EDCreator.Logic
         //.xls, поэтому здесь используется тип HSSFWorkbook, тогда как в других excel-процессорах используется XSSFWorkbook
         //Если файлы после записи не будут открываться, пересохраняете их в .xls, создаёте потомка ExcelProcessor и переопределяете методы
         //Здесь видно, что я поменял
-        private HSSFWorkbook _xlsBook; //Это я поменял
+        private XSSFWorkbook _xlsBook; //Это я поменял
         public StabilizerExcelProcessor()
         {
-            TemplateFileName = "Stabilizer Diagram.xls";
+            TemplateFileName = "Stabilizer Diagram.xlsx";
         }
 
         //В шаблоне Stabilizer Diagram.xls прям совсем другая структура, поэтому методе PassDataToExcel необходимо переопределить
@@ -38,9 +39,9 @@ namespace EDCreator.Logic
                             FileMode.Open, FileAccess.Read))
                 {
                     //Book = new XSSFWorkbook(file);
-                    _xlsBook = new HSSFWorkbook(file); //И это я поменял
+                    _xlsBook = new XSSFWorkbook(file); //И это я поменял
                 }
-
+                _xlsBook.SetForceFormulaRecalculation(true);
                 Sheet = _xlsBook.GetSheetAt(0);
 
                 //Запись заголовка
@@ -56,9 +57,11 @@ namespace EDCreator.Logic
                 //BOT
                 SetCellValue(18, cellNum, stabilizerData.ConnectionTwo.TreadSize);
                 //L
-                SetCellValue(22, cellNum, stabilizerData.Length);
+                var inches = InchesValueRetriever.GetInchesValue(stabilizerData.Length);
+                SetCellValue(22, cellNum, LengthConverter.InchesToMeters(inches).ToString("0.000"));
                 //L1
-                SetCellValue(23, cellNum, stabilizerData.FishingNeckTongSpace);
+                inches = InchesValueRetriever.GetInchesValue(stabilizerData.FishingNeckTongSpace);
+                SetCellValue(23, cellNum, LengthConverter.InchesToMeters(inches).ToString("0.000"));
                 //OD
                 SetCellValue(29, cellNum, stabilizerData.ConnectionOne.Od);
                 //ID
@@ -66,12 +69,19 @@ namespace EDCreator.Logic
                 //MaxOD
                 SetCellValue(31, cellNum, stabilizerData.StabilizerOd);
                 //BladeLength
-                SetCellValue(32, cellNum, stabilizerData.LobeLength);
+                inches = InchesValueRetriever.GetInchesValue(stabilizerData.LobeLength);
+                SetCellValue(32, cellNum, LengthConverter.InchesToMeters(inches).ToString("0.000"));
                 //BladeWidth
                 SetCellValue(34, cellNum, stabilizerData.LobeWidth);
 
+                //L4
+                //SetCellValue(26, cellNum, "=G24+G33");
+                //Row = Sheet.GetRow(26);
+                //Cell = Row.GetCell(cellNum);
+                //Cell.SetCellFormula("G24+G33");
+
                 fileName = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\out\{
-                    stabilizerData.Name}_{stabilizerData.SerialNumber}_FinishedDiagram_{DateTime.Now.ToString("HH-mm-ss")}.xls";
+                    stabilizerData.Name}_{stabilizerData.SerialNumber}_FishingDiagram_{DateTime.Now.ToString("yy-MM-dd-HH-mm-s")}.xlsx";
                 //Сохранение изменённого файла
                 using (
                     var file =
@@ -82,7 +92,7 @@ namespace EDCreator.Logic
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Что-то пошло не так: {e.Message}", "Viva La Resistance!!!", MessageBoxButton.OK,
+                MessageBox.Show($"Something is wrong: {e.Message}", "Viva La Resistance!!!", MessageBoxButton.OK,
                     MessageBoxImage.Error);
                 return;
             }

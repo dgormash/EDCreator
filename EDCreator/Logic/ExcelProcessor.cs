@@ -2,12 +2,12 @@
 using System.IO;
 using System.Reflection;
 using System.Windows;
-using EDCreator.Misc;
-using Excel = Microsoft.Office.Interop.Excel;
+using FDCreator.Misc;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
+using Excel = Microsoft.Office.Interop.Excel;
 
-namespace EDCreator.Logic
+namespace FDCreator.Logic
 {
     //В классах ...ExcelProcessor всё по аналогии с PdfProcessor - есть базовый класс, в котором прописаны методы, и есть потомки,
     //в которых эти методы при необходимости переопределяются.
@@ -52,7 +52,9 @@ namespace EDCreator.Logic
                 //SerialNumber
                 SetCellValue(21, cellNum, data.SerialNumber); //соответствует 22 строке в шаблоне и т.д.
                 //L
-                SetCellValue(22, cellNum, data.Length);
+                var inches = InchesValueRetriever.GetInchesValue(data.Length);
+
+                SetCellValue(22, cellNum, LengthConverter.InchesToMeters(inches).ToString("0.000"));
                 //OD
                 SetCellValue(23, cellNum, data.ConnectionOne.Od);
                 //ID
@@ -63,18 +65,18 @@ namespace EDCreator.Logic
                 SetCellValue(26, cellNum, data.ConnectionTwo.TreadSize); //соответствует 27 строке в шаблоне
 
                 fileName = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\out\{
-                    data.Name}_{data.SerialNumber}_FinishedDiagram_{DateTime.Now.ToString("HH-mm-ss")}.xlsx";
+                    data.Name}_{data.SerialNumber}_FishingDiagram_{DateTime.Now.ToString("yy-MM-dd-HH-mm-ss")}.xlsx";
                 //Сохранение изменённого файла
                 using (
                     var file =
-                        new FileStream(fileName, FileMode.Create, FileAccess.Write))
+                        new FileStream(fileName, FileMode.CreateNew, FileAccess.Write))
                 {
                     Book.Write(file);
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Что-то пошло не так: {e.Message}", "Viva La Resistance!!!", MessageBoxButton.OK,
+                MessageBox.Show($"I have a bad feeling about this: {e.Message}", "Viva La Resistance!!!", MessageBoxButton.OK,
                     MessageBoxImage.Error);
                 return;
             }
@@ -112,7 +114,7 @@ namespace EDCreator.Logic
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Что-то пошло не так: {e.Message}; октрываемый файл: {TemplateFileName}", "Ошибка открытия приложения Excel",
+                MessageBox.Show($"I have a bad feeling about this: {e.Message}; opening file: {TemplateFileName}", "Error opening excel application",
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 ExcelApp.Quit();
             }

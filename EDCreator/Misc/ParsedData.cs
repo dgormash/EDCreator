@@ -1,4 +1,6 @@
-﻿namespace EDCreator.Misc
+﻿using EDCreator.Misc;
+
+namespace FDCreator.Misc
 {
     public class ParsedData
     {

@@ -1,9 +1,4 @@
-﻿using System.IO;
-using System.Reflection;
-using EDCreator.Misc;
-using NPOI.XSSF.UserModel;
-
-namespace EDCreator.Logic
+﻿namespace FDCreator.Logic
 {
     public class NmpcExcelProcessor:ExcelProcessor
     {

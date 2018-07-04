@@ -1,6 +1,4 @@
-﻿using iTextSharp.xmp.impl;
-
-namespace EDCreator.Misc
+﻿namespace FDCreator.Misc
 {
     public class StabilizerParsedData:ParsedData
     {

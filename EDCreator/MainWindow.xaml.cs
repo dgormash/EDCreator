@@ -4,11 +4,12 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using EDCreator.Logic;
 using EDCreator.Misc;
+using FDCreator.Logic;
+using FDCreator.Misc;
 using Microsoft.Win32;
 
-namespace EDCreator
+namespace FDCreator
 {
     // В ЭТОМ ФАЙЛЕ МЕНЯТЬ ЧТО-ТО НА ВАШЕ УСМОТРЕНИЕ, ЗДЕСЬ ТОЛЬКО ОБРАБОТЧИКИ ИНТЕРФЕЙСА И ЗАПУСК ЛОГИКИ ПРИЛОЖЕНИЯ ЧЕРЕЗ
     // КЛИЕНТСКИЙ КЛАСС
@@ -54,14 +55,16 @@ namespace EDCreator
         //Обработчик нажатия на кнопку [Обработать]
         private void Proceed_Click(object sender, RoutedEventArgs e)
         {
+            
             //Если не выбран ни один файл, показываем сообщение и выходим из процедуры
             if (_files.Count == 0)
             {
-                MessageBox.Show("Не выбрано ни одного файла.", "Предупреждение", MessageBoxButton.OK,
+                MessageBox.Show("No files have been selected", "Warning", MessageBoxButton.OK,
                     MessageBoxImage.Exclamation);
                 return;
             }
 
+            Proceed.IsEnabled = false;
             //Если не вышли на предыдущем шаге, то заполняем данные из полей на форме для формирования заголовка
             var headerData = new HeaderData
             {
@@ -81,7 +84,10 @@ namespace EDCreator
             {
                 client.Run(file);
             }
-            MessageBox.Show("Работа программы завершена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            MessageBox.Show("Task completed", "Message", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            Proceed.IsEnabled = true;
+            FileList.Clear();
+            _files.Clear();
         }
 
         private void FileList_Drop(object sender, DragEventArgs e)
@@ -142,6 +148,7 @@ namespace EDCreator
             PathString.Text = string.Empty;
             FileList.Text = string.Empty;
             _files.Clear();
+            PathString.Text = "[empty...]";
         }
     }
 }

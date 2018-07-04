@@ -1,4 +1,4 @@
-﻿namespace EDCreator.Logic
+﻿namespace FDCreator.Logic
 {
     public class FloatExcelProcessor:ExcelProcessor
     {

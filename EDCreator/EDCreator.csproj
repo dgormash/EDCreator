@@ -7,8 +7,8 @@
     <ProjectGuid>{D28ED2F1-9347-4BB8-AD22-43086A0CF227}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EDCreator</RootNamespace>
-    <AssemblyName>EDCreator</AssemblyName>
+    <RootNamespace>FDCreator</RootNamespace>
+    <AssemblyName>FDCreator</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -98,7 +98,9 @@
     <Compile Include="Logic\FilterExcelProcessor.cs" />
     <Compile Include="Logic\FloatExcelProcessor.cs" />
     <Compile Include="Logic\FloatPdfProcessor.cs" />
+    <Compile Include="Logic\InchesValueRetriever.cs" />
     <Compile Include="Logic\IPdfParser.cs" />
+    <Compile Include="Logic\LengthConverter.cs" />
     <Compile Include="Logic\NmpcExcelProcessor.cs" />
     <Compile Include="Logic\PdfParser.cs" />
     <Compile Include="Logic\PdfProcessor.cs" />

@@ -1,7 +1,7 @@
 ﻿using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 
-namespace EDCreator.Logic
+namespace FDCreator.Logic
 {
     public class PdfParser:IPdfParser
     {

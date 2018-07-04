@@ -1,6 +1,7 @@
 ﻿using EDCreator.Misc;
+using FDCreator.Misc;
 
-namespace EDCreator.Logic
+namespace FDCreator.Logic
 {
     public class FloatPdfProcessor:PdfProcessor
     {

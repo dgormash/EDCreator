@@ -1,6 +1,7 @@
 ﻿using EDCreator.Misc;
+using FDCreator.Misc;
 
-namespace EDCreator.Logic
+namespace FDCreator.Logic
 {
     //PdfProcessor - ЭТО БАЗОВЫЙ КЛАСС ДЛЯ ВСЕХ ВИДОВ PDF-ПРОЦЕССОРОВ. ЗДЕСЬ ЕСТЬ 2 ВИРТУАЛЬНЫХ (ИХ МОЖНО ПЕРЕОПРЕДЕЛИТЬ В НАСЛЕДНИКАХ) МЕТОДА:
     //GetPdfData И FillConnectionInfo. ЕСЛИ, СОЗДАВАЯ НОВУЮ ВЕРСИЮ PDF-ПРОЦЕССОРА ВЫ ЭТИ МЕТОДЫ НЕ ПЕРЕОПРЕДЕЛЯЕТЕ, ОНИ ВЫПОЛНЯЮТСЯ КАК ЗДЕСЬ

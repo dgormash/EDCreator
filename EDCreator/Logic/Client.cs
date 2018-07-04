@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 using EDCreator.Misc;
-using NPOI.Util;
+using FDCreator.Misc;
 
-namespace EDCreator.Logic
+namespace FDCreator.Logic
 {
     public class Client
     {
@@ -61,8 +61,8 @@ namespace EDCreator.Logic
                     break;
                 default:
                     MessageBox.Show(
-                        "В ходе чтения файла получено нестандартное имя. Возможно для файла нет обработчика, либо файл не является файлом инспекции",
-                        "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        "A nonstandard name was received while reading the file. Perhaps there is no handler for the file, or the file is not an inspection file",
+                        "Warining", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
             }
 
