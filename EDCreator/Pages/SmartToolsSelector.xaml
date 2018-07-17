@@ -8,7 +8,13 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="SmartToolsSelector">
 
-    <Grid>
-        
-    </Grid>
+    <StackPanel Orientation="Vertical">
+        <TextBlock Text="Smart tools selector"/>
+        <TextBlock Text="Select your tool"/>
+        <RadioButton x:Name="RbDumbIron" Content="Dumb Iron"/>
+        <RadioButton x:Name="RbTelescope" Content="Telescope"/>
+        <RadioButton x:Name="RbGdis" Content="GDIS"/>
+        <RadioButton x:Name="RbArc" Content="ARC"/>
+        <Button Content="Proceed >>" MaxWidth="100" />
+    </StackPanel>
 </Page>

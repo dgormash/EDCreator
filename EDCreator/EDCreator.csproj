@@ -110,6 +110,26 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Arc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DumbIron.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Gdis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SmartToolsSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TeleScope.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Misc\Connection.cs" />
@@ -119,6 +139,21 @@
     <Compile Include="Misc\ParsedData.cs" />
     <Compile Include="Misc\PdfProcessorType.cs" />
     <Compile Include="Misc\StabilizerParsedData.cs" />
+    <Compile Include="Pages\Arc.xaml.cs">
+      <DependentUpon>Arc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DumbIron.xaml.cs">
+      <DependentUpon>DumbIron.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Gdis.xaml.cs">
+      <DependentUpon>Gdis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SmartToolsSelector.xaml.cs">
+      <DependentUpon>SmartToolsSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TeleScope.xaml.cs">
+      <DependentUpon>TeleScope.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
