@@ -122,7 +122,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\SmartToolsSelector.xaml">
+    <Page Include="Pages\ToolsSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,8 +148,8 @@
     <Compile Include="Pages\Gdis.xaml.cs">
       <DependentUpon>Gdis.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SmartToolsSelector.xaml.cs">
-      <DependentUpon>SmartToolsSelector.xaml</DependentUpon>
+    <Compile Include="Pages\ToolsSelector.xaml.cs">
+      <DependentUpon>ToolsSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TeleScope.xaml.cs">
       <DependentUpon>TeleScope.xaml</DependentUpon>

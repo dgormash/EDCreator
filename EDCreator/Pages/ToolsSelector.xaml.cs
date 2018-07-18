@@ -16,13 +16,22 @@ using System.Windows.Shapes;
 namespace FDCreator.Pages
 {
     /// <summary>
-    /// Interaction logic for SmartToolsSelector.xaml
+    /// Interaction logic for ToolsSelector.xaml
     /// </summary>
-    public partial class SmartToolsSelector : Page
+    public partial class ToolsSelector : Page
     {
-        public SmartToolsSelector()
+        public ToolsSelector()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var navigationService = NavigationService.GetNavigationService(this);
+            if (Convert.ToBoolean(RbDumbIron.IsChecked))
+            {
+                navigationService?.Navigate(new DumbIron());
+            }
         }
     }
 }
