@@ -1,6 +1,7 @@
 ﻿using System.Windows;
-using EDCreator.Misc;
 using FDCreator.Misc;
+using Org.BouncyCastle.Asn1;
+using Org.BouncyCastle.Crypto.Modes.Gcm;
 
 namespace FDCreator.Logic
 {
@@ -35,33 +36,33 @@ namespace FDCreator.Logic
             //Когда появятся новые файлы инспекций в это блок необходимо будет добавить по аналогии новые варианты
             //Если есть необходимость, надо создать новые версии PdfProcessor и ExcelProcessor
             //Необходимость возникнет, если pdf - файлы или excel-файлы будут отличаться от тех, которые вы предоставляли.
-
-            switch (name.ToUpper()) //ToUpper на всякий случай, это перевод в верхний регистр символов. Сравнение строк в верхнем регистре
+            var comparableName = GetFirstLettersOfToolCode(name);
+            switch (comparableName) //ToUpper на всякий случай, это перевод в верхний регистр символов. Сравнение строк в верхнем регистре
             {                       //лучше оптимизировано, ну и это позволяет избежать нежелательного поведения, если вдруг в .pdf случайно 
                                     //имя будет в нижнем регистре
-                case "MFS6-AB":
+                case "MFS":
                     //Для каждого случая вызываем свою версию PdfProcessor и ExcelProcessor потому как файлы могут обрабатываться по-разному
                     processor = GetPdfProcessor(PdfProcessorType.FilterSub); //Перечисление PdfProcessorType находится в файле PdfProcessorType.cs
                     excel = GetExcelProcessor(ExcelProcessorType.FilterExcelProcessor); //Перечисление ExcelProcessorType находится в ExcelProcessorType.cs
                     //diagramType = ExcelDiagramType.FilterSubDiagram;
                     break;
-                case "SFS8N":
+                case "SFS":
                     processor = GetPdfProcessor(PdfProcessorType.FloatSub);
                     excel = GetExcelProcessor(ExcelProcessorType.FloatExcelProcessor);
                     //diagramType = ExcelDiagramType.FloatSubDiagram;
                     break;
-                case "NMPC8":
+                case "NMPC":
                     processor = GetPdfProcessor(PdfProcessorType.Nmpc);
                     excel = GetExcelProcessor(ExcelProcessorType.NmpcExcelProcessor);
                     //diagramType = ExcelDiagramType.NmpcDiagram;
                     break;
-                case "SZS9N-IBS":
+                case "SZS":
                     processor = GetPdfProcessor(PdfProcessorType.Stabilizer);
                     excel = GetExcelProcessor(ExcelProcessorType.StabilizerExcelProcessor);
                     break;
                 default:
                     MessageBox.Show(
-                        "A nonstandard name was received while reading the file. Perhaps there is no handler for the file, or the file is not an inspection file",
+                        "A nonstandart name was received while reading the file. Perhaps there is no handler for the file, or the file is not an inspection file",
                         "Warining", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
             }
@@ -74,6 +75,16 @@ namespace FDCreator.Logic
             excel?.PassDataToExcel(parsedData); //В выбранной версии ExcelProcessor запускаем процедуру записи данных в excel-шаблоны
         }
 
+        private string GetFirstLettersOfToolCode(string name)
+        {
+            var substringableValue = name.ToUpper();
+            if (substringableValue.StartsWith("NMPC") || substringableValue.StartsWith("NDMC"))
+            {
+                return substringableValue.Substring(0, 4);
+            }
+
+            return substringableValue.Substring(0, 3);
+        }
 
         //Метод возвращает имя инспекции, найденное в переданнов файле
         private string GetInspectionNameFromPdf(string file, iTextSharp.text.Rectangle rectangle)
