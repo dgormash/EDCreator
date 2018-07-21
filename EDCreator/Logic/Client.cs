@@ -1,7 +1,5 @@
 ﻿using System.Windows;
 using FDCreator.Misc;
-using Org.BouncyCastle.Asn1;
-using Org.BouncyCastle.Crypto.Modes.Gcm;
 
 namespace FDCreator.Logic
 {
@@ -14,6 +12,7 @@ namespace FDCreator.Logic
         {
             set { _header = value; }
         }
+        public  string SessionStartTime { get; set; }
 
         public Client()
         {
@@ -60,6 +59,22 @@ namespace FDCreator.Logic
                     processor = GetPdfProcessor(PdfProcessorType.Stabilizer);
                     excel = GetExcelProcessor(ExcelProcessorType.StabilizerExcelProcessor);
                     break;
+                case "SBS":
+                    processor = GetPdfProcessor(PdfProcessorType.NearBitSub);
+                    excel = GetExcelProcessor(ExcelProcessorType.NearBitSubExcelProcessor);
+                    break;
+                case "SZB":
+                    processor = GetPdfProcessor(PdfProcessorType.NearBitStabilizer);
+                    excel = GetExcelProcessor(ExcelProcessorType.NearBitStabilizerExcelProcessor);
+                    break;
+                case "NDMC":
+                    processor = GetPdfProcessor(PdfProcessorType.FlexNmdc);
+                    excel = GetExcelProcessor(ExcelProcessorType.FlexNmdcExcelProcessor);
+                    break;
+                case "SXO":
+                    processor = GetPdfProcessor(PdfProcessorType.Crossover);
+                    excel = GetExcelProcessor(ExcelProcessorType.CrossoverExcelProcessor);
+                    break;
                 default:
                     MessageBox.Show(
                         "A nonstandart name was received while reading the file. Perhaps there is no handler for the file, or the file is not an inspection file",
@@ -75,7 +90,7 @@ namespace FDCreator.Logic
             excel?.PassDataToExcel(parsedData); //В выбранной версии ExcelProcessor запускаем процедуру записи данных в excel-шаблоны
         }
 
-        private string GetFirstLettersOfToolCode(string name)
+        private static string GetFirstLettersOfToolCode(string name)
         {
             var substringableValue = name.ToUpper();
             if (substringableValue.StartsWith("NMPC") || substringableValue.StartsWith("NDMC"))
@@ -95,7 +110,7 @@ namespace FDCreator.Logic
 
         //Метод возвращает новый PdfProcessor версии, опредлённой в PdfProcessorType (если создаётся новая версия процессора, в PdfProcessorType
         //необходимо добавить, по аналогии с имеющимися там, варианты, и, соответственно, добавить в этот метод обработку новых типов
-        private PdfProcessor GetPdfProcessor(PdfProcessorType type)
+        private static PdfProcessor GetPdfProcessor(PdfProcessorType type)
         {
             switch (type)
             {
@@ -107,6 +122,16 @@ namespace FDCreator.Logic
                     return new PdfProcessor(); //Здесь создаётся экземпляр базового класса PdfProcessor
                 case PdfProcessorType.Stabilizer:
                     return new StabilizerPdfProcessor();
+                case PdfProcessorType.NearBitSub:
+                    return new FloatPdfProcessor(); ;
+                case PdfProcessorType.NearBitStabilizer:
+                    return new FloatPdfProcessor(); ;
+                case PdfProcessorType.FlexNmdc:
+                    return new FloatPdfProcessor(); ;
+                case PdfProcessorType.Crossover:
+                    return new FloatPdfProcessor(); ;
+                case PdfProcessorType.Empty:
+                    return new FloatPdfProcessor(); ;
                 default:
                     return null;
             }
@@ -115,18 +140,28 @@ namespace FDCreator.Logic
 
         //Здесь всё то же, что и для метода GetPdfProcessor - будет что-то новое, добавляете в ExcelProcessorType новый вариант
         //и в этом методе добавляете его обработку
-        private ExcelProcessor GetExcelProcessor(ExcelProcessorType type)
+        private  ExcelProcessor GetExcelProcessor(ExcelProcessorType type)
         {
             switch (type)
             {
                 case ExcelProcessorType.FilterExcelProcessor:
-                    return new FilterExcelProcessor();
+                    return new FilterExcelProcessor(SessionStartTime);
                 case ExcelProcessorType.StabilizerExcelProcessor:
                     return new StabilizerExcelProcessor();
                 case ExcelProcessorType.FloatExcelProcessor:
                     return  new FloatExcelProcessor();
                 case ExcelProcessorType.NmpcExcelProcessor:
                     return new NmpcExcelProcessor();
+                case ExcelProcessorType.ExcelProcessor:
+                    return new FloatExcelProcessor();
+                case ExcelProcessorType.NearBitSubExcelProcessor:
+                    return new FloatExcelProcessor();
+                case ExcelProcessorType.NearBitStabilizerExcelProcessor:
+                    return new FloatExcelProcessor();
+                case ExcelProcessorType.FlexNmdcExcelProcessor:
+                    return new FloatExcelProcessor();
+                case ExcelProcessorType.CrossoverExcelProcessor:
+                    return new FloatExcelProcessor();
                 default:
                     return null;
             }

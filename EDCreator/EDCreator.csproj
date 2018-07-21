@@ -101,6 +101,7 @@
     <Compile Include="Logic\InchesValueRetriever.cs" />
     <Compile Include="Logic\IPdfParser.cs" />
     <Compile Include="Logic\LengthConverter.cs" />
+    <Compile Include="Logic\ApplicationPropetries.cs" />
     <Compile Include="Logic\NmpcExcelProcessor.cs" />
     <Compile Include="Logic\PdfParser.cs" />
     <Compile Include="Logic\PdfProcessor.cs" />

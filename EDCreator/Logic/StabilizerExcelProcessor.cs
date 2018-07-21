@@ -2,7 +2,6 @@
 using System.IO;
 using System.Reflection;
 using System.Windows;
-using EDCreator.Misc;
 using FDCreator.Misc;
 using NPOI.XSSF.UserModel;
 

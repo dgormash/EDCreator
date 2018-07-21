@@ -6,6 +6,10 @@
        StabilizerExcelProcessor,
        FilterExcelProcessor,
        FloatExcelProcessor,
-       NmpcExcelProcessor
+       NmpcExcelProcessor,
+       NearBitSubExcelProcessor,
+       NearBitStabilizerExcelProcessor,
+       FlexNmdcExcelProcessor,
+       CrossoverExcelProcessor
     }
 }

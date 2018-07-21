@@ -1,5 +1,4 @@
-﻿using EDCreator.Misc;
-using FDCreator.Misc;
+﻿using FDCreator.Misc;
 
 namespace FDCreator.Logic
 {

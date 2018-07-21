@@ -1,10 +1,14 @@
-﻿namespace EDCreator.Misc
+﻿namespace FDCreator.Misc
 {
     public enum ExcelDiagramType
     {
         FloatSubDiagram,
         FilterSubDiagram,
         NmpcDiagram,
-        StabilizerDiagram
+        StabilizerDiagram,
+        NearBitSub,
+        NearBitStabilizer,
+        FlexNmdc,
+        Crossover
     }
 }

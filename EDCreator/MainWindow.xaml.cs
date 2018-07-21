@@ -1,4 +1,6 @@
-﻿using FDCreator.Pages;
+﻿using System;
+using System.Runtime.InteropServices;
+using FDCreator.Pages;
 
 namespace FDCreator
 {
@@ -12,10 +14,12 @@ namespace FDCreator
     /// </summary>
     public partial class MainWindow
     {
+        public string SessionStartTime { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             MainWindowFrame.Content = new ToolsSelector();
+            SessionStartTime = DateTime.Now.ToString("yy-MM-dd-HH-mm-ss");
         }
        
     }

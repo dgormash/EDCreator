@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -75,16 +74,16 @@ namespace FDCreator.Pages
             //Экземпляр класса Client запускает всю логику приложения, дальнейшая работа проходит в нём, можно смело открывать
             //файл Client.cs
 
-            var client = new Client { Header = headerData };
-
-            foreach (var file in _files)
-            {
-                client.Run(file);
-            }
-            MessageBox.Show("Task completed", "Message", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-            Proceed.IsEnabled = true;
-            FileList.Clear();
-            _files.Clear();
+           var client = new Client { Header = headerData, SessionStartTime  = ApplicationPropetries.GetApplicationSessionStratTime()};
+           foreach (var file in _files)
+           {
+               client.Run(file);
+           }
+            
+           MessageBox.Show("Task completed", "Message", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+           Proceed.IsEnabled = true;
+           FileList.Clear();
+           _files.Clear();
         }
 
         private void FileList_Drop(object sender, DragEventArgs e)

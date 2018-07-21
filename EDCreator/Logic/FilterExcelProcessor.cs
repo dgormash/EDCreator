@@ -2,7 +2,7 @@
 {
     public class FilterExcelProcessor:ExcelProcessor
     {
-        public FilterExcelProcessor()
+        public FilterExcelProcessor(string sessionStartTime):base(sessionStartTime)
         {
             //Я специально создаю потомков от ExcelProcessor, чтобы менять имя шаблона.
             //В каждом новом потомке меняйте эту строку на нужное значение

@@ -6,6 +6,10 @@
         FloatSub,
         Nmpc,
         Stabilizer,
+        NearBitSub,
+        NearBitStabilizer,
+        FlexNmdc,
+        Crossover,
         Empty
     }
 }

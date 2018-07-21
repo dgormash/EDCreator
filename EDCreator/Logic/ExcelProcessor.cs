@@ -21,7 +21,12 @@ namespace FDCreator.Logic
 
         protected Excel.Application ExcelApp;
         protected Excel.Window ExcelWindow;
+        protected string SessionStartTime;
 
+        public ExcelProcessor(string sessionStartTime)
+        {
+            SessionStartTime = sessionStartTime;
+        }
 
         public virtual void PassDataToExcel(ParsedData data)
         {
