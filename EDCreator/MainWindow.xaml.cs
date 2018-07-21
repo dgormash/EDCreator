@@ -4,11 +4,6 @@ using FDCreator.Pages;
 
 namespace FDCreator
 {
-    // В ЭТОМ ФАЙЛЕ МЕНЯТЬ ЧТО-ТО НА ВАШЕ УСМОТРЕНИЕ, ЗДЕСЬ ТОЛЬКО ОБРАБОТЧИКИ ИНТЕРФЕЙСА И ЗАПУСК ЛОГИКИ ПРИЛОЖЕНИЯ ЧЕРЕЗ
-    // КЛИЕНТСКИЙ КЛАСС
-
-
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -21,6 +16,7 @@ namespace FDCreator
             MainWindowFrame.Content = new ToolsSelector();
             SessionStartTime = DateTime.Now.ToString("yy-MM-dd-HH-mm-ss");
         }
-       
+
+        //todo delete *.xlsx from work directory after finish combining
     }
 }

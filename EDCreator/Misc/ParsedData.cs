@@ -9,5 +9,6 @@
         public string Length { get; set; }
         public Connection ConnectionOne { get; set; }
         public Connection ConnectionTwo { get; set; }
+        public string Version { get; set; }
     }
 }

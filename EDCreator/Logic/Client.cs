@@ -147,21 +147,21 @@ namespace FDCreator.Logic
                 case ExcelProcessorType.FilterExcelProcessor:
                     return new FilterExcelProcessor(SessionStartTime);
                 case ExcelProcessorType.StabilizerExcelProcessor:
-                    return new StabilizerExcelProcessor();
+                    return new StabilizerExcelProcessor(SessionStartTime);
                 case ExcelProcessorType.FloatExcelProcessor:
-                    return  new FloatExcelProcessor();
+                    return  new FloatExcelProcessor(SessionStartTime);
                 case ExcelProcessorType.NmpcExcelProcessor:
-                    return new NmpcExcelProcessor();
+                    return new NmpcExcelProcessor(SessionStartTime);
                 case ExcelProcessorType.ExcelProcessor:
-                    return new FloatExcelProcessor();
+                    return new FloatExcelProcessor(SessionStartTime);
                 case ExcelProcessorType.NearBitSubExcelProcessor:
-                    return new FloatExcelProcessor();
+                    return new FloatExcelProcessor(SessionStartTime);
                 case ExcelProcessorType.NearBitStabilizerExcelProcessor:
-                    return new FloatExcelProcessor();
+                    return new FloatExcelProcessor(SessionStartTime);
                 case ExcelProcessorType.FlexNmdcExcelProcessor:
-                    return new FloatExcelProcessor();
+                    return new FloatExcelProcessor(SessionStartTime);
                 case ExcelProcessorType.CrossoverExcelProcessor:
-                    return new FloatExcelProcessor();
+                    return new FloatExcelProcessor(SessionStartTime);
                 default:
                     return null;
             }

@@ -2,7 +2,7 @@
 {
     public class NmpcExcelProcessor:ExcelProcessor
     {
-        public NmpcExcelProcessor()
+        public NmpcExcelProcessor(string sessionStartTime) : base(sessionStartTime)
         {
             TemplateFileName = "NMPC Diagram.xlsx";
         }

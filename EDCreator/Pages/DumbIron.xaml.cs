@@ -74,16 +74,18 @@ namespace FDCreator.Pages
             //Экземпляр класса Client запускает всю логику приложения, дальнейшая работа проходит в нём, можно смело открывать
             //файл Client.cs
 
-           var client = new Client { Header = headerData, SessionStartTime  = ApplicationPropetries.GetApplicationSessionStratTime()};
-           foreach (var file in _files)
-           {
+            var client = new Client { Header = headerData, SessionStartTime  = ApplicationPropetries.GetApplicationSessionStratTime()};
+            foreach (var file in _files)
+            {
                client.Run(file);
-           }
-            
-           MessageBox.Show("Task completed", "Message", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-           Proceed.IsEnabled = true;
-           FileList.Clear();
-           _files.Clear();
+            }
+            XlsxCombiner.SessionStartTime = ApplicationPropetries.GetApplicationSessionStratTime();
+            XlsxCombiner.CombineXlsxFilesFromWorkDir();
+            MessageBox.Show("Task completed", "Message", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            XlsxTotalFishingDiagramOpener.ShowTotalDiagram(ApplicationPropetries.GetTotalFishingDiagramPath());
+            Proceed.IsEnabled = true;
+            FileList.Clear();
+            _files.Clear();
         }
 
         private void FileList_Drop(object sender, DragEventArgs e)

@@ -2,7 +2,7 @@
 {
     public class FloatExcelProcessor:ExcelProcessor
     {
-        public FloatExcelProcessor()
+        public FloatExcelProcessor(string sessionStartTime) : base(sessionStartTime)
         {
             TemplateFileName = "FloatSub Diagram.xlsx";
         }

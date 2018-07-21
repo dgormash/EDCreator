@@ -33,7 +33,6 @@ namespace FDCreator.Logic
             if (string.IsNullOrEmpty(TemplateFileName)) return;
 
             var filePath = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\misc\{TemplateFileName}";
-            string fileName;
             try
             {
                 using (
@@ -45,6 +44,7 @@ namespace FDCreator.Logic
                 }
 
                 Sheet = Book.GetSheetAt(0);
+                Book.SetSheetName(Book.GetSheetIndex(Sheet), $"{data.Name}_{data.SerialNumber}");
 
                 //Заполнение заголовка (сам метод внизу)
                 FillHeader(data);
@@ -69,7 +69,13 @@ namespace FDCreator.Logic
                 //PIN
                 SetCellValue(26, cellNum, data.ConnectionTwo.TreadSize); //соответствует 27 строке в шаблоне
 
-                fileName = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\out\{
+                //var totalFishingDiagram =
+                //    TotalFishingDiagramFile.GetTotalFishingDiagramFileStream(
+                //        $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\out\Field_Pad_Well_FishingDiagram_{
+                //            SessionStartTime}.xlsx");
+                //var totalBook = new XSSFWorkbook(totalFishingDiagram);
+                
+                string fileName = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\work\{
                     data.Name}_{data.SerialNumber}_FishingDiagram_{DateTime.Now.ToString("yy-MM-dd-HH-mm-ss")}.xlsx";
                 //Сохранение изменённого файла
                 using (
@@ -86,7 +92,7 @@ namespace FDCreator.Logic
                 return;
             }
 
-            OpenExcelApp(fileName);
+            //OpenExcelApp(fileName);
         }
 
         protected void SetCellValue(int rowNum, int cellNum, string value)
@@ -108,26 +114,6 @@ namespace FDCreator.Logic
             cellNum = 8;
             SetCellValue(4, cellNum, data.Header.DdEngineerField);
             SetCellValue(5, cellNum, data.Header.DateField);
-        }
-
-        protected void OpenExcelApp(string file)
-        {
-            try
-            {
-                ExcelApp = new Excel.Application {Visible = true};
-                ExcelApp.Workbooks.Open(file);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show($"I have a bad feeling about this: {e.Message}; opening file: {TemplateFileName}", "Error opening excel application",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
-                ExcelApp.Quit();
-            }
-            finally
-            {
-                ExcelApp = null;
-            }
-            //ExcelWindow.Visible = true;
         }
     }
 }

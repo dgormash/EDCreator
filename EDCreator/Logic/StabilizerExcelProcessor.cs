@@ -9,12 +9,8 @@ namespace FDCreator.Logic
 {
     public class StabilizerExcelProcessor : ExcelProcessor
     {
-        //С шаблоном Stabilizer Diagram.xlsx возникла проблема при пересохранении, решил переводом оригинала шаблона в формат
-        //.xls, поэтому здесь используется тип HSSFWorkbook, тогда как в других excel-процессорах используется XSSFWorkbook
-        //Если файлы после записи не будут открываться, пересохраняете их в .xls, создаёте потомка ExcelProcessor и переопределяете методы
-        //Здесь видно, что я поменял
-        private XSSFWorkbook _xlsBook; //Это я поменял
-        public StabilizerExcelProcessor()
+        private XSSFWorkbook _xlsBook;
+        public StabilizerExcelProcessor(string sessionStartTime) : base(sessionStartTime)
         {
             TemplateFileName = "Stabilizer Diagram.xlsx";
         }
@@ -25,7 +21,6 @@ namespace FDCreator.Logic
         {
             var stabilizerData = (StabilizerParsedData) data; //... (прдолжение) чтобы использовать поля из StabilizerParsedData, необходимо вот так вот
             //как здесь выполнить приведение к призводному типу. Просто небольшой нюанс, если вы будете делать свои версии класса ParsedData
-            string fileName;
             if (string.IsNullOrEmpty(TemplateFileName)) return;
 
             var filePath = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\misc\{TemplateFileName}";
@@ -37,12 +32,13 @@ namespace FDCreator.Logic
                         new FileStream(filePath,
                             FileMode.Open, FileAccess.Read))
                 {
-                    //Book = new XSSFWorkbook(file);
-                    _xlsBook = new XSSFWorkbook(file); //И это я поменял
+                    _xlsBook = new XSSFWorkbook(file);
                 }
                 _xlsBook.SetForceFormulaRecalculation(true);
                 Sheet = _xlsBook.GetSheetAt(0);
 
+                Sheet = _xlsBook.GetSheetAt(0);
+                _xlsBook.SetSheetName(_xlsBook.GetSheetIndex(Sheet), $"{data.Name}_{data.SerialNumber}");
                 //Запись заголовка
                 FillHeader(stabilizerData);
 
@@ -73,13 +69,7 @@ namespace FDCreator.Logic
                 //BladeWidth
                 SetCellValue(34, cellNum, stabilizerData.LobeWidth);
 
-                //L4
-                //SetCellValue(26, cellNum, "=G24+G33");
-                //Row = Sheet.GetRow(26);
-                //Cell = Row.GetCell(cellNum);
-                //Cell.SetCellFormula("G24+G33");
-
-                fileName = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\out\{
+                string fileName = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\work\{
                     stabilizerData.Name}_{stabilizerData.SerialNumber}_FishingDiagram_{DateTime.Now.ToString("yy-MM-dd-HH-mm-s")}.xlsx";
                 //Сохранение изменённого файла
                 using (
@@ -96,7 +86,7 @@ namespace FDCreator.Logic
                 return;
             }
 
-            OpenExcelApp(fileName);
+            //OpenExcelApp(fileName);
       }
    }
 }

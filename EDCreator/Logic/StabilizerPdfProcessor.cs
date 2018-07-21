@@ -43,6 +43,10 @@ namespace FDCreator.Logic
             connectionColumn = Parser.GetStringValueFromRegion(File, rect).Split('\n');
             transferingData.ConnectionTwo = FillConnectionInfo(connectionColumn);
 
+            //Version 
+            rect = new iTextSharp.text.Rectangle(174, 34, 284, 40);
+            transferingData.Version = Parser.GetStringValueFromRegion(File, rect).Substring(29, 9);
+
             return transferingData;
         }
 
