@@ -87,7 +87,7 @@ namespace FDCreator.Logic
             if (parsedData.Version != "1.0.11.0")
             {
                 var proceedWhenVersionNotEqual = MessageBox.Show("Information message",
-                    $"Version of inspection is {parsedData.Version}, but we expected 1.0.11.0. Do you want to continue?", MessageBoxButton.YesNo);
+                    $"Version of the inspection file is {parsedData.Version}, but we expected 1.0.11.0. Do you want to continue?", MessageBoxButton.YesNo);
                 if (proceedWhenVersionNotEqual == MessageBoxResult.No)
                     return;
             }
