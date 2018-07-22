@@ -84,6 +84,13 @@ namespace FDCreator.Logic
 
             processor.File = file;
             var parsedData = processor.GetPdfData(); //В выбранной версии PdfProcessor запускаем процедуру парсинга
+            if (parsedData.Version != "1.0.11.0")
+            {
+                var proceedWhenVersionNotEqual = MessageBox.Show("Information message",
+                    $"Version of inspection is {parsedData.Version}, but we expected 1.0.11.0. Do you want to continue?", MessageBoxButton.YesNo);
+                if (proceedWhenVersionNotEqual == MessageBoxResult.No)
+                    return;
+            }
             parsedData.Name = name;
             parsedData.Header = _header;
             
