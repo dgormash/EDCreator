@@ -130,15 +130,15 @@ namespace FDCreator.Logic
                 case PdfProcessorType.Stabilizer:
                     return new StabilizerPdfProcessor();
                 case PdfProcessorType.NearBitSub:
-                    return new FloatPdfProcessor(); ;
+                    return new FloatPdfProcessor(); 
                 case PdfProcessorType.NearBitStabilizer:
-                    return new FloatPdfProcessor(); ;
+                    return new StabilizerPdfProcessor(); 
                 case PdfProcessorType.FlexNmdc:
-                    return new FloatPdfProcessor(); ;
+                    return new FloatPdfProcessor();
                 case PdfProcessorType.Crossover:
-                    return new FloatPdfProcessor(); ;
+                    return new FloatPdfProcessor();
                 case PdfProcessorType.Empty:
-                    return new FloatPdfProcessor(); ;
+                    return new FloatPdfProcessor(); 
                 default:
                     return null;
             }

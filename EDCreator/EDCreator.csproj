@@ -108,6 +108,7 @@
     <Compile Include="Logic\StabilizerExcelProcessor.cs" />
     <Compile Include="Logic\StabilizerPdfProcessor.cs" />
     <Compile Include="Logic\TotalFishingDiagramFile.cs" />
+    <Compile Include="Logic\VersionExtractor.cs" />
     <Compile Include="Logic\XlsxCombiner.cs" />
     <Compile Include="Logic\XlsxTotalFishingDiagramOpener.cs" />
     <Compile Include="MainWindow.xaml.cs">
