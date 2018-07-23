@@ -86,8 +86,8 @@ namespace FDCreator.Logic
             var parsedData = processor.GetPdfData(); //В выбранной версии PdfProcessor запускаем процедуру парсинга
             if (parsedData.Version != "1.0.11.0")
             {
-                var proceedWhenVersionNotEqual = MessageBox.Show("Information message",
-                    $"Version of the inspection file is {parsedData.Version}, but we expected 1.0.11.0. Do you want to continue?", MessageBoxButton.YesNo);
+                var proceedWhenVersionNotEqual = MessageBox.Show($"Version of the inspection file is \"{parsedData.Version}\", but we expected \"1.0.11.0\". Do you want to continue?", 
+                    "Information message" , MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (proceedWhenVersionNotEqual == MessageBoxResult.No)
                     return;
             }

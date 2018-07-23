@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -79,10 +80,21 @@ namespace FDCreator.Pages
             {
                client.Run(file);
             }
-            XlsxCombiner.SessionStartTime = ApplicationPropetries.GetApplicationSessionStratTime();
-            XlsxCombiner.CombineXlsxFilesFromWorkDir();
-            MessageBox.Show("Task completed", "Message", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-            XlsxTotalFishingDiagramOpener.ShowTotalDiagram(ApplicationPropetries.GetTotalFishingDiagramPath());
+
+            var files = Directory.GetFiles($@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\work", "*.xlsx");
+
+            if (files.Length != 0)
+            {
+                XlsxCombiner.SessionStartTime = ApplicationPropetries.GetApplicationSessionStratTime();
+                XlsxCombiner.CombineXlsxFilesFromWorkDir(files);
+                MessageBox.Show("Task completed", "Message", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                XlsxTotalFishingDiagramOpener.ShowTotalDiagram(ApplicationPropetries.GetTotalFishingDiagramPath());
+            }
+            else
+            {
+                MessageBox.Show("Finished. No files were processed", "Message", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            }
+            
             Proceed.IsEnabled = true;
             FileList.Clear();
             _files.Clear();

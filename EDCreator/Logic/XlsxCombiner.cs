@@ -22,12 +22,10 @@ namespace FDCreator.Logic
             
         }
 
-        public static void CombineXlsxFilesFromWorkDir()
+        public static void CombineXlsxFilesFromWorkDir(string [] files)
         {
             try
             {
-                var files = Directory.GetFiles($@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\work");
-
                 foreach (var file in files)
                 {
                     Excel.Workbooks.Add(file);
@@ -50,7 +48,7 @@ namespace FDCreator.Logic
             }
             catch (Exception e)
             {
-                MessageBox.Show($"I have a bad feeling about this: {e.Message}", "Error opening excel application",
+                MessageBox.Show($"Error opening excel application: {e.Message}", "I have a bad feeling about this",
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 Excel.Quit();
             }
