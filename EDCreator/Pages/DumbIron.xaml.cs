@@ -98,6 +98,11 @@ namespace FDCreator.Pages
             Proceed.IsEnabled = true;
             FileList.Clear();
             _files.Clear();
+
+            foreach (var file in files)
+            {
+                File.Delete(file);
+            }
         }
 
         private void FileList_Drop(object sender, DragEventArgs e)
