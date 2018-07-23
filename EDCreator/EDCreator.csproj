@@ -94,6 +94,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logic\Client.cs" />
+    <Compile Include="Logic\CrossoverExcelProcessor.cs" />
+    <Compile Include="Logic\CrossoverSubPdfProcessor.cs" />
     <Compile Include="Logic\ExcelProcessor.cs" />
     <Compile Include="Logic\FilterExcelProcessor.cs" />
     <Compile Include="Logic\FloatExcelProcessor.cs" />
@@ -142,6 +144,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Misc\Connection.cs" />
+    <Compile Include="Misc\CrossoverSubParsedData.cs" />
+    <Compile Include="Misc\CrossoverType.cs" />
     <Compile Include="Misc\ExcelDiagramType.cs" />
     <Compile Include="Misc\ExcelProcessorType.cs" />
     <Compile Include="Misc\HeaderData.cs" />

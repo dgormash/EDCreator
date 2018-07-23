@@ -34,15 +34,27 @@ namespace FDCreator.Logic
             rect = new iTextSharp.text.Rectangle(148, 640, 165, 647);
             TransferingData.Length = Parser.GetStringValueFromRegion(File, rect);
 
-            //Connection 1 TreadSize, Outer diameter
-            rect = new iTextSharp.text.Rectangle(103, 564, 130, 606);
+            //Connection 1 Type, TreadSize
+            rect = new iTextSharp.text.Rectangle(103, 592, 126, 614);
             var connectionColumn = Parser.GetStringValueFromRegion(File, rect).Split('\n');
             TransferingData.ConnectionOne = FillConnectionInfo(connectionColumn);
+            //Connection 1 Outer diameter
+            rect = new iTextSharp.text.Rectangle(109, 564, 130, 570);
+            TransferingData.ConnectionOne.Od = Parser.GetStringValueFromRegion(File, rect);
+            //Connection 1 Internal diameter
+            rect = new iTextSharp.text.Rectangle(111, 548, 129, 554);
+            TransferingData.ConnectionOne.Id = Parser.GetStringValueFromRegion(File, rect);
 
-            //Connection 2 TreadSize, Outer diameter
-            rect = new iTextSharp.text.Rectangle(339, 548, 368, 606);
+            //Connection 2 Type, TreadSize
+            rect = new iTextSharp.text.Rectangle(339, 592, 362, 614);
             connectionColumn = Parser.GetStringValueFromRegion(File, rect).Split('\n');
             TransferingData.ConnectionTwo = FillConnectionInfo(connectionColumn);
+            //Connection 2 Outer diameter
+            rect = new iTextSharp.text.Rectangle(347, 564, 368, 570);
+            TransferingData.ConnectionTwo.Od = Parser.GetStringValueFromRegion(File, rect);
+            //Connection 2 Internal diameter
+            rect = new iTextSharp.text.Rectangle(229, 548, 250, 554);
+            TransferingData.ConnectionTwo.Id = Parser.GetStringValueFromRegion(File, rect);
 
             //Version 
             rect = new iTextSharp.text.Rectangle(174, 34, 284, 40);
@@ -54,16 +66,15 @@ namespace FDCreator.Logic
         protected virtual Connection FillConnectionInfo(string[] stringArray)
         {
             var connectionInfo = new Connection();
-            if (stringArray.Length == 4)
+            if (stringArray.Length == 3)
             {
-                connectionInfo.TreadSize = $"{stringArray[0]} {stringArray[1]}";
-                connectionInfo.Od = stringArray[3];
+                connectionInfo.ConnectionType = stringArray[0];
+                connectionInfo.TreadSize = $"{stringArray[1]} {stringArray[2]}";
             }
             else
             {
-                connectionInfo.TreadSize = $"{stringArray[0]} {stringArray[1]}";
-                connectionInfo.Od = stringArray[3];
-                connectionInfo.Id = stringArray[4];
+                connectionInfo.ConnectionType = stringArray[0];
+                connectionInfo.TreadSize = stringArray[1];
             }
             return connectionInfo;
         }

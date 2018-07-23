@@ -136,7 +136,7 @@ namespace FDCreator.Logic
                 case PdfProcessorType.FlexNmdc:
                     return new FloatPdfProcessor();
                 case PdfProcessorType.Crossover:
-                    return new FloatPdfProcessor();
+                    return new CrossoverSubPdfProcessor();
                 case PdfProcessorType.Empty:
                     return new FloatPdfProcessor(); 
                 default:
@@ -168,7 +168,7 @@ namespace FDCreator.Logic
                 case ExcelProcessorType.FlexNmdcExcelProcessor:
                     return new FloatExcelProcessor(SessionStartTime);
                 case ExcelProcessorType.CrossoverExcelProcessor:
-                    return new FloatExcelProcessor(SessionStartTime);
+                    return new CrossoverExcelProcessor(SessionStartTime);
                 default:
                     return null;
             }

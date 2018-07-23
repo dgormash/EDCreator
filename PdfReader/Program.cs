@@ -22,7 +22,7 @@ namespace PdfReader
             //файл в каталог in и здесь прописываете имя файла и запускаете проект. Откроется консоль и для каждого из кусков текста
             //будут отображены координаты. Остаётся набраться терпения, их записать, если данные друг под другом, можно по координатам
             //нескольких блоков построить большой прямоугольник. Я так делал для данных из столбцов Connection
-            var testFile = $"{System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\in\\Near Bit Sub Inspection.pdf";
+            var testFile = $"{System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\in\\FilterSub Inspection.pdf";
             //using (var fs = new FileStream(testFile, FileMode.Create, FileAccess.Write, FileShare.None))
             //{
             //    using (var doc = new Document())
