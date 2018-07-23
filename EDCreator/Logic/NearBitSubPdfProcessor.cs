@@ -33,16 +33,16 @@ namespace FDCreator.Logic
         //    return TransferingData;
         //}
 
-        protected override Connection FillConnectionInfo(string[] stringArray)
-        {
-            var connectionInfo = new Connection
-            {
-                TreadSize = $"{stringArray[0]}",
-                Od = stringArray[2]
-            };
+        //protected override Connection FillConnectionInfo(string[] stringArray)
+        //{
+        //    var connectionInfo = new Connection
+        //    {
+        //        TreadSize = $"{stringArray[0]}",
+        //        Od = stringArray[2]
+        //    };
 
 
-            return connectionInfo;
-        }
+        //    return connectionInfo;
+        //}
     }
 }
