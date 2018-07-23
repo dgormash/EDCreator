@@ -102,6 +102,8 @@
     <Compile Include="Logic\IPdfParser.cs" />
     <Compile Include="Logic\LengthConverter.cs" />
     <Compile Include="Logic\ApplicationPropetries.cs" />
+    <Compile Include="Logic\NearBitStabilizerExcelProcessor.cs" />
+    <Compile Include="Logic\NearBitStabilizerPdfProcessor.cs" />
     <Compile Include="Logic\NearBitSubExcelProcessor.cs" />
     <Compile Include="Logic\NearBitSubPdfProcessor.cs" />
     <Compile Include="Logic\NmpcExcelProcessor.cs" />

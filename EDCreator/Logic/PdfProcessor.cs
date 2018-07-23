@@ -12,6 +12,7 @@ namespace FDCreator.Logic
     {
         protected readonly IPdfParser Parser;
         public string File { set; protected get; }
+        protected ParsedData TransferingData = new ParsedData();
 
         public PdfProcessor()
         {
@@ -19,9 +20,6 @@ namespace FDCreator.Logic
         }
         public virtual ParsedData GetPdfData()
         {
-            var transferingData = new ParsedData();
-
-
             //Координаты задаются просто: первая пара - это нижняя правая точка по x и y, вторая - верхняя левая точка
             //Получается прямоугольник, он задаётся в качестве фильтра методу-парсеру, и он выбирает все данные, которые попадают
             //в этот прямоугольник. (ps: туда может попасть что-то лишнее)
@@ -30,27 +28,27 @@ namespace FDCreator.Logic
 
             //SerialNumber
             var  rect = new iTextSharp.text.Rectangle(437, 722, 460, 728);
-            transferingData.SerialNumber = Parser.GetStringValueFromRegion(File, rect);
+            TransferingData.SerialNumber = Parser.GetStringValueFromRegion(File, rect);
 
             //Length shoulder to shoulder
             rect = new iTextSharp.text.Rectangle(148, 640, 165, 647);
-            transferingData.Length = Parser.GetStringValueFromRegion(File, rect);
+            TransferingData.Length = Parser.GetStringValueFromRegion(File, rect);
 
             //Connection 1 TreadSize, Outer diameter
             rect = new iTextSharp.text.Rectangle(103, 564, 130, 606);
             var connectionColumn = Parser.GetStringValueFromRegion(File, rect).Split('\n');
-            transferingData.ConnectionOne = FillConnectionInfo(connectionColumn);
+            TransferingData.ConnectionOne = FillConnectionInfo(connectionColumn);
 
             //Connection 2 TreadSize, Outer diameter
             rect = new iTextSharp.text.Rectangle(339, 548, 368, 606);
             connectionColumn = Parser.GetStringValueFromRegion(File, rect).Split('\n');
-            transferingData.ConnectionTwo = FillConnectionInfo(connectionColumn);
+            TransferingData.ConnectionTwo = FillConnectionInfo(connectionColumn);
 
             //Version 
             rect = new iTextSharp.text.Rectangle(174, 34, 284, 40);
-            transferingData.Version = VersionExtractor.GetVersion(Parser.GetStringValueFromRegion(File, rect));
+            TransferingData.Version = VersionExtractor.GetVersion(Parser.GetStringValueFromRegion(File, rect));
 
-            return transferingData;
+            return TransferingData;
         }
 
         protected virtual Connection FillConnectionInfo(string[] stringArray)

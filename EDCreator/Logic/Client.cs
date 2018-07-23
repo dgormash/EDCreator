@@ -132,7 +132,7 @@ namespace FDCreator.Logic
                 case PdfProcessorType.NearBitSub:
                     return new NearBitSubPdfProcessor(); 
                 case PdfProcessorType.NearBitStabilizer:
-                    return new StabilizerPdfProcessor(); 
+                    return new NearBitStabilizerPdfProcessor(); 
                 case PdfProcessorType.FlexNmdc:
                     return new FloatPdfProcessor();
                 case PdfProcessorType.Crossover:
@@ -164,7 +164,7 @@ namespace FDCreator.Logic
                 case ExcelProcessorType.NearBitSubExcelProcessor:
                     return new NearBitSubExcelProcessor(SessionStartTime);
                 case ExcelProcessorType.NearBitStabilizerExcelProcessor:
-                    return new StabilizerExcelProcessor(SessionStartTime);
+                    return new NearBitStabilizerExcelProcessor(SessionStartTime);
                 case ExcelProcessorType.FlexNmdcExcelProcessor:
                     return new FloatExcelProcessor(SessionStartTime);
                 case ExcelProcessorType.CrossoverExcelProcessor:
