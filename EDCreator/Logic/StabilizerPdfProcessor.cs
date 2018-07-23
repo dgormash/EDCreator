@@ -45,7 +45,7 @@ namespace FDCreator.Logic
 
             //Version 
             rect = new iTextSharp.text.Rectangle(174, 34, 284, 40);
-            transferingData.Version = Parser.GetStringValueFromRegion(File, rect).Substring(29, 9);
+            transferingData.Version = VersionExtractor.GetVersion(Parser.GetStringValueFromRegion(File, rect));
 
             return transferingData;
         }
