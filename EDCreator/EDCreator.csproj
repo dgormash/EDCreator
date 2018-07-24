@@ -152,6 +152,8 @@
     <Compile Include="Misc\ICrossoverSubParsedData.cs" />
     <Compile Include="Misc\IParsedData.cs" />
     <Compile Include="Misc\IStabilizerParsedData.cs" />
+    <Compile Include="Misc\NmdcFData.cs" />
+    <Compile Include="Misc\NmdcFTool.cs" />
     <Compile Include="Misc\ParsedData.cs" />
     <Compile Include="Misc\PdfProcessorType.cs" />
     <Compile Include="Misc\StabilizerParsedData.cs" />
