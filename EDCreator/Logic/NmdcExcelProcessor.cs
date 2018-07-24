@@ -11,7 +11,7 @@ namespace FDCreator.Logic
     {
         public NmdcExcelProcessor(string sessionStartTime) : base(sessionStartTime)
         {
-            TemplateFileName = "NMDC - F Diagram.xlsx";
+            TemplateFileName = "NMDC-F Diagram.xlsx";
         }
 
         public override void PassDataToExcel(IParsedData data)
@@ -38,14 +38,14 @@ namespace FDCreator.Logic
 
                 if (!nmdcData.Tools.ContainsKey(data.SerialNumber))
                 {
-                    MessageBox.Show("No such NMDC - F in library", "Information", MessageBoxButton.OK,
+                    MessageBox.Show("No such NMDC-F in library", "Information", MessageBoxButton.OK,
                     MessageBoxImage.Asterisk);
                     return;
                 }
 
                 var nmdcTool = nmdcData.Tools[data.SerialNumber];
                 var comparableLength = InchesValueRetriever.GetInchesValue(data.Length);
-                if (comparableLength - Convert.ToSingle(nmdcTool.L) > 0.025f)
+                if (Math.Abs(LengthConverter.InchesToMeters(comparableLength) - Convert.ToSingle(nmdcTool.L)) > 0.025f)
                 {
                     MessageBox.Show("Collar length doesn't match. Prepare fishing diagram manually.", "Information", MessageBoxButton.OK,
                     MessageBoxImage.Asterisk);
@@ -60,7 +60,7 @@ namespace FDCreator.Logic
                 var cellNum = 4;
                
                 //L
-                SetCellValue(12, cellNum, comparableLength.ToString("0.000"));
+                SetCellValue(12, cellNum, LengthConverter.InchesToMeters(comparableLength).ToString("0.000"));
                 //L12
                 SetCellValue(15, cellNum, nmdcTool.L12);
                 //L11
@@ -81,6 +81,10 @@ namespace FDCreator.Logic
                 SetCellValue(33, cellNum, nmdcTool.L4);
                 //L3
                 SetCellValue(34, cellNum, nmdcTool.L3);
+                //L2
+                SetCellValue(38, cellNum, nmdcTool.L2);
+                //L1
+                SetCellValue(39, cellNum, nmdcTool.L1);
 
                 cellNum = 8;
                 //SerialNumber
@@ -115,7 +119,7 @@ namespace FDCreator.Logic
             }
             catch (Exception e)
             {
-                MessageBox.Show($"I have a bad feeling about this: {e.Message}", "Viva La Resistance!!!", MessageBoxButton.OK,
+                MessageBox.Show(e.Message, "I have a bad feeling about this", MessageBoxButton.OK,
                     MessageBoxImage.Error);
                 return;
             }
