@@ -4,9 +4,9 @@ namespace FDCreator.Logic
 {
     public class StabilizerPdfProcessor:PdfProcessor
     {
-        protected new StabilizerParsedData TransferingData = new StabilizerParsedData();
+        protected new IStabilizerParsedData TransferingData = new StabilizerParsedData();
         //Здесь переопределяются оба метода базового класса PdfProcessor, так как нужно больше данных, чем в других инспекциях
-        public override ParsedData GetPdfData()
+        public override IParsedData GetPdfData()
         {
             //SerialNumber
             var rect = new iTextSharp.text.Rectangle(437, 722, 476, 728);
@@ -41,7 +41,7 @@ namespace FDCreator.Logic
             rect = new iTextSharp.text.Rectangle(109, 564, 130, 578);
             TransferingData.ConnectionOne.Od = Parser.GetStringValueFromRegion(File, rect);
             //Connection 1 Internal diameter
-            rect = new iTextSharp.text.Rectangle(111, 548, 129, 554);
+            rect = new iTextSharp.text.Rectangle(111, 548, 129, 562);
             TransferingData.ConnectionOne.Id = Parser.GetStringValueFromRegion(File, rect);
 
             //Connection 2 Type, TreadSize
@@ -62,22 +62,5 @@ namespace FDCreator.Logic
 
             return TransferingData;
         }
-
-
-        //protected override Connection FillConnectionInfo(string[] stringArray)
-        //{
-        //    var connectionInfo = new Connection();
-        //    if (stringArray.Length == 3)
-        //    {
-        //        connectionInfo.TreadSize =stringArray[0];
-        //        connectionInfo.Od = stringArray[2];
-        //    }
-        //    else
-        //    {
-        //        connectionInfo.TreadSize =stringArray[0];
-        //        connectionInfo.Id = stringArray[3];
-        //    }
-        //    return connectionInfo;
-        //}
     }
 }

@@ -12,13 +12,13 @@ namespace FDCreator.Logic
     {
         protected readonly IPdfParser Parser;
         public string File { set; protected get; }
-        protected ParsedData TransferingData = new ParsedData();
+        protected IParsedData TransferingData = new ParsedData();
 
         public PdfProcessor()
         {
             Parser = new PdfParser();
         }
-        public virtual ParsedData GetPdfData()
+        public virtual IParsedData GetPdfData()
         {
             //Координаты задаются просто: первая пара - это нижняя правая точка по x и y, вторая - верхняя левая точка
             //Получается прямоугольник, он задаётся в качестве фильтра методу-парсеру, и он выбирает все данные, которые попадают
@@ -42,7 +42,7 @@ namespace FDCreator.Logic
             rect = new iTextSharp.text.Rectangle(109, 564, 130, 578);
             TransferingData.ConnectionOne.Od = Parser.GetStringValueFromRegion(File, rect);
             //Connection 1 Internal diameter
-            rect = new iTextSharp.text.Rectangle(111, 548, 129, 554);
+            rect = new iTextSharp.text.Rectangle(111, 548, 129, 562);
             TransferingData.ConnectionOne.Id = Parser.GetStringValueFromRegion(File, rect);
 
             //Connection 2 Type, TreadSize

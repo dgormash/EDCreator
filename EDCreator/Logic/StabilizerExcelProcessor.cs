@@ -17,7 +17,7 @@ namespace FDCreator.Logic
 
         //В шаблоне Stabilizer Diagram.xls прям совсем другая структура, поэтому методе PassDataToExcel необходимо переопределить
 
-        public override void PassDataToExcel(ParsedData data)
+        public override void PassDataToExcel(IParsedData data)
         {
             var stabilizerData = (StabilizerParsedData) data; //... (прдолжение) чтобы использовать поля из StabilizerParsedData, необходимо вот так вот
             //как здесь выполнить приведение к призводному типу. Просто небольшой нюанс, если вы будете делать свои версии класса ParsedData

@@ -16,9 +16,9 @@ namespace FDCreator.Logic
             TemplateFileName = "Near Bit Stabilizer Diagram.xlsx";
         }
 
-        public override void PassDataToExcel(ParsedData data)
+        public override void PassDataToExcel(IParsedData data)
         {
-            var stabilizerData = (StabilizerParsedData) data;
+            var stabilizerData = (IStabilizerParsedData) data;
                 //... (прдолжение) чтобы использовать поля из StabilizerParsedData, необходимо вот так вот
             //как здесь выполнить приведение к призводному типу. Просто небольшой нюанс, если вы будете делать свои версии класса ParsedData
             if (string.IsNullOrEmpty(TemplateFileName)) return;

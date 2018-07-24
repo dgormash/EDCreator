@@ -14,7 +14,7 @@ namespace FDCreator.Logic
             TemplateFileName = "Near Bit Sub Diagram.xlsx";
         }
 
-        public override void PassDataToExcel(ParsedData data)
+        public override void PassDataToExcel(IParsedData data)
         {
             if (string.IsNullOrEmpty(TemplateFileName)) return;
 

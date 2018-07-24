@@ -28,7 +28,7 @@ namespace FDCreator.Logic
             SessionStartTime = sessionStartTime;
         }
 
-        public virtual void PassDataToExcel(ParsedData data)
+        public virtual void PassDataToExcel(IParsedData data)
         {
             if (string.IsNullOrEmpty(TemplateFileName)) return;
 
@@ -102,7 +102,7 @@ namespace FDCreator.Logic
             Cell.SetCellValue(value);
         }
 
-        protected void FillHeader(ParsedData data)
+        protected void FillHeader(IParsedData data)
         {
             var cellNum = 2;
 

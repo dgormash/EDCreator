@@ -149,6 +149,9 @@
     <Compile Include="Misc\ExcelDiagramType.cs" />
     <Compile Include="Misc\ExcelProcessorType.cs" />
     <Compile Include="Misc\HeaderData.cs" />
+    <Compile Include="Misc\ICrossoverSubParsedData.cs" />
+    <Compile Include="Misc\IParsedData.cs" />
+    <Compile Include="Misc\IStabilizerParsedData.cs" />
     <Compile Include="Misc\ParsedData.cs" />
     <Compile Include="Misc\PdfProcessorType.cs" />
     <Compile Include="Misc\StabilizerParsedData.cs" />
