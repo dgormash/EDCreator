@@ -36,10 +36,7 @@ namespace FDCreator.Misc
                         Od5 = "7 13/16",
                         Od6 = "6 11/16"
                     }
-               },
-                
-                
-                
+                },
                 {"OSS14-00453E1",
                     new NmdcFTool
                     {

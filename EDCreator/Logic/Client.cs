@@ -67,9 +67,9 @@ namespace FDCreator.Logic
                     processor = GetPdfProcessor(PdfProcessorType.NearBitStabilizer);
                     excel = GetExcelProcessor(ExcelProcessorType.NearBitStabilizerExcelProcessor);
                     break;
-                case "NDMC":
-                    processor = GetPdfProcessor(PdfProcessorType.FlexNmdc);
-                    excel = GetExcelProcessor(ExcelProcessorType.FlexNmdcExcelProcessor);
+                case "NMDC":
+                    processor = GetPdfProcessor(PdfProcessorType.Nmdc);
+                    excel = GetExcelProcessor(ExcelProcessorType.NmdcExcelProcessor);
                     break;
                 case "SXO":
                     processor = GetPdfProcessor(PdfProcessorType.Crossover);
@@ -100,7 +100,7 @@ namespace FDCreator.Logic
         private static string GetFirstLettersOfToolCode(string name)
         {
             var substringableValue = name.ToUpper();
-            if (substringableValue.StartsWith("NMPC") || substringableValue.StartsWith("NDMC"))
+            if (substringableValue.StartsWith("NMPC") || substringableValue.StartsWith("NMDC"))
             {
                 return substringableValue.Substring(0, 4);
             }
@@ -133,8 +133,8 @@ namespace FDCreator.Logic
                     return new NearBitSubPdfProcessor(); 
                 case PdfProcessorType.NearBitStabilizer:
                     return new NearBitStabilizerPdfProcessor(); 
-                case PdfProcessorType.FlexNmdc:
-                    return new FloatPdfProcessor();
+                case PdfProcessorType.Nmdc:
+                    return new NmdcPdfProcessor();
                 case PdfProcessorType.Crossover:
                     return new CrossoverSubPdfProcessor();
                 case PdfProcessorType.Empty:
@@ -165,8 +165,8 @@ namespace FDCreator.Logic
                     return new NearBitSubExcelProcessor(SessionStartTime);
                 case ExcelProcessorType.NearBitStabilizerExcelProcessor:
                     return new NearBitStabilizerExcelProcessor(SessionStartTime);
-                case ExcelProcessorType.FlexNmdcExcelProcessor:
-                    return new FloatExcelProcessor(SessionStartTime);
+                case ExcelProcessorType.NmdcExcelProcessor:
+                    return new NmdcExcelProcessor(SessionStartTime);
                 case ExcelProcessorType.CrossoverExcelProcessor:
                     return new CrossoverExcelProcessor(SessionStartTime);
                 default:

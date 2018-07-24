@@ -9,7 +9,7 @@
        NmpcExcelProcessor,
        NearBitSubExcelProcessor,
        NearBitStabilizerExcelProcessor,
-       FlexNmdcExcelProcessor,
+       NmdcExcelProcessor,
        CrossoverExcelProcessor
     }
 }

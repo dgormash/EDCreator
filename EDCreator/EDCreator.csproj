@@ -108,6 +108,8 @@
     <Compile Include="Logic\NearBitStabilizerPdfProcessor.cs" />
     <Compile Include="Logic\NearBitSubExcelProcessor.cs" />
     <Compile Include="Logic\NearBitSubPdfProcessor.cs" />
+    <Compile Include="Logic\NmdcExcelProcessor.cs" />
+    <Compile Include="Logic\NmdcPdfProcessor.cs" />
     <Compile Include="Logic\NmpcExcelProcessor.cs" />
     <Compile Include="Logic\PdfParser.cs" />
     <Compile Include="Logic\PdfProcessor.cs" />

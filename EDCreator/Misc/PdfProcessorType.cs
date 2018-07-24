@@ -8,7 +8,7 @@
         Stabilizer,
         NearBitSub,
         NearBitStabilizer,
-        FlexNmdc,
+        Nmdc,
         Crossover,
         Empty
     }
