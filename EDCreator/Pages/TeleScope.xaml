@@ -5,10 +5,34 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FDCreator.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="TeleScope">
+      Title="TeleScope"
+      d:DesignHeight="410" d:DesignWidth="640"
+       MaxWidth="640" MaxHeight="410">
 
-    <Grid>
+    <StackPanel PreviewKeyDown="Container_PreviewKeyDown"  Name="MainStack">
         
-    </Grid>
+
+        <StackPanel Margin="0 10 0 0" Name="FileSection">
+            <TextBlock Text="Choose inspections" FontWeight="Bold" Margin="20 10 0 0"/>
+            <TextBlock Foreground="CornflowerBlue" Text="Find files" FontWeight="Bold" Margin="0,-5,85,0" HorizontalAlignment="right"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="PathString" IsEnabled="False" HorizontalAlignment="Left" Width="530" Padding="1" Margin="10 0 5 0">
+                    [empty...]
+                </TextBox>
+                <Button ToolTip="Open file dialog" Background="CornflowerBlue" x:Name ="Choose" Content="..." Width="25" Margin="10 0 0 0" Click="Choose_Click" />
+                <Button ToolTip="Clear" Background="Beige" x:Name ="Clear" Content="X" Width="25" Margin="10 0 0 0" Click="Clear_Click"  />
+            </StackPanel>
+            <TextBlock Text="List of inspections" FontWeight="Bold" Margin="20 20 0 0"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="Top" AllowDrop="True" IsEnabled="true" Width="150" Height="100" Margin="10 5 0 5" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"  Drop="Top_Drop" PreviewDragOver="FileList_PreviewDragOver" Cursor="Hand" Foreground="#FF04D393" BorderBrush="#FF04D393" ToolTip="You can drop your .pdf files here"/>
+                <TextBox x:Name="Middle" AllowDrop="True" IsEnabled="true" Width="150" Height="100" Margin="10 5 0 5" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"  Drop="Middle_Drop" PreviewDragOver="FileList_PreviewDragOver" Cursor="Hand" Foreground="#FF04D393" BorderBrush="#FF04D393" ToolTip="You can drop your .pdf files here"/>
+                <TextBox x:Name="Bottom" AllowDrop="True" IsEnabled="true" Width="150" Height="100" Margin="10 5 0 5" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"  Drop="Bottom_Drop" PreviewDragOver="FileList_PreviewDragOver" Cursor="Hand" Foreground="#FF04D393" BorderBrush="#FF04D393" ToolTip="You can drop your .pdf files here"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="Back" Content="Back to tools selector"  MaxHeight ="100" MaxWidth="150" HorizontalAlignment="Right" Margin="10 0 10 0" Click="Back_Click" Height="23" Width="200"/>
+                <Button x:Name="Proceed" Content="Generate"  MaxHeight ="100" MaxWidth="100" HorizontalAlignment="Right" Margin="345 0 10 0" Click="Proceed_Click" Height="23" Width="158"/>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
 </Page>

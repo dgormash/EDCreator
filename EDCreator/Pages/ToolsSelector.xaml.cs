@@ -32,6 +32,11 @@ namespace FDCreator.Pages
             {
                 navigationService?.Navigate(new DumbIron());
             }
+
+            if (Convert.ToBoolean(RbTelescope.IsChecked))
+            {
+                navigationService?.Navigate(new TeleScope());
+            }
         }
     }
 }

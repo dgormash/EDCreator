@@ -7,11 +7,11 @@ namespace FDCreator.Logic.SmartTools
 {
     public class SmartToolClient
     {
-        private PartFile[] _partsFiles;
+        private Dictionary<string, PartFile> _partsFiles;
         private readonly SmartToolType _toolType;
         private ISmartTool _tool;
 
-        public SmartToolClient(PartFile[] partsFiles, SmartToolType toolType)
+        public SmartToolClient(Dictionary<string, PartFile> partsFiles, SmartToolType toolType)
         {
             _partsFiles = partsFiles;
             _toolType = toolType;
@@ -41,18 +41,18 @@ namespace FDCreator.Logic.SmartTools
         {
             var createdTool = CreateTool();
             IParsedData parsedData;
+            PdfProcessor processor;
             var partsData = new Dictionary<string, IParsedData>();
 
             foreach (var partFile in _partsFiles)
             {
                 //Определили тулкод инспекции
-                var toolCode = GetToolCode(partFile.File);
+                var toolCode = GetToolCode(partFile.Value.File);
                 
                 //По коду определяем версию парсера
                 switch (GetFirstLettersOfToolCode(toolCode))
                 {
                     case "MSSB":
-                        //parsedData = parser for MSSB
                         break;
                     case "MDC":
                         //parsedData = parser for MDC
@@ -67,7 +67,9 @@ namespace FDCreator.Logic.SmartTools
                         return;
                 }
 
-                partsData.Add(nameof(partFile.Type), parsedData);
+                processor = new PdfProcessor { File = partFile.Value.File };
+                parsedData = processor.GetPdfData();
+                partsData.Add(nameof(partFile.Value.Type), parsedData);
                
             }
 
