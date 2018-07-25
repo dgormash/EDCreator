@@ -67,9 +67,9 @@ namespace FDCreator.Logic.SmartTools
                         return;
                 }
 
-                processor = new PdfProcessor { File = partFile.Value.File };
+                processor = new NmdcPdfProcessor { File = partFile.Value.File };
                 parsedData = processor.GetPdfData();
-                partsData.Add(nameof(partFile.Value.Type), parsedData);
+                partsData.Add(partFile.Key, parsedData);
                
             }
 
