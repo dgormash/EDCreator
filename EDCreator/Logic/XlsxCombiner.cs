@@ -9,6 +9,7 @@ namespace FDCreator.Logic
 {
     public static class XlsxCombiner
     {
+        public static string CombinedFile { get; private set; }
         private static readonly Application Excel;
         public static string SessionStartTime { get; set; }
 
@@ -41,10 +42,9 @@ namespace FDCreator.Logic
                     }
                 }
 
-                Excel.Workbooks[1].SaveCopyAs(
-                    $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
-                        }\out\Field_Pad_Well_FishingDiagram_{
-                        SessionStartTime}.xlsx");
+                CombinedFile = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
+                    }\out\Field_Pad_Well_FishingDiagram_{DateTime.Now.ToString("yy-MM-dd-HH-mm-ss")}.xlsx";
+                Excel.Workbooks[1].SaveCopyAs(CombinedFile);
             }
             catch (Exception e)
             {

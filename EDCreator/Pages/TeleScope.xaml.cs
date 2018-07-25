@@ -227,7 +227,7 @@ namespace FDCreator.Pages
                 XlsxCombiner.SessionStartTime = ApplicationPropetries.GetApplicationSessionStratTime();
                 XlsxCombiner.CombineXlsxFilesFromWorkDir(files);
                 MessageBox.Show("Task completed", "Message", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                XlsxTotalFishingDiagramOpener.ShowTotalDiagram(ApplicationPropetries.GetTotalFishingDiagramPath());
+                XlsxTotalFishingDiagramOpener.ShowTotalDiagram(XlsxCombiner.CombinedFile);
             }
             else
             {

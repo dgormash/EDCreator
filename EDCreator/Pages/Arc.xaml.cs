@@ -145,7 +145,7 @@ namespace FDCreator.Pages
         {
             if (_opener.ShowDialog() != true) return;
 
-            Top.Text = System.IO.Path.GetFileName(_opener.FileName);
+            Bottom.Text = System.IO.Path.GetFileName(_opener.FileName);
             _bottom[0] = _opener.FileName;
             Bottom.FontSize = 14;
             Bottom.Foreground = Brushes.MediumTurquoise;
@@ -188,7 +188,7 @@ namespace FDCreator.Pages
                 XlsxCombiner.SessionStartTime = ApplicationPropetries.GetApplicationSessionStratTime();
                 XlsxCombiner.CombineXlsxFilesFromWorkDir(files);
                 MessageBox.Show("Task completed", "Message", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                XlsxTotalFishingDiagramOpener.ShowTotalDiagram(ApplicationPropetries.GetTotalFishingDiagramPath());
+                XlsxTotalFishingDiagramOpener.ShowTotalDiagram(XlsxCombiner.CombinedFile);
             }
             else
             {
