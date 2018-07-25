@@ -91,11 +91,11 @@ namespace FDCreator.Logic
                     case CrossoverType.Type4:
                         //FishingNeck
                         SetCellValue(20, cellNum, crossoverData.FishingNeck);
-                        //OD1
+                        //Od1
                         SetCellValue(21, cellNum, crossoverData.ConnectionOne.Od);
                         //ID2
                         SetCellValue(23, cellNum, crossoverData.ConnectionTwo.Id);
-                        //OD2
+                        //Od2
                         SetCellValue(24, cellNum, crossoverData.ConnectionTwo.Od);
                         break;
                   }

@@ -46,7 +46,7 @@ namespace FDCreator.Logic
                 var inches = InchesValueRetriever.GetInchesValue(data.Length);
 
                 SetCellValue(19, cellNum, LengthConverter.InchesToMeters(inches).ToString("0.000"));
-                //OD1
+                //Od1
                 SetCellValue(20, cellNum, data.ConnectionOne.Od);
                 //ID
                 SetCellValue(21, cellNum, data.ConnectionTwo.Od);

@@ -94,17 +94,17 @@ namespace FDCreator.Logic
                 //ID
                 SetCellValue(14, cellNum, data.ConnectionTwo.Id);
 
-                //OD6
+                //Od6
                 SetCellValue(19, cellNum, nmdcTool.Od6);
-                //OD5
+                //Od5
                 SetCellValue(20, cellNum, nmdcTool.Od5);
-                //OD4
+                //Od4
                 SetCellValue(21, cellNum, nmdcTool.Od4);
-                //OD3
+                //Od3
                 SetCellValue(22, cellNum, nmdcTool.Od3);
-                //OD2
+                //Od2
                 SetCellValue(23, cellNum, nmdcTool.Od2);
-                //OD1
+                //Od1
                 SetCellValue(24, cellNum, nmdcTool.Od1);
 
                 string fileName = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\work\{

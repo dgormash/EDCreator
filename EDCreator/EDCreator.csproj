@@ -114,6 +114,9 @@
     <Compile Include="Logic\PdfParser.cs" />
     <Compile Include="Logic\PdfProcessor.cs" />
     <Compile Include="Logic\SmartTools\Arc.cs" />
+    <Compile Include="Logic\SmartTools\ArcData.cs" />
+    <Compile Include="Logic\SmartTools\ArcExcelProcessor.cs" />
+    <Compile Include="Logic\SmartTools\ArcTool.cs" />
     <Compile Include="Logic\SmartTools\Gdis.cs" />
     <Compile Include="Logic\SmartTools\IBottomPart.cs" />
     <Compile Include="Logic\SmartTools\IMiddlePart.cs" />
