@@ -68,7 +68,7 @@ namespace FDCreator.Logic.SmartTools
                 SetCellValue(64, cellNum, tool.Bottom.ConnectionOne.Od);
 
                 //Bottom Sub ID
-                SetCellValue(75, 7, tool.Middle.ConnectionTwo.Id);
+                SetCellValue(75, 7, tool.Bottom.ConnectionTwo.Id);
 
                 cellNum = 9;
                 //Top Sub Treadsize
