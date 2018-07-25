@@ -84,6 +84,7 @@ namespace FDCreator.Logic.SmartTools
                     telescope.Middle = data;
                     partsData.TryGetValue("Bottom", out data);
                     telescope.Bottom = data;
+                    telescope.Type = _toolType;
                     //Pass data to excel-processor
                     break;
 
@@ -95,6 +96,7 @@ namespace FDCreator.Logic.SmartTools
                     gdis.Middle = data;
                     partsData.TryGetValue("Bottom", out data);
                     gdis.Bottom = data;
+                    gdis.Type = _toolType;
                     //Pass data to excel-processor
                     break;
 
@@ -104,6 +106,7 @@ namespace FDCreator.Logic.SmartTools
                     arc.Top = data;
                     partsData.TryGetValue("Bottom", out data);
                     arc.Bottom = data;
+                    arc.Type = _toolType;
                     //Pass data to excel-processor
                     break;
             }

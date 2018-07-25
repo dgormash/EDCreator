@@ -121,6 +121,7 @@
     <Compile Include="Logic\SmartTools\ITopPart.cs" />
     <Compile Include="Logic\SmartTools\PartFile.cs" />
     <Compile Include="Logic\SmartTools\SmartToolClient.cs" />
+    <Compile Include="Logic\SmartTools\SmartToolExcelProcessor.cs" />
     <Compile Include="Logic\SmartTools\SmartToolPartType.cs" />
     <Compile Include="Logic\SmartTools\SmartToolType.cs" />
     <Compile Include="Logic\SmartTools\Telescope.cs" />
