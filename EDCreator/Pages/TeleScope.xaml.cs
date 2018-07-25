@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -12,10 +13,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using FDCreator.Logic;
 using FDCreator.Logic.SmartTools;
 using Microsoft.Win32;
+using Path = System.Windows.Shapes.Path;
 
 namespace FDCreator.Pages
 {
@@ -25,7 +26,6 @@ namespace FDCreator.Pages
     public partial class TeleScope : Page
     {
         private readonly OpenFileDialog _opener;
-        private readonly List<string> _files;
         private string[] _top, _middle, _bottom;
 
         public TeleScope()
@@ -33,14 +33,15 @@ namespace FDCreator.Pages
             InitializeComponent();
             _opener = new OpenFileDialog
             {
-                Multiselect = true, //выбор нескольких файлов
+                Multiselect = false, //выбор нескольких файлов
                 Filter = "PDF files (*.pdf)|*.pdf", //задаётся маска файла поумолчанию
                 InitialDirectory = $@"{System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\in"
                 //Задаётся каталог, который будет
                 //каталогом поумолчанию при показе диалога
             };
-
-            _files = new List<string>();
+            _top = new string[1];
+            _middle = new string[1];
+            _bottom = new string[1];
         }
 
         private void Top_Drop(object sender, DragEventArgs e)
@@ -51,8 +52,13 @@ namespace FDCreator.Pages
             if (_top == null) return;
 
             if (CheckFileExtention(_top[0]))
-                    Top.Text = _top[0];
-            
+            {
+                Top.Text = $"{System.IO.Path.GetFileName(_top[0])}";
+                Top.FontSize = 14;
+                Top.Foreground= Brushes.MediumTurquoise;
+            }
+
+
         }
 
         private void Middle_Drop(object sender, DragEventArgs e)
@@ -62,22 +68,30 @@ namespace FDCreator.Pages
 
             if (_middle == null) return;
 
-           
-                if (CheckFileExtention(_middle[0]))
-                    Middle.Text = _middle[0];
+
+            if (CheckFileExtention(_middle[0]))
+            {
+                Middle.Text = $"{System.IO.Path.GetFileName(_middle[0])}";
+                Top.FontSize = 14;
+                Top.Foreground = Brushes.MediumTurquoise;
+            }
         }
 
         private void Bottom_Drop(object sender, DragEventArgs e)
         {
             if (!e.Data.GetDataPresent(DataFormats.FileDrop)) return;
-            _bottom = (string[])e.Data.GetData(DataFormats.FileDrop);
+            _bottom = (string[]) e.Data.GetData(DataFormats.FileDrop);
 
             if (_bottom == null) return;
 
-            
-                if (CheckFileExtention(_bottom[0]))
-                    Bottom.Text = _bottom[0];
-        }
+
+            if (CheckFileExtention(_bottom[0]))
+            { 
+                Bottom.Text = $"{System.IO.Path.GetFileName(_bottom[0])}";
+                Top.FontSize = 14;
+                Top.Foreground = Brushes.MediumTurquoise;
+            }
+    }
 
         private void FileList_PreviewDragOver(object sender, DragEventArgs e)
         {
@@ -114,15 +128,22 @@ namespace FDCreator.Pages
 
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
-            //Client.Text = string.Empty;
-            //FieldPadWell.Text = string.Empty;
-            //Location.Text = string.Empty;
-            //DdEngineer.Text = string.Empty;
-            //Date.Text = string.Empty;
-            //PathString.Text = string.Empty;
-            //FileList.Text = string.Empty;
-            //_files.Clear();
-            //PathString.Text = "[empty...]";
+            var bc = new BrushConverter();
+            Top.Text = "Saver Sub Top";
+            Top.FontSize = 24;
+            Top.Foreground = (Brush)bc.ConvertFrom("#FFB3D0C7");
+
+            Middle.Text = "MDC";
+            Middle.FontSize = 24;
+            Middle.Foreground = (Brush)bc.ConvertFrom("#FFB3D0C7");
+
+            Bottom.Text = "Saver Sub Bot";
+            Bottom.FontSize = 24;
+            Bottom.Foreground = (Brush)bc.ConvertFrom("#FFB3D0C7");
+
+            _top[0] = string.Empty;
+            _middle[0] = string.Empty;
+            _bottom[0] = string.Empty;
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -131,8 +152,44 @@ namespace FDCreator.Pages
             navigationService?.Navigate(new ToolsSelector());
         }
 
+        private void ChooseTop_Click(object sender, RoutedEventArgs e)
+        {
+            if (_opener.ShowDialog() != true) return;
+           
+            Top.Text = System.IO.Path.GetFileName(_opener.FileName);
+            _top[0] = _opener.FileName;
+            Top.FontSize = 14;
+            Top.Foreground = Brushes.MediumTurquoise;
+        }
+
+        private void ChooseMiddle_Click(object sender, RoutedEventArgs e)
+        {
+            if (_opener.ShowDialog() != true) return;
+
+            Middle.Text = System.IO.Path.GetFileName(_opener.FileName);
+            _middle[0] = _opener.FileName;
+            Middle.FontSize = 14;
+            Middle.Foreground = Brushes.MediumTurquoise;
+        }
+
+        private void ChooseBottom_Click(object sender, RoutedEventArgs e)
+        {
+            if (_opener.ShowDialog() != true) return;
+
+            Bottom.Text = System.IO.Path.GetFileName(_opener.FileName);
+            _bottom[0] = _opener.FileName;
+            Bottom.FontSize = 14;
+            Bottom.Foreground = Brushes.MediumTurquoise;
+        }
         private void Proceed_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(_top[0]) || string.IsNullOrWhiteSpace(_middle[0]) ||
+                string.IsNullOrWhiteSpace(_bottom[0]))
+            {
+                MessageBox.Show("Please, add all parts of the Telescope tool", "Message", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                return;
+            }
+
             var partsFiles = new Dictionary<string, PartFile>
             {
                 {
@@ -146,14 +203,14 @@ namespace FDCreator.Pages
                     "Middle", new PartFile
                     {
                         File = _middle[0],
-                        Type = SmartToolPartType.Top
+                        Type = SmartToolPartType.Middle
                     }
                 },
                 {
                     "Bottom", new PartFile
                     {
                         File = _bottom[0],
-                        Type = SmartToolPartType.Top
+                        Type = SmartToolPartType.Bottom
                     }
                 }
             };
@@ -162,6 +219,25 @@ namespace FDCreator.Pages
 
             var client = new SmartToolClient(partsFiles, SmartToolType.Telescope);
             client.Run();
+
+            var files = Directory.GetFiles($@"{System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\work", "*.xlsx");
+
+            if (files.Length != 0)
+            {
+                XlsxCombiner.SessionStartTime = ApplicationPropetries.GetApplicationSessionStratTime();
+                XlsxCombiner.CombineXlsxFilesFromWorkDir(files);
+                MessageBox.Show("Task completed", "Message", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                XlsxTotalFishingDiagramOpener.ShowTotalDiagram(ApplicationPropetries.GetTotalFishingDiagramPath());
+            }
+            else
+            {
+                MessageBox.Show("Finished. No files were processed", "Message", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            }
+
+            foreach (var file in files)
+            {
+                File.Delete(file);
+            }
         }
 
         private void Choose_Click(object sender, RoutedEventArgs e)

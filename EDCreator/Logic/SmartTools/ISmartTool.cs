@@ -2,6 +2,6 @@
 {
     public interface ISmartTool:ITopPart, IMiddlePart, IBottomPart
     {
-        SmartToolType Type { get; set; }
+        SmartToolType Type { get; }
     }
 }

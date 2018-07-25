@@ -10,6 +10,7 @@ namespace FDCreator.Logic.SmartTools
     {
         public override void PassDataToExcel(ISmartTool tool)
         {
+            TemplateFileName = "ARC Diagram.xlsx";
             var filePath = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\misc\{TemplateFileName}";
             try
             {

@@ -6,7 +6,7 @@ namespace FDCreator.Logic.SmartTools
     {
         public IParsedData Top { get; set; }
         public IParsedData Bottom { get; set; }
-        public SmartToolType Type { get; set; }
+        public SmartToolType Type => SmartToolType.Arc;
         public IParsedData Middle { get; set; }
     }
 }

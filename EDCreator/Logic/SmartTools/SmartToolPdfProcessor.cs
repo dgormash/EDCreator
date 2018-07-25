@@ -45,7 +45,7 @@ namespace FDCreator.Logic.SmartTools
                 //Connection 2 type
                 //339,84; ly: 535,2388; rx: 350,2296; ry: 541,4788
                 rect = new iTextSharp.text.Rectangle(339, 535, 350, 541);
-                TransferingData.ConnectionTwo.Id = Parser.GetStringValueFromRegion(File, rect);
+                TransferingData.ConnectionTwo.ConnectionType = Parser.GetStringValueFromRegion(File, rect);
 
                 //Treadsize 2 
                 rect = new iTextSharp.text.Rectangle(339, 527, 355, 533);

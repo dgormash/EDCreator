@@ -37,6 +37,16 @@ namespace FDCreator.Pages
             {
                 navigationService?.Navigate(new TeleScope());
             }
+
+            if (Convert.ToBoolean(RbGdis.IsChecked))
+            {
+                navigationService?.Navigate(new Gdis());
+            }
+
+            if (Convert.ToBoolean(RbArc.IsChecked))
+            {
+                navigationService?.Navigate(new Arc());
+            }
         }
     }
 }

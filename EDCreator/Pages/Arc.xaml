@@ -5,10 +5,33 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FDCreator.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="Arc">
+      Title="Arc"
+       d:DesignHeight="410" d:DesignWidth="640"
+       MaxWidth="640" MaxHeight="410">
 
-    <StackPanel >
-        
+    <StackPanel PreviewKeyDown="Container_PreviewKeyDown"  Name="MainStack">
+        <StackPanel Margin="0 80 0 0" Name="FileSection">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Add specific inspection file" FontWeight="Bold" Margin="50 0 0 0"/>
+                <Button ToolTip="Clear" Background="Beige" x:Name ="Clear" Content="X" Width="25" Margin="355 0 0 0" Click="Clear_Click"  />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="100 0 0 0">
+                <StackPanel Margin="45 20 0 5">
+                    <TextBox x:Name="Top"  Text="ARC Collar" FontFamily="Impact" AllowDrop="True" IsEnabled="True" Width="150" Height="100"  HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalScrollBarVisibility="Hidden"  Drop="Top_Drop" PreviewDragOver="FileList_PreviewDragOver" Cursor="Hand" Foreground="#FFB3D0C7" BorderBrush="#FF04D393" ToolTip="You can drop your .pdf files here" FontSize="24" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Button HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Open file dialog" Background="CornflowerBlue" x:Name ="ChooseTop" Content="..." Width="25" Margin="0 10 0 0" Click="ChooseTop_Click" />
+                </StackPanel>
+                
+                <StackPanel Margin="45 20 0 5">
+                    <TextBox x:Name="Bottom" Text="Saver Sub Bot" AllowDrop="True" FontFamily="Impact" IsEnabled="True" Width="150" Height="100"  HorizontalAlignment="Left" TextWrapping="Wrap" VerticalScrollBarVisibility="Hidden"  Drop="Bottom_Drop" PreviewDragOver="FileList_PreviewDragOver" Cursor="Hand" Foreground="#FFB3D0C7" BorderBrush="#FF04D393" ToolTip="You can drop your .pdf files here" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Button HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Open file dialog" Background="CornflowerBlue" x:Name ="ChooseBotton" Content="..." Width="25" Margin="0 10 0 0" Click="ChooseBottom_Click" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 50 0 0">
+                <Button x:Name="Back" Content="Back to tools selector"  MaxHeight ="100" MaxWidth="120" HorizontalAlignment="Right" Margin="50 0 10 0" Click="Back_Click" Height="23" Width="200"/>
+                <Button x:Name="Proceed" Content="Generate"  MaxHeight ="100" MaxWidth="100" HorizontalAlignment="Right" Margin="310 0 10 0" Click="Proceed_Click" Height="23" Width="158"/>
+            </StackPanel>
+        </StackPanel>
+
     </StackPanel>
 </Page>
