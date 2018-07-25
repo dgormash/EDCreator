@@ -70,11 +70,24 @@ namespace FDCreator.Logic.SmartTools
             IParsedData data;
             partsData.TryGetValue("Top", out data);
             _tool.Top = data;
-            partsData.TryGetValue("Middle", out data);
-            _tool.Middle = data;
+            if(_toolType == SmartToolType.Telescope || _toolType == SmartToolType.Gdis)
+            {
+                partsData.TryGetValue("Middle", out data);
+                _tool.Middle = data;}
+
             partsData.TryGetValue("Bottom", out data);
             _tool.Bottom = data;
-            var excel = new SmartToolExcelProcessor();
+
+            SmartToolExcelProcessor excel;
+            if (_toolType == SmartToolType.Arc)
+            {
+                excel = new ArcExcelProcessor();
+            }
+            else
+            {
+                excel = new SmartToolExcelProcessor();
+            }
+
             excel.PassDataToExcel(_tool);
 
         }
