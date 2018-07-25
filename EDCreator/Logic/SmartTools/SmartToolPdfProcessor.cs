@@ -6,6 +6,9 @@ namespace FDCreator.Logic.SmartTools
     {
         public override IParsedData GetPdfData()
         {
+
+            //mdc id 1    4 8/32 at lx: 111,72; ly: 555,9988; rx: 129,0547; ry: 562,2388
+            
             //Cheking for DPI position
             var rect = new iTextSharp.text.Rectangle(214, 681, 284, 687);
             var checkResult = Parser.GetStringValueFromRegion(File, rect);
@@ -20,15 +23,29 @@ namespace FDCreator.Logic.SmartTools
                 rect = new iTextSharp.text.Rectangle(145, 567, 169, 574);
                 TransferingData.Length = Parser.GetStringValueFromRegion(File, rect);
 
-                //Connection 1 Outer diameter
+                //Treadsize 1 
                 TransferingData.ConnectionOne = new Connection();
+                rect = new iTextSharp.text.Rectangle(103, 527, 118, 533);
+                TransferingData.ConnectionOne.TreadSize = Parser.GetStringValueFromRegion(File, rect);
+
+                
+
+                //Connection 1 Outer diameter
                 rect = new iTextSharp.text.Rectangle(109, 498, 130, 505);
                 TransferingData.ConnectionOne.Od = Parser.GetStringValueFromRegion(File, rect);
-
+                
                 //Connection 2 Internal diameter
                 TransferingData.ConnectionTwo = new Connection();
                 rect = new iTextSharp.text.Rectangle(347, 483, 368, 489);
                 TransferingData.ConnectionTwo.Id = Parser.GetStringValueFromRegion(File, rect);
+
+                //Treadsize 2 
+                rect = new iTextSharp.text.Rectangle(339, 527, 355, 533);
+                TransferingData.ConnectionTwo.TreadSize = Parser.GetStringValueFromRegion(File, rect);
+
+                //Connection 2 Outer diameter
+                rect = new iTextSharp.text.Rectangle(347, 498, 368, 505);
+                TransferingData.ConnectionTwo.Od = Parser.GetStringValueFromRegion(File, rect);
             }
             else
             {
@@ -36,16 +53,36 @@ namespace FDCreator.Logic.SmartTools
                 rect = new iTextSharp.text.Rectangle(146, 640, 167, 648);
                 TransferingData.Length = Parser.GetStringValueFromRegion(File, rect);
 
-                //Connection 1 Outer diameter
+                //Treadsize 1 
                 TransferingData.ConnectionOne = new Connection();
+                rect = new iTextSharp.text.Rectangle(103, 600, 118, 606);
+                TransferingData.ConnectionOne.TreadSize = Parser.GetStringValueFromRegion(File, rect);
+
+                //Connection 1 Outer diameter
                 rect = new iTextSharp.text.Rectangle(109, 571, 130, 578);
                 TransferingData.ConnectionOne.Od = Parser.GetStringValueFromRegion(File, rect);
 
-                //Connection 2 Internal diameter
+                //Connection 1 Internal diameter
+                rect = new iTextSharp.text.Rectangle(111, 555, 129, 562);
+                TransferingData.ConnectionOne.Id = Parser.GetStringValueFromRegion(File, rect);
+
+                
+                //Treadsize 2 
                 TransferingData.ConnectionTwo = new Connection();
+                rect = new iTextSharp.text.Rectangle(339, 600, 355, 606);
+                TransferingData.ConnectionTwo.TreadSize = Parser.GetStringValueFromRegion(File, rect);
+
+                //Connection 2 Outer diameter
+                rect = new iTextSharp.text.Rectangle(347, 571, 368, 578);
+                TransferingData.ConnectionTwo.Od = Parser.GetStringValueFromRegion(File, rect);
+
+
+                //mdc id 2    4 8/32 at lx: 349,56; ly: 555,9988; rx: 366,8947; ry: 562,2388
+                //Connection 2 Internal diameter
                 rect = new iTextSharp.text.Rectangle(347, 555, 368, 562);
                 TransferingData.ConnectionTwo.Id = Parser.GetStringValueFromRegion(File, rect);
             }
+
             //Version 
             rect = new iTextSharp.text.Rectangle(174, 30, 284, 43);
             TransferingData.Version = VersionExtractor.GetVersion(Parser.GetStringValueFromRegion(File, rect));

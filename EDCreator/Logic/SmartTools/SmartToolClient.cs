@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Media;
 using FDCreator.Misc;
 
 namespace FDCreator.Logic.SmartTools
 {
     public class SmartToolClient
     {
-        private Dictionary<string, PartFile> _partsFiles;
+        private readonly Dictionary<string, PartFile> _partsFiles;
         private readonly SmartToolType _toolType;
         private ISmartTool _tool;
 
@@ -39,9 +38,8 @@ namespace FDCreator.Logic.SmartTools
 
         public void Run()
         {
-            var createdTool = CreateTool();
-            IParsedData parsedData;
-            PdfProcessor processor;
+            _tool = CreateTool();
+
             var partsData = new Dictionary<string, IParsedData>();
 
             foreach (var partFile in _partsFiles)
@@ -49,16 +47,12 @@ namespace FDCreator.Logic.SmartTools
                 //Определили тулкод инспекции
                 var toolCode = GetToolCode(partFile.Value.File);
                 
-                //По коду определяем версию парсера
+                //Защита от файлов, не являющихся файлами инспекций или файлами инспекций, для которых нет обработчиков
                 switch (GetFirstLettersOfToolCode(toolCode))
                 {
                     case "MSSB":
-                        break;
                     case "MDC":
-                        //parsedData = parser for MDC
-                        break;
                     case "ARC":
-                        //parsedData = parser for ARC
                         break;
                     default:
                         MessageBox.Show(
@@ -67,53 +61,25 @@ namespace FDCreator.Logic.SmartTools
                         return;
                 }
 
-                processor = new NmdcPdfProcessor { File = partFile.Value.File };
-                parsedData = processor.GetPdfData();
+                PdfProcessor processor = new SmartToolPdfProcessor { File = partFile.Value.File };
+                var parsedData = processor.GetPdfData();
                 partsData.Add(partFile.Key, parsedData);
                
             }
 
             IParsedData data;
-            switch (_toolType)
-            {
-                case SmartToolType.Telescope:
-                    var telescope = (Telescope)CreateTool();
-                    partsData.TryGetValue("Top", out data);
-                    telescope.Top = data;
-                    partsData.TryGetValue("Middle", out data);
-                    telescope.Middle = data;
-                    partsData.TryGetValue("Bottom", out data);
-                    telescope.Bottom = data;
-                    telescope.Type = _toolType;
-                    //Pass data to excel-processor
-                    break;
+            partsData.TryGetValue("Top", out data);
+            _tool.Top = data;
+            partsData.TryGetValue("Middle", out data);
+            _tool.Middle = data;
+            partsData.TryGetValue("Bottom", out data);
+            _tool.Bottom = data;
+            var excel = new SmartToolExcelProcessor();
+            excel.PassDataToExcel(_tool);
 
-                case SmartToolType.Gdis:
-                    var gdis = (Gdis)CreateTool();
-                    partsData.TryGetValue("Top", out data);
-                    gdis.Top = data;
-                    partsData.TryGetValue("Middle", out data);
-                    gdis.Middle = data;
-                    partsData.TryGetValue("Bottom", out data);
-                    gdis.Bottom = data;
-                    gdis.Type = _toolType;
-                    //Pass data to excel-processor
-                    break;
-
-                case SmartToolType.Arc:
-                    var arc = (Arc)CreateTool();
-                    partsData.TryGetValue("Top", out data);
-                    arc.Top = data;
-                    partsData.TryGetValue("Bottom", out data);
-                    arc.Bottom = data;
-                    arc.Type = _toolType;
-                    //Pass data to excel-processor
-                    break;
-            }
-            
         }
 
-        private string GetToolCode(string file)
+        private static string GetToolCode(string file)
         {
             IPdfParser parser = new PdfParser();
             var rect = new iTextSharp.text.Rectangle(296, 722, 323, 728);
