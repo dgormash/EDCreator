@@ -121,6 +121,7 @@
     <Compile Include="Logic\SmartTools\SmartToolClient.cs" />
     <Compile Include="Logic\SmartTools\SmartToolPartType.cs" />
     <Compile Include="Logic\SmartTools\SmartToolType.cs" />
+    <Compile Include="Logic\SmartTools\Telescope.cs" />
     <Compile Include="Logic\StabilizerExcelProcessor.cs" />
     <Compile Include="Logic\StabilizerPdfProcessor.cs" />
     <Compile Include="Logic\TotalFishingDiagramFile.cs" />
