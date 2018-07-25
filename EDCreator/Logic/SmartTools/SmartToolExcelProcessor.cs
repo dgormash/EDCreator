@@ -55,9 +55,9 @@ namespace FDCreator.Logic.SmartTools
                 //MDC SerialNumber
                 SetCellValue(7, cellNum, tool.Middle.SerialNumber);
                 //Top Sub SerialNumber
-                SetCellValue(8, cellNum, tool.Top.SerialNumber);
+                SetCellValue(9, cellNum, tool.Top.SerialNumber);
                 //Bottom Sub SerialNumber
-                SetCellValue(9, cellNum, tool.Bottom.SerialNumber);
+                SetCellValue(11, cellNum, tool.Bottom.SerialNumber);
 
                 cellNum = 4;
                 //Top Sub OD
@@ -68,7 +68,7 @@ namespace FDCreator.Logic.SmartTools
                 SetCellValue(64, cellNum, tool.Bottom.ConnectionOne.Od);
 
                 //Bottom Sub ID
-                SetCellValue(20, 7, tool.Middle.ConnectionTwo.Id);
+                SetCellValue(75, 7, tool.Middle.ConnectionTwo.Id);
 
                 cellNum = 9;
                 //Top Sub Treadsize
@@ -87,7 +87,7 @@ namespace FDCreator.Logic.SmartTools
                 //L MDC + Bottom Sub
                 SetCellValue(61, cellNum, lBotSub.ToString("0.000"));
                 //L MDC + Bottom Sub + Top Sub
-                SetCellValue(40, cellNum, (lMdc + lBotSub + lTopSub).ToString("0.000"));
+                SetCellValue(40, 13, (lMdc + lBotSub + lTopSub).ToString("0.000"));
 
                 string fileName = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\work\{
                     tool.Top.Name}_{tool.Top.SerialNumber}_FishingDiagram_{DateTime.Now.ToString("yy-MM-dd-HH-mm-ss")}.xlsx";
