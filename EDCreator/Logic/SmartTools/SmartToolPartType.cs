@@ -2,6 +2,8 @@
 {
     public enum SmartToolPartType
     {
-        
+        Top,
+        Middle,
+        Bottom
     }
 }
