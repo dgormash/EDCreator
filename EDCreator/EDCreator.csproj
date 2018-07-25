@@ -113,6 +113,7 @@
     <Compile Include="Logic\NmpcExcelProcessor.cs" />
     <Compile Include="Logic\PdfParser.cs" />
     <Compile Include="Logic\PdfProcessor.cs" />
+    <Compile Include="Logic\SmartTools\IMiddlePart.cs" />
     <Compile Include="Logic\SmartTools\ISmartTool.cs" />
     <Compile Include="Logic\SmartTools\ITopPart.cs" />
     <Compile Include="Logic\SmartTools\PartFile.cs" />
