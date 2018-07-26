@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
 using ExcelApp = Microsoft.Office.Interop.Excel;
 namespace FDCreator.Logic
@@ -14,7 +15,7 @@ namespace FDCreator.Logic
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show($"Error opening excel application: {e.Message}", "I have a bad feeling about this",
+                    MessageBox.Show($"Error opening excel application: {e.Message}; tried to open {Path.GetFileName(file)}", "I have a bad feeling about this",
                         MessageBoxButton.OK, MessageBoxImage.Error);
                     excelApp.Quit();
                 }
