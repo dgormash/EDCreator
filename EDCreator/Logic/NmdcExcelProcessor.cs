@@ -47,7 +47,7 @@ namespace FDCreator.Logic
                 var comparableLength = InchesValueRetriever.GetInchesValue(data.Length);
                 if (Math.Abs(LengthConverter.InchesToMeters(comparableLength) - Convert.ToSingle(nmdcTool.L)) > 0.025f)
                 {
-                    MessageBox.Show("Collar length doesn't match. Prepare fishing diagram manually.", "Information", MessageBoxButton.OK,
+                    MessageBox.Show($"Collar length {LengthConverter.InchesToMeters(comparableLength)} doesn't match. Should be {nmdcTool.L}. Difference is {Math.Abs(LengthConverter.InchesToMeters(comparableLength) - Convert.ToSingle(nmdcTool.L))}. Prepare fishing diagram manually.", "Information", MessageBoxButton.OK,
                     MessageBoxImage.Asterisk);
                     return;
                 }
