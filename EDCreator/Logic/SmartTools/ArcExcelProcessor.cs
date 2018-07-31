@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -35,10 +36,12 @@ namespace FDCreator.Logic.SmartTools
 
                 var arcTool = arcData.Tools[tool.Top.SerialNumber];
 
-                var comparableLength = InchesValueRetriever.GetInchesValue(tool.Top.Length);
-                if (Math.Abs(LengthConverter.InchesToMeters(comparableLength) - Convert.ToSingle(arcTool.L)) > 0.025f)
+                var inspectionLength = LengthConverter.InchesToMeters(InchesValueRetriever.GetInchesValue(tool.Top.Length));
+                var arrayLength = Convert.ToSingle(arcTool.L, CultureInfo.InvariantCulture);
+                var difference = Math.Abs(inspectionLength - arrayLength);
+                if (difference > 0.025f)
                 {
-                    MessageBox.Show($"Collar length {LengthConverter.InchesToMeters(comparableLength)} doesn't match. Should be {arcTool.L}. Difference is {Math.Abs(LengthConverter.InchesToMeters(comparableLength) - Convert.ToSingle(arcTool.L))}. Prepare fishing diagram manually.", "Information", MessageBoxButton.OK,
+                    MessageBox.Show($"Collar length {inspectionLength} doesn't match. Should be about {arrayLength}. Difference is {difference}. Prepare fishing diagram manually.", "Information", MessageBoxButton.OK,
                     MessageBoxImage.Asterisk);
                     return;
                 }
@@ -85,28 +88,28 @@ namespace FDCreator.Logic.SmartTools
                 var saverSubLength = LengthConverter.InchesToMeters(InchesValueRetriever.GetInchesValue(tool.Bottom.Length));
 
                 //L10
-                SetCellValue(18, cellNum, (Convert.ToSingle(arcTool.L10) + saverSubLength).ToString("0.000"));
+                SetCellValue(18, cellNum, (Convert.ToSingle(arcTool.L10, CultureInfo.InvariantCulture) + saverSubLength).ToString("0.000"));
                 //L9
-                SetCellValue(21, cellNum, (Convert.ToSingle(arcTool.L9) + saverSubLength).ToString("0.000"));
+                SetCellValue(21, cellNum, (Convert.ToSingle(arcTool.L9,  CultureInfo.InvariantCulture) + saverSubLength).ToString("0.000"));
                 //L8
-                SetCellValue(23, cellNum, (Convert.ToSingle(arcTool.L8) + saverSubLength).ToString("0.000"));
+                SetCellValue(23, cellNum, (Convert.ToSingle(arcTool.L8, CultureInfo.InvariantCulture) + saverSubLength).ToString("0.000"));
                 //L7
-                SetCellValue(25, cellNum, (Convert.ToSingle(arcTool.L7) + saverSubLength).ToString("0.000"));
+                SetCellValue(25, cellNum, (Convert.ToSingle(arcTool.L7, CultureInfo.InvariantCulture) + saverSubLength).ToString("0.000"));
                 //L6
-                SetCellValue(35, cellNum, (Convert.ToSingle(arcTool.L6) + saverSubLength).ToString("0.000"));
+                SetCellValue(35, cellNum, (Convert.ToSingle(arcTool.L6, CultureInfo.InvariantCulture) + saverSubLength).ToString("0.000"));
                 //L5
-                SetCellValue(38, cellNum, (Convert.ToSingle(arcTool.L5) + saverSubLength).ToString("0.000"));
+                SetCellValue(38, cellNum, (Convert.ToSingle(arcTool.L5, CultureInfo.InvariantCulture) + saverSubLength).ToString("0.000"));
                 //L4
-                SetCellValue(47, cellNum, (Convert.ToSingle(arcTool.L4) + saverSubLength).ToString("0.000"));
+                SetCellValue(47, cellNum, (Convert.ToSingle(arcTool.L4, CultureInfo.InvariantCulture) + saverSubLength).ToString("0.000"));
                 //L3
-                SetCellValue(50, cellNum, (Convert.ToSingle(arcTool.L3) + saverSubLength).ToString("0.000"));
+                SetCellValue(50, cellNum, (Convert.ToSingle(arcTool.L3, CultureInfo.InvariantCulture) + saverSubLength).ToString("0.000"));
                 //L2
-                SetCellValue(59, cellNum, (Convert.ToSingle(arcTool.L2) + saverSubLength).ToString("0.000"));
+                SetCellValue(59, cellNum, (Convert.ToSingle(arcTool.L2, CultureInfo.InvariantCulture) + saverSubLength).ToString("0.000"));
                 //L1
-                SetCellValue(62, cellNum, (Convert.ToSingle(arcTool.L1) + saverSubLength).ToString("0.000"));
+                SetCellValue(62, cellNum, (Convert.ToSingle(arcTool.L1, CultureInfo.InvariantCulture) + saverSubLength).ToString("0.000"));
 
                 //L total
-                SetCellValue(40, 13, LengthConverter.InchesToMeters(InchesValueRetriever.GetInchesValue(tool.Top.Length)).ToString("0.000"));
+                SetCellValue(40, 13, (inspectionLength + saverSubLength).ToString("0.000"));
                 
 
                 string fileName = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\work\{

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace FDCreator.Logic
 {
@@ -12,12 +13,12 @@ namespace FDCreator.Logic
             }
             if (!stringValue.Contains("/"))
             {
-                return Convert.ToSingle(stringValue);
+                return Convert.ToSingle(stringValue, CultureInfo.InvariantCulture);
             }
             var spaceSplitter = stringValue.Split(' ');
             var slashSplitter = spaceSplitter[1].Split('/');
             var a = Convert.ToInt32(spaceSplitter[0]);
-            var b = Convert.ToSingle(slashSplitter[0]);
+            var b = Convert.ToSingle(slashSplitter[0], CultureInfo.InvariantCulture);
             var c = Convert.ToInt32(slashSplitter[1]);
             var result = a + b/c;
             return result;

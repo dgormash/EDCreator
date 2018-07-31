@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -44,10 +45,12 @@ namespace FDCreator.Logic
                 }
 
                 var nmdcTool = nmdcData.Tools[data.SerialNumber];
-                var comparableLength = InchesValueRetriever.GetInchesValue(data.Length);
-                if (Math.Abs(LengthConverter.InchesToMeters(comparableLength) - Convert.ToSingle(nmdcTool.L)) > 0.025f)
+                var inspectionLength = LengthConverter.InchesToMeters(InchesValueRetriever.GetInchesValue(data.Length));
+                var arrayLength = Convert.ToSingle(nmdcTool.L, CultureInfo.InvariantCulture);
+                var difference = Math.Abs(inspectionLength - arrayLength);
+                if ( difference > 0.025f)
                 {
-                    MessageBox.Show($"Collar length {LengthConverter.InchesToMeters(comparableLength)} doesn't match. Should be {nmdcTool.L}. Difference is {Math.Abs(LengthConverter.InchesToMeters(comparableLength) - Convert.ToSingle(nmdcTool.L))}. Prepare fishing diagram manually.", "Information", MessageBoxButton.OK,
+                    MessageBox.Show($"Collar length {inspectionLength} doesn't match. Should be about {arrayLength}. Difference is {difference}. Prepare fishing diagram manually.", "Information", MessageBoxButton.OK,
                     MessageBoxImage.Asterisk);
                     return;
                 }
@@ -60,7 +63,7 @@ namespace FDCreator.Logic
                 var cellNum = 4;
                
                 //L
-                SetCellValue(12, cellNum, LengthConverter.InchesToMeters(comparableLength).ToString("0.000"));
+                SetCellValue(12, cellNum, inspectionLength.ToString("0.000"));
                 //L12
                 SetCellValue(15, cellNum, nmdcTool.L12);
                 //L11
