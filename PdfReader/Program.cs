@@ -23,7 +23,7 @@ namespace PdfReader
             //будут отображены координаты. Остаётся набраться терпения, их записать, если данные друг под другом, можно по координатам
             //нескольких блоков построить большой прямоугольник. Я так делал для данных из столбцов Connection
             var testFile = $"{System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\in\\" +
-                           $"Saver Sub Bot Inspection.pdf";
+                           $"D28870_7-19-18_SBD9059.pdf";
             //using (var fs = new FileStream(testFile, FileMode.Create, FileAccess.Write, FileShare.None))
             //{
             //    using (var doc = new Document())
