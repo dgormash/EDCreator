@@ -101,6 +101,7 @@
     <Compile Include="Logic\FloatExcelProcessor.cs" />
     <Compile Include="Logic\FloatPdfProcessor.cs" />
     <Compile Include="Logic\Implementations\ConnectionInfoAssembler.cs" />
+    <Compile Include="Logic\Implementations\StabilizerPdfProcessor.cs" />
     <Compile Include="Logic\Implementations\StandartPdfProcessor.cs" />
     <Compile Include="Logic\InchesValueRetriever.cs" />
     <Compile Include="Logic\Interfaces\IConnectionInfoAssembler.cs" />
