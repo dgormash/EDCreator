@@ -103,8 +103,10 @@
     <Compile Include="Logic\Implementations\CellValueWriter.cs" />
     <Compile Include="Logic\Implementations\ConnectionInfoAssembler.cs" />
     <Compile Include="Logic\Implementations\CrossoverExcelProcessorNpoiVersion.cs" />
+    <Compile Include="Logic\Implementations\CrossoverExcelProcessorNpoiVersionCreator.cs" />
     <Compile Include="Logic\Implementations\DumbIronHeaderFiller.cs" />
     <Compile Include="Logic\Implementations\NmdcExcelProcessorNpoiVersion.cs" />
+    <Compile Include="Logic\Implementations\NmdcExcelProcessorNpoiVersionCreator.cs" />
     <Compile Include="Logic\Implementations\StabilizerPdfProcessor.cs" />
     <Compile Include="Logic\Implementations\StabilizerPdfProcessorCreator.cs" />
     <Compile Include="Logic\Implementations\StandartExcelProcessorNpoiVersionCreator.cs" />
