@@ -105,6 +105,7 @@
     <Compile Include="Logic\Implementations\DumbIronHeaderFiller.cs" />
     <Compile Include="Logic\Implementations\StabilizerPdfProcessor.cs" />
     <Compile Include="Logic\Implementations\StabilizerPdfProcessorCreator.cs" />
+    <Compile Include="Logic\Implementations\StandartExcelProcessorNpoiVersionCreator.cs" />
     <Compile Include="Logic\Implementations\StandartExcelProcessorNpoiVersion.cs" />
     <Compile Include="Logic\Implementations\StandartPdfProcessor.cs" />
     <Compile Include="Logic\Implementations\StandartPdfProcessorCreator.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Logic\Interfaces\ICellValueWriter.cs" />
     <Compile Include="Logic\Interfaces\IConnectionInfoAssembler.cs" />
     <Compile Include="Logic\Interfaces\IExcelProcessor.cs" />
+    <Compile Include="Logic\Interfaces\IExcelProcessorCreator.cs" />
     <Compile Include="Logic\Interfaces\IHeaderFiller.cs" />
     <Compile Include="Logic\Interfaces\IPdfProcessor.cs" />
     <Compile Include="Logic\Interfaces\IPdfProcessorCreator.cs" />
