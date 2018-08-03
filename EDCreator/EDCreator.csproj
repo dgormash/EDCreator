@@ -107,6 +107,7 @@
     <Compile Include="Logic\Implementations\StandartPdfProcessor.cs" />
     <Compile Include="Logic\Implementations\StandartPdfProcessorCreator.cs" />
     <Compile Include="Logic\InchesValueRetriever.cs" />
+    <Compile Include="Logic\Interfaces\ICellValueWriter.cs" />
     <Compile Include="Logic\Interfaces\IConnectionInfoAssembler.cs" />
     <Compile Include="Logic\Interfaces\IExcelProcessor.cs" />
     <Compile Include="Logic\Interfaces\IPdfProcessor.cs" />
