@@ -11,15 +11,11 @@ namespace FDCreator.Logic.Implementations
 {
     public class StandartExcelProcessorNpoiVersion:IExcelProcessor
     {
-        protected string TemplateFileName;
-        protected XSSFWorkbook Book;
-        protected ISheet Sheet;
-        protected IRow Row;
-        protected ICell Cell;
+        private readonly ICellValueWriter _cellWriter = new CellValueWriter();
+        private XSSFWorkbook _book;
+        private ISheet _sheet;
+        public string TemplateFileName { get; set; }
 
-        protected Microsoft.Office.Interop.Excel.Application ExcelApp;
-        protected Microsoft.Office.Interop.Excel.Window ExcelWindow;
-        protected string SessionStartTime;
         public void CreateFishingDiagram(IParsedData data)
         {
             if (string.IsNullOrEmpty(TemplateFileName)) return;
@@ -32,14 +28,14 @@ namespace FDCreator.Logic.Implementations
                         new FileStream(filePath,
                             FileMode.Open, FileAccess.Read))
                 {
-                    Book = new XSSFWorkbook(file);
+                    _book = new XSSFWorkbook(file);
                 }
 
-                Sheet = Book.GetSheetAt(0);
-                Book.SetSheetName(Book.GetSheetIndex(Sheet), $"{data.Name}_{data.SerialNumber}");
-
+                _sheet = _book.GetSheetAt(0);
+                _book.SetSheetName(_book.GetSheetIndex(_sheet), $"{data.Name}_{data.SerialNumber}");
+                _cellWriter.Sheet = _sheet;
                 //Заполнение заголовка (сам метод внизу)
-                FillHeader(data);
+                //FillHeader(data);
 
                 //Номер ячейки (в контексте таблицы - столбца), в которую вставляются данные (нумерация ячеек в коде начинается с 0)
                 //Поэтому от номера строки и столбца нужно отнимать 1
@@ -47,25 +43,19 @@ namespace FDCreator.Logic.Implementations
 
 
                 //SerialNumber
-                SetCellValue(21, cellNum, data.SerialNumber); //соответствует 22 строке в шаблоне и т.д.
+                _cellWriter.SetCellValue(21, cellNum, data.SerialNumber); //соответствует 22 строке в шаблоне и т.д.
                 //L
                 var inches = InchesValueRetriever.GetInchesValue(data.Length);
 
-                SetCellValue(22, cellNum, LengthConverter.InchesToMeters(inches).ToString("0.000"));
+                _cellWriter.SetCellValue(22, cellNum, LengthConverter.InchesToMeters(inches).ToString("0.000"));
                 //OD
-                SetCellValue(23, cellNum, data.ConnectionOne.Od);
+                _cellWriter.SetCellValue(23, cellNum, data.ConnectionOne.Od);
                 //ID
-                SetCellValue(24, cellNum, data.ConnectionTwo.Id);
+                _cellWriter.SetCellValue(24, cellNum, data.ConnectionTwo.Id);
                 //BOX
-                SetCellValue(25, cellNum, data.ConnectionOne.TreadSize);
+                _cellWriter.SetCellValue(25, cellNum, data.ConnectionOne.TreadSize);
                 //PIN
-                SetCellValue(26, cellNum, data.ConnectionTwo.TreadSize); //соответствует 27 строке в шаблоне
-
-                //var totalFishingDiagram =
-                //    TotalFishingDiagramFile.GetTotalFishingDiagramFileStream(
-                //        $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\out\Field_Pad_Well_FishingDiagram_{
-                //            SessionStartTime}.xlsx");
-                //var totalBook = new XSSFWorkbook(totalFishingDiagram);
+                _cellWriter.SetCellValue(26, cellNum, data.ConnectionTwo.TreadSize); //соответствует 27 строке в шаблоне
 
                 string fileName = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\work\{
                     data.Name}_{data.SerialNumber}_FishingDiagram_{DateTime.Now.ToString("yy-MM-dd-HH-mm-ss")}.xlsx";
@@ -74,14 +64,13 @@ namespace FDCreator.Logic.Implementations
                     var file =
                         new FileStream(fileName, FileMode.CreateNew, FileAccess.Write))
                 {
-                    Book.Write(file);
+                    _book.Write(file);
                 }
             }
             catch (Exception e)
             {
                 MessageBox.Show($"I have a bad feeling about this: {e.Message}", "Viva La Resistance!!!", MessageBoxButton.OK,
                     MessageBoxImage.Error);
-                return;
             }
         }
     }
