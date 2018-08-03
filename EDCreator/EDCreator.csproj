@@ -103,6 +103,7 @@
     <Compile Include="Logic\Implementations\ConnectionInfoAssembler.cs" />
     <Compile Include="Logic\Implementations\StabilizerPdfProcessor.cs" />
     <Compile Include="Logic\Implementations\StabilizerPdfProcessorCreator.cs" />
+    <Compile Include="Logic\Implementations\StandartExcelProcessorNpoiVersion.cs" />
     <Compile Include="Logic\Implementations\StandartPdfProcessor.cs" />
     <Compile Include="Logic\Implementations\StandartPdfProcessorCreator.cs" />
     <Compile Include="Logic\InchesValueRetriever.cs" />
