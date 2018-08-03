@@ -106,11 +106,17 @@
     <Compile Include="Logic\Implementations\CrossoverExcelProcessorNpoiVersion.cs" />
     <Compile Include="Logic\Implementations\CrossoverExcelProcessorNpoiVersionCreator.cs" />
     <Compile Include="Logic\Implementations\DumbIronHeaderFiller.cs" />
+    <Compile Include="Logic\Implementations\NearBitSubExcelProcessorNpoiVersion.cs" />
+    <Compile Include="Logic\Implementations\NearBitSubExcelProcessorNpoiVersionCreator.cs" />
+    <Compile Include="Logic\Implementations\NearBitSubStablizerExcelProcessorNpoiVersion.cs" />
+    <Compile Include="Logic\Implementations\NearBitSubStablizerExcelProcessorNpoiVersionCreator.cs" />
     <Compile Include="Logic\Implementations\NmdcExcelProcessorNpoiVersion.cs" />
     <Compile Include="Logic\Implementations\NmdcExcelProcessorNpoiVersionCreator.cs" />
     <Compile Include="Logic\Implementations\PdfPreparser.cs" />
     <Compile Include="Logic\Implementations\StabilizerPdfProcessor.cs" />
     <Compile Include="Logic\Implementations\StabilizerPdfProcessorCreator.cs" />
+    <Compile Include="Logic\Implementations\StablizerExcelProcessorNpoiVersion.cs" />
+    <Compile Include="Logic\Implementations\StablizerExcelProcessorNpoiVersionCreator.cs" />
     <Compile Include="Logic\Implementations\StandartExcelProcessorNpoiVersionCreator.cs" />
     <Compile Include="Logic\Implementations\StandartExcelProcessorNpoiVersion.cs" />
     <Compile Include="Logic\Implementations\StandartPdfProcessor.cs" />
