@@ -1,4 +1,5 @@
-﻿using FDCreator.Logic.Interfaces;
+﻿using System;
+using FDCreator.Logic.Interfaces;
 using NPOI.SS.UserModel;
 
 namespace FDCreator.Logic.Implementations
@@ -10,6 +11,10 @@ namespace FDCreator.Logic.Implementations
         private ICell _cell;
         public void SetCellValue(int rowNum, int cellNum, string value)
         {
+            if (Sheet == null)
+            {
+                throw new ArgumentNullException();
+            }
             _row = Sheet.GetRow(rowNum);
             _cell = _row.GetCell(cellNum);
             _cell.SetCellValue(value);
