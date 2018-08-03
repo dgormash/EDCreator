@@ -96,6 +96,7 @@
     <Compile Include="Logic\Client.cs" />
     <Compile Include="Logic\CrossoverExcelProcessor.cs" />
     <Compile Include="Logic\CrossoverSubPdfProcessor.cs" />
+    <Compile Include="Logic\DumbIronClient.cs" />
     <Compile Include="Logic\ExcelProcessor.cs" />
     <Compile Include="Logic\FilterExcelProcessor.cs" />
     <Compile Include="Logic\FloatExcelProcessor.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Logic\Implementations\DumbIronHeaderFiller.cs" />
     <Compile Include="Logic\Implementations\NmdcExcelProcessorNpoiVersion.cs" />
     <Compile Include="Logic\Implementations\NmdcExcelProcessorNpoiVersionCreator.cs" />
+    <Compile Include="Logic\Implementations\PdfPreparser.cs" />
     <Compile Include="Logic\Implementations\StabilizerPdfProcessor.cs" />
     <Compile Include="Logic\Implementations\StabilizerPdfProcessorCreator.cs" />
     <Compile Include="Logic\Implementations\StandartExcelProcessorNpoiVersionCreator.cs" />
