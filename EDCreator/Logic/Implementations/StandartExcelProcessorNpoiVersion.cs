@@ -12,6 +12,7 @@ namespace FDCreator.Logic.Implementations
     public class StandartExcelProcessorNpoiVersion:IExcelProcessor
     {
         private readonly ICellValueWriter _cellWriter = new CellValueWriter();
+        private readonly IHeaderFiller _headerFiller = new DumbIronHeaderFiller();
         private XSSFWorkbook _book;
         private ISheet _sheet;
         public string TemplateFileName { get; set; }
@@ -34,9 +35,8 @@ namespace FDCreator.Logic.Implementations
                 _sheet = _book.GetSheetAt(0);
                 _book.SetSheetName(_book.GetSheetIndex(_sheet), $"{data.Name}_{data.SerialNumber}");
                 _cellWriter.Sheet = _sheet;
-                //Заполнение заголовка (сам метод внизу)
-                //todo 
-                //FillHeader(data);
+                //Заполнение заголовка
+                _headerFiller.FillHeader(data, _cellWriter);
 
                 //Номер ячейки (в контексте таблицы - столбца), в которую вставляются данные (нумерация ячеек в коде начинается с 0)
                 //Поэтому от номера строки и столбца нужно отнимать 1
