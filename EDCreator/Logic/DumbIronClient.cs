@@ -85,6 +85,13 @@ namespace FDCreator.Logic
                     _excelProcessor = _excelProcessorCreator.GetProcessor();
                     _excelProcessor.TemplateFileName = "";//Здесь пусто, потому, что имя шаблона для кроссовера определяется в excel-процессоре
                     break;
+                case "MSSB":
+                    _pdfProcessorCreator = new StandartPdfProcessorCreator();
+                    _pdfProcessor = _pdfProcessorCreator.GetProcessor();
+                    _excelProcessorCreator = new CrossoverExcelProcessorNpoiVersionCreator();
+                    _excelProcessor = _excelProcessorCreator.GetProcessor();
+                    _excelProcessor.TemplateFileName = "";//Здесь пусто, потому, что имя шаблона для кроссовера определяется в excel-процессоре
+                    break;
                 default:
                     MessageBox.Show(
                         "A nonstandart name was received while reading the file. Perhaps there is no handler for the file, or the file is not an inspection file",
@@ -110,7 +117,7 @@ namespace FDCreator.Logic
         private static string GetFirstLettersOfToolCode(string toolCode)
         {
             var substringableValue = toolCode.ToUpper();
-            if (substringableValue.StartsWith("NMPC") || substringableValue.StartsWith("NMDC"))
+            if (substringableValue.StartsWith("NMPC") || substringableValue.StartsWith("NMDC") || substringableValue.StartsWith("MSSB"))
             {
                 return substringableValue.Substring(0, 4);
             }
