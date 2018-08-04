@@ -62,7 +62,7 @@ namespace FDCreator.Logic.RunableClients
                     case "ARC":
                         _pdfProcessorCreator = new StandartPdfProcessorCreator();
                         _pdfProcessor = _pdfProcessorCreator.GetProcessor();
-                        _excelProcessorCreator = new GdisTelescopeExcelProcessorNpoiVersionCreator();
+                        _excelProcessorCreator = new GdisTelescopeExcelProcessorNpoiVersion();
                         _excelProcessor = _excelProcessorCreator.GetProcessor();
                         break;
                     default:
