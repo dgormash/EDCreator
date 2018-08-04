@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace FDCreator.Logic
+namespace FDCreator.Logic.Common
 {
     public static class InchesValueRetriever
     {

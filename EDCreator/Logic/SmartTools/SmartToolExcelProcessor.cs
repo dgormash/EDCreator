@@ -2,8 +2,12 @@
 using System.IO;
 using System.Reflection;
 using System.Windows;
+using FDCreator.Logic.Common;
+using FDCreator.Logic.Interfaces;
+using FDCreator.Misc;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
+using LengthConverter = FDCreator.Logic.Common.LengthConverter;
 
 namespace FDCreator.Logic.SmartTools
 {

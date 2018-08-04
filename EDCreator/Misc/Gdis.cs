@@ -1,8 +1,8 @@
-﻿using FDCreator.Misc;
+﻿using FDCreator.Logic.Interfaces;
 
-namespace FDCreator.Logic.SmartTools
+namespace FDCreator.Misc
 {
-    public class Gdis : ISmartTool, ITopPart, IMiddlePart, IBottomPart
+    public class Gdis : ISmartTool
     {
         public IParsedData Top { get; set; }
         public IParsedData Middle { get; set; }

@@ -1,6 +1,6 @@
-﻿using FDCreator.Misc;
+﻿using FDCreator.Logic.Interfaces;
 
-namespace FDCreator.Logic.SmartTools
+namespace FDCreator.Misc
 {
     public class Arc : ISmartTool
     {

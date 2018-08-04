@@ -1,4 +1,4 @@
-﻿namespace FDCreator.Logic
+﻿namespace FDCreator.Logic.Common
 {
     public static class VersionExtractor
     {

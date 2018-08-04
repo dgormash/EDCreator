@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using FDCreator.Logic;
+using FDCreator.Logic.Common;
+using FDCreator.Logic.RunableClients;
 using FDCreator.Misc;
 using Microsoft.Win32;
 

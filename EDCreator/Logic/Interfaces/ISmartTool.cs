@@ -1,4 +1,6 @@
-﻿namespace FDCreator.Logic.SmartTools
+﻿using FDCreator.Misc;
+
+namespace FDCreator.Logic.Interfaces
 {
     public interface ISmartTool:ITopPart, IMiddlePart, IBottomPart
     {

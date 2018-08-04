@@ -15,7 +15,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FDCreator.Logic;
+using FDCreator.Logic.Common;
+using FDCreator.Logic.RunableClients;
 using FDCreator.Logic.SmartTools;
+using FDCreator.Misc;
 using Microsoft.Win32;
 
 namespace FDCreator.Pages

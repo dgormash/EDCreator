@@ -3,7 +3,7 @@ using FDCreator.Logic.Implementations;
 using FDCreator.Logic.Interfaces;
 using FDCreator.Misc;
 
-namespace FDCreator.Logic
+namespace FDCreator.Logic.RunableClients
 {
     public class DumbIronClient
     {

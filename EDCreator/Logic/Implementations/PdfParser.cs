@@ -1,7 +1,8 @@
-﻿using iTextSharp.text.pdf;
+﻿using FDCreator.Logic.Interfaces;
+using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 
-namespace FDCreator.Logic
+namespace FDCreator.Logic.Implementations
 {
     public class PdfParser:IPdfParser
     {

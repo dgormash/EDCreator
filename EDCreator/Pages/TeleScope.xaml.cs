@@ -14,7 +14,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using FDCreator.Logic;
+using FDCreator.Logic.Common;
+using FDCreator.Logic.RunableClients;
 using FDCreator.Logic.SmartTools;
+using FDCreator.Misc;
 using Microsoft.Win32;
 using Path = System.Windows.Shapes.Path;
 

@@ -1,4 +1,5 @@
-﻿using FDCreator.Logic.Interfaces;
+﻿using FDCreator.Logic.Common;
+using FDCreator.Logic.Interfaces;
 using FDCreator.Misc;
 
 namespace FDCreator.Logic.Implementations

@@ -5,7 +5,7 @@ using System.Windows;
 using Microsoft.Office.Interop.Excel;
 using Application = Microsoft.Office.Interop.Excel.Application;
 
-namespace FDCreator.Logic
+namespace FDCreator.Logic.Common
 {
     public static class XlsxCombiner
     {

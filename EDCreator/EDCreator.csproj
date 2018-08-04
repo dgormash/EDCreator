@@ -93,14 +93,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Logic\Client.cs" />
-    <Compile Include="Logic\CrossoverExcelProcessor.cs" />
-    <Compile Include="Logic\CrossoverSubPdfProcessor.cs" />
-    <Compile Include="Logic\DumbIronClient.cs" />
-    <Compile Include="Logic\ExcelProcessor.cs" />
-    <Compile Include="Logic\FilterExcelProcessor.cs" />
-    <Compile Include="Logic\FloatExcelProcessor.cs" />
-    <Compile Include="Logic\FloatPdfProcessor.cs" />
+    <Compile Include="Logic\Common\ApplicationPropetries.cs" />
+    <Compile Include="Logic\RunableClients\DumbIronClient.cs" />
     <Compile Include="Logic\Implementations\CellValueWriter.cs" />
     <Compile Include="Logic\Implementations\ConnectionInfoAssembler.cs" />
     <Compile Include="Logic\Implementations\CrossoverExcelProcessorNpoiVersion.cs" />
@@ -121,7 +115,7 @@
     <Compile Include="Logic\Implementations\StandartExcelProcessorNpoiVersion.cs" />
     <Compile Include="Logic\Implementations\StandartPdfProcessor.cs" />
     <Compile Include="Logic\Implementations\StandartPdfProcessorCreator.cs" />
-    <Compile Include="Logic\InchesValueRetriever.cs" />
+    <Compile Include="Logic\Common\InchesValueRetriever.cs" />
     <Compile Include="Logic\Interfaces\ICellValueWriter.cs" />
     <Compile Include="Logic\Interfaces\IConnectionInfoAssembler.cs" />
     <Compile Include="Logic\Interfaces\IExcelProcessor.cs" />
@@ -129,40 +123,28 @@
     <Compile Include="Logic\Interfaces\IHeaderFiller.cs" />
     <Compile Include="Logic\Interfaces\IPdfProcessor.cs" />
     <Compile Include="Logic\Interfaces\IPdfProcessorCreator.cs" />
-    <Compile Include="Logic\IPdfParser.cs" />
-    <Compile Include="Logic\LengthConverter.cs" />
-    <Compile Include="Logic\ApplicationPropetries.cs" />
-    <Compile Include="Logic\NearBitStabilizerExcelProcessor.cs" />
-    <Compile Include="Logic\NearBitStabilizerPdfProcessor.cs" />
-    <Compile Include="Logic\NearBitSubExcelProcessor.cs" />
-    <Compile Include="Logic\NearBitSubPdfProcessor.cs" />
-    <Compile Include="Logic\NmdcExcelProcessor.cs" />
-    <Compile Include="Logic\NmdcPdfProcessor.cs" />
-    <Compile Include="Logic\NmpcExcelProcessor.cs" />
-    <Compile Include="Logic\PdfParser.cs" />
-    <Compile Include="Logic\PdfProcessor.cs" />
-    <Compile Include="Logic\SmartTools\Arc.cs" />
-    <Compile Include="Logic\SmartTools\ArcData.cs" />
+    <Compile Include="Logic\Interfaces\IPdfParser.cs" />
+    <Compile Include="Logic\Common\LengthConverter.cs" />
+    <Compile Include="Logic\Implementations\PdfParser.cs" />
+    <Compile Include="Misc\Arc.cs" />
+    <Compile Include="Misc\ArcData.cs" />
     <Compile Include="Logic\SmartTools\ArcExcelProcessor.cs" />
-    <Compile Include="Logic\SmartTools\ArcTool.cs" />
-    <Compile Include="Logic\SmartTools\Gdis.cs" />
-    <Compile Include="Logic\SmartTools\IBottomPart.cs" />
-    <Compile Include="Logic\SmartTools\IMiddlePart.cs" />
-    <Compile Include="Logic\SmartTools\ISmartTool.cs" />
-    <Compile Include="Logic\SmartTools\ITopPart.cs" />
-    <Compile Include="Logic\SmartTools\PartFile.cs" />
-    <Compile Include="Logic\SmartTools\SmartToolClient.cs" />
+    <Compile Include="Misc\ArcTool.cs" />
+    <Compile Include="Misc\Gdis.cs" />
+    <Compile Include="Logic\Interfaces\IBottomPart.cs" />
+    <Compile Include="Logic\Interfaces\IMiddlePart.cs" />
+    <Compile Include="Logic\Interfaces\ISmartTool.cs" />
+    <Compile Include="Logic\Interfaces\ITopPart.cs" />
+    <Compile Include="Logic\RunableClients\SmartToolClient.cs" />
     <Compile Include="Logic\SmartTools\SmartToolExcelProcessor.cs" />
-    <Compile Include="Logic\SmartTools\SmartToolPartType.cs" />
+    <Compile Include="Misc\SmartToolPartType.cs" />
     <Compile Include="Logic\SmartTools\SmartToolPdfProcessor.cs" />
-    <Compile Include="Logic\SmartTools\SmartToolType.cs" />
-    <Compile Include="Logic\SmartTools\Telescope.cs" />
-    <Compile Include="Logic\StabilizerExcelProcessor.cs" />
-    <Compile Include="Logic\StabilizerPdfProcessor.cs" />
-    <Compile Include="Logic\TotalFishingDiagramFile.cs" />
-    <Compile Include="Logic\VersionExtractor.cs" />
-    <Compile Include="Logic\XlsxCombiner.cs" />
-    <Compile Include="Logic\XlsxTotalFishingDiagramOpener.cs" />
+    <Compile Include="Misc\SmartToolType.cs" />
+    <Compile Include="Misc\Telescope.cs" />
+    <Compile Include="Logic\Common\TotalFishingDiagramFile.cs" />
+    <Compile Include="Logic\Common\VersionExtractor.cs" />
+    <Compile Include="Logic\Common\XlsxCombiner.cs" />
+    <Compile Include="Logic\Common\XlsxTotalFishingDiagramOpener.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -218,6 +200,7 @@
     <Compile Include="Pages\TeleScope.xaml.cs">
       <DependentUpon>TeleScope.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Misc\PartFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows;
 using ExcelApp = Microsoft.Office.Interop.Excel;
-namespace FDCreator.Logic
+namespace FDCreator.Logic.Common
 {
     public static class XlsxTotalFishingDiagramOpener
     {

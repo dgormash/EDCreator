@@ -1,4 +1,4 @@
-﻿namespace FDCreator.Logic
+﻿namespace FDCreator.Logic.Interfaces
 {
     public interface IPdfParser
     {

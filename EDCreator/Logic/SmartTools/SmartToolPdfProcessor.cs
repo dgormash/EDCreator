@@ -1,4 +1,5 @@
-﻿using FDCreator.Misc;
+﻿using FDCreator.Logic.Common;
+using FDCreator.Misc;
 
 namespace FDCreator.Logic.SmartTools
 {

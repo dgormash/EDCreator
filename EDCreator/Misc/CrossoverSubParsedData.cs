@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using FDCreator.Logic;
+﻿using FDCreator.Logic.Common;
 
 namespace FDCreator.Misc
 {

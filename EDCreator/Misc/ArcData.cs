@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using FDCreator.Logic.SmartTools;
 
-namespace FDCreator.Logic.SmartTools
+namespace FDCreator.Misc
 {
     public class ArcData
     {

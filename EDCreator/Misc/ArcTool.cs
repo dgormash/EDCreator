@@ -1,4 +1,4 @@
-﻿namespace FDCreator.Logic.SmartTools
+﻿namespace FDCreator.Misc
 {
     public class ArcTool
     {
