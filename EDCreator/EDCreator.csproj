@@ -94,6 +94,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logic\Common\ApplicationPropetries.cs" />
+    <Compile Include="Logic\Implementations\ArcExcelProcessorNpoiVersion.cs" />
+    <Compile Include="Logic\Implementations\ArcExcelProcessorNpoiVersionCreator.cs" />
     <Compile Include="Logic\Implementations\GdisTelescopeExcelProcessorNpoiVersion.cs" />
     <Compile Include="Logic\Implementations\GdisTelescopeExcelProcessorNpoiVersionCreator.cs" />
     <Compile Include="Logic\Interfaces\ISmartToolExcelProcessor.cs" />
@@ -132,7 +134,6 @@
     <Compile Include="Logic\Implementations\PdfParser.cs" />
     <Compile Include="Misc\Arc.cs" />
     <Compile Include="Misc\ArcData.cs" />
-    <Compile Include="Logic\SmartTools\ArcExcelProcessor.cs" />
     <Compile Include="Misc\ArcTool.cs" />
     <Compile Include="Misc\Gdis.cs" />
     <Compile Include="Logic\Interfaces\IBottomPart.cs" />
@@ -140,9 +141,7 @@
     <Compile Include="Logic\Interfaces\ISmartTool.cs" />
     <Compile Include="Logic\Interfaces\ITopPart.cs" />
     <Compile Include="Logic\RunableClients\SmartToolClient.cs" />
-    <Compile Include="Logic\SmartTools\SmartToolExcelProcessor.cs" />
     <Compile Include="Misc\SmartToolPartType.cs" />
-    <Compile Include="Logic\SmartTools\SmartToolPdfProcessor.cs" />
     <Compile Include="Misc\SmartToolType.cs" />
     <Compile Include="Misc\Telescope.cs" />
     <Compile Include="Logic\Common\TotalFishingDiagramFile.cs" />
