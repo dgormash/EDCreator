@@ -12,6 +12,10 @@ namespace FDCreator.Logic.RunableClients
         private readonly Dictionary<string, PartFile> _partsFiles;
         private readonly SmartToolType _toolType;
         private ISmartTool _tool;
+        private IPdfProcessorCreator _pdfProcessorCreator;
+        private ISmartToolExcelProcessorCreator _excelProcessorCreator;
+        private IPdfProcessor _pdfProcessor;
+        private ISmartToolExcelProcessor _excelProcessor;
 
         public SmartToolClient(Dictionary<string, PartFile> partsFiles, SmartToolType toolType)
         {
@@ -56,6 +60,10 @@ namespace FDCreator.Logic.RunableClients
                     case "MSSB":
                     case "MDC":
                     case "ARC":
+                        _pdfProcessorCreator = new StandartPdfProcessorCreator();
+                        _pdfProcessor = _pdfProcessorCreator.GetProcessor();
+                        _excelProcessorCreator = new GdisTelescopeExcelProcessorNpoiVersionCreator();
+                        _excelProcessor = _excelProcessorCreator.GetProcessor();
                         break;
                     default:
                         MessageBox.Show(
@@ -64,8 +72,8 @@ namespace FDCreator.Logic.RunableClients
                         return;
                 }
 
-                PdfProcessor processor = new SmartToolPdfProcessor { File = partFile.Value.File };
-                var parsedData = processor.GetPdfData();
+                _pdfProcessor = new StandartPdfProcessor(); 
+                var parsedData = _pdfProcessor.GetParsedDataFromPdf(partFile.Value.File);
                 partsData.Add(partFile.Key, parsedData);
                
             }
