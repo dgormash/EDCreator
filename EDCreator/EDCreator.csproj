@@ -94,6 +94,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logic\Common\ApplicationPropetries.cs" />
+    <Compile Include="Logic\Implementations\GdisTelescopeExcelProcessorNpoiVersionCreator.cs" />
+    <Compile Include="Logic\Interfaces\ISmartToolExcelProcessor.cs" />
+    <Compile Include="Logic\Interfaces\ISmartToolExcelProcessorCreator.cs" />
     <Compile Include="Logic\RunableClients\DumbIronClient.cs" />
     <Compile Include="Logic\Implementations\CellValueWriter.cs" />
     <Compile Include="Logic\Implementations\ConnectionInfoAssembler.cs" />
