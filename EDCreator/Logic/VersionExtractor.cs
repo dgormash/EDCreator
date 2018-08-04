@@ -4,7 +4,7 @@
     {
         public static string GetVersion(string line)
         {
-            return line.Substring(30, 8);
+            return line.Substring(29, 8);
         }
     }
 }
