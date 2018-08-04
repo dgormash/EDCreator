@@ -1,25 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using FDCreator.Logic;
 using FDCreator.Logic.Common;
 using FDCreator.Logic.RunableClients;
-using FDCreator.Logic.SmartTools;
 using FDCreator.Misc;
 using Microsoft.Win32;
-using Path = System.Windows.Shapes.Path;
 
 namespace FDCreator.Pages
 {

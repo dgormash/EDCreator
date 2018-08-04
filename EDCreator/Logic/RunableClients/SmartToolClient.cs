@@ -2,7 +2,6 @@
 using System.Windows;
 using FDCreator.Logic.Implementations;
 using FDCreator.Logic.Interfaces;
-using FDCreator.Logic.SmartTools;
 using FDCreator.Misc;
 
 namespace FDCreator.Logic.RunableClients

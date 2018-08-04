@@ -1,6 +1,4 @@
-﻿using FDCreator.Logic.SmartTools;
-
-namespace FDCreator.Misc
+﻿namespace FDCreator.Misc
 {
     public class PartFile
     {
