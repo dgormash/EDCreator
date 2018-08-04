@@ -62,8 +62,7 @@ namespace FDCreator.Logic.RunableClients
                     case "ARC":
                         _pdfProcessorCreator = new StandartPdfProcessorCreator();
                         _pdfProcessor = _pdfProcessorCreator.GetProcessor();
-                        _excelProcessorCreator = new GdisTelescopeExcelProcessorNpoiVersion();
-                        _excelProcessor = _excelProcessorCreator.GetProcessor();
+                       
                         break;
                     default:
                         MessageBox.Show(
@@ -89,17 +88,20 @@ namespace FDCreator.Logic.RunableClients
             partsData.TryGetValue("Bottom", out data);
             _tool.Bottom = data;
 
-            SmartToolExcelProcessor excel;
+            
             if (_toolType == SmartToolType.Arc)
             {
-                excel = new ArcExcelProcessor();
+                _excelProcessorCreator = new ArcExcelProcessorNpoiVersionCreator();
+                _excelProcessor = _excelProcessorCreator.GetProcessor();
             }
             else
             {
-                excel = new SmartToolExcelProcessor();
+                _excelProcessorCreator = new GdisTelescopeExcelProcessorNpoiVersionCreator();
+                _excelProcessor = _excelProcessorCreator.GetProcessor();
             }
 
-            excel.PassDataToExcel(_tool);
+            //excel.PassDataToExcel(_tool);
+            _excelProcessor.CreateFishingDiagram(_tool);
 
         }
 
