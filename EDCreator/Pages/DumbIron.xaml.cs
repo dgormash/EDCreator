@@ -75,7 +75,8 @@ namespace FDCreator.Pages
             //Экземпляр класса Client запускает всю логику приложения, дальнейшая работа проходит в нём, можно смело открывать
             //файл Client.cs
 
-            var client = new Client { Header = headerData, SessionStartTime  = ApplicationPropetries.GetApplicationSessionStratTime()};
+            //var client = new Client { Header = headerData, SessionStartTime  = ApplicationPropetries.GetApplicationSessionStratTime()};
+            var client = new DumbIronClient {Header = headerData};
             foreach (var file in _files)
             {
                client.Run(file);
