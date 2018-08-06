@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using FDCreator.Logic.Implementations;
 using FDCreator.Logic.Interfaces;
 using FDCreator.Misc;
@@ -94,7 +95,7 @@ namespace FDCreator.Logic.RunableClients
                     break;
                 default:
                     MessageBox.Show(
-                        "A nonstandart name was received while reading the file. Perhaps there is no handler for the file, or the file is not an inspection file",
+                        $"A nonstandart name (\"{_toolCode}\") was received while reading the file. Perhaps there is no handler for the file, or the file is not an inspection file",
                         "Warining", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
             }
@@ -116,13 +117,24 @@ namespace FDCreator.Logic.RunableClients
 
         private static string GetFirstLettersOfToolCode(string toolCode)
         {
-            var substringableValue = toolCode.ToUpper();
-            if (substringableValue.StartsWith("NMPC") || substringableValue.StartsWith("NMDC") || substringableValue.StartsWith("MSSB"))
+            try
             {
-                return substringableValue.Substring(0, 4);
-            }
+                if (string.IsNullOrWhiteSpace(toolCode))
+                    return null;
+                var substringableValue = toolCode.ToUpper();
+                if (substringableValue.StartsWith("NMPC") || substringableValue.StartsWith("NMDC") ||
+                    substringableValue.StartsWith("MSSB"))
+                {
+                    return substringableValue.Substring(0, 4);
+                }
 
-            return substringableValue.Substring(0, 3);
+                return substringableValue.Substring(0, 3);
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                MessageBox.Show(e.Message, "Message from DumbIronClient", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
+            }
         }
     }
 }

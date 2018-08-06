@@ -13,7 +13,7 @@ namespace FDCreator.Logic.Common
                 {
                     excelApp.Workbooks.Open(file);
                     excelApp.Calculation = ExcelApp.XlCalculation.xlCalculationAutomatic;
-                }
+            }
                 catch (Exception e)
                 {
                     MessageBox.Show($"Error opening excel application: {e.Message}; tried to open {Path.GetFileName(file)}", "I have a bad feeling about this",
