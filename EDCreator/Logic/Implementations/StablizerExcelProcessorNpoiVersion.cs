@@ -36,7 +36,7 @@ namespace FDCreator.Logic.Implementations
                 {
                     _book = new XSSFWorkbook(file);
                 }
-                _book.SetForceFormulaRecalculation(true);
+                
                 _sheet = _book.GetSheetAt(0);
 
                 _sheet = _book.GetSheetAt(0);
@@ -72,6 +72,7 @@ namespace FDCreator.Logic.Implementations
                 //BladeWidth
                 _cellWriter.SetCellValue(34, cellNum, stabilizerData.LobeWidth);
 
+                _book.SetForceFormulaRecalculation(true);
                 string fileName = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\work\{
                     stabilizerData.Name}_{stabilizerData.SerialNumber}_FishingDiagram_{DateTime.Now.ToString("yy-MM-dd-HH-mm-s")}.xlsx";
                 //Сохранение изменённого файла

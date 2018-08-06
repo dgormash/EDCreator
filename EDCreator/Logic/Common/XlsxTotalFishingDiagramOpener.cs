@@ -12,6 +12,7 @@ namespace FDCreator.Logic.Common
             try
                 {
                     excelApp.Workbooks.Open(file);
+                    excelApp.Calculation = ExcelApp.XlCalculation.xlCalculationAutomatic;
                 }
                 catch (Exception e)
                 {
