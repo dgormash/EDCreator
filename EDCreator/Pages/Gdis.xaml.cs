@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
@@ -11,7 +10,10 @@ using FDCreator.Logic;
 using FDCreator.Logic.Common;
 using FDCreator.Logic.RunableClients;
 using FDCreator.Misc;
+using Microsoft.Office.Interop.Excel;
 using Microsoft.Win32;
+using Page = System.Windows.Controls.Page;
+using TextBox = System.Windows.Controls.TextBox;
 
 namespace FDCreator.Pages
 {
@@ -212,13 +214,14 @@ namespace FDCreator.Pages
 
 
             var client = new SmartToolClient(partsFiles, SmartToolType.Gdis);
-            client.Run();
+            var collarName = client.Run();
 
             var files = Directory.GetFiles($@"{System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\work", "*.xlsx");
 
             if (files.Length != 0)
             {
                 XlsxCombiner.SessionStartTime = ApplicationPropetries.GetApplicationSessionStratTime();
+                XlsxCombiner.StartForName = collarName;
                 XlsxCombiner.CombineXlsxFilesFromWorkDir(files);
                 MessageBox.Show("Task completed", "Message", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 XlsxTotalFishingDiagramOpener.ShowTotalDiagram(XlsxCombiner.CombinedFile);

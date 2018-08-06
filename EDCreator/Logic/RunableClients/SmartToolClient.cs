@@ -42,7 +42,7 @@ namespace FDCreator.Logic.RunableClients
             return tool;
         }
 
-        public void Run()
+        public string Run()
         {
             _tool = CreateTool();
 
@@ -67,7 +67,7 @@ namespace FDCreator.Logic.RunableClients
                         MessageBox.Show(
                             "A nonstandart name was received while reading the file. Perhaps there is no handler for the file, or the file is not an inspection file",
                             "Warining", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                        return;
+                        return null;
                 }
 
                 _pdfProcessor = new StandartPdfProcessor(); 
@@ -82,7 +82,8 @@ namespace FDCreator.Logic.RunableClients
             if(_toolType == SmartToolType.Telescope || _toolType == SmartToolType.Gdis)
             {
                 partsData.TryGetValue("Middle", out data);
-                _tool.Middle = data;}
+                _tool.Middle = data;
+            }
 
             partsData.TryGetValue("Bottom", out data);
             _tool.Bottom = data;
@@ -102,6 +103,11 @@ namespace FDCreator.Logic.RunableClients
             //excel.PassDataToExcel(_tool);
             _excelProcessor.CreateFishingDiagram(_tool);
 
+            if (_toolType == SmartToolType.Telescope || _toolType == SmartToolType.Gdis)
+            {
+                return _tool.Middle!=null?_tool.Middle.Name:string.Empty;
+            }
+            return _tool.Bottom != null ? _tool.Bottom.Name : string.Empty;
         }
 
         private static string GetToolCode(string file)

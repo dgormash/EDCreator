@@ -174,13 +174,14 @@ namespace FDCreator.Pages
 
 
             var client = new SmartToolClient(partsFiles, SmartToolType.Arc);
-            client.Run();
+            var collarName = client.Run();
 
             var files = Directory.GetFiles($@"{System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\work", "*.xlsx");
 
             if (files.Length != 0)
             {
                 XlsxCombiner.SessionStartTime = ApplicationPropetries.GetApplicationSessionStratTime();
+                XlsxCombiner.StartForName = collarName;
                 XlsxCombiner.CombineXlsxFilesFromWorkDir(files);
                 MessageBox.Show("Task completed", "Message", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 XlsxTotalFishingDiagramOpener.ShowTotalDiagram(XlsxCombiner.CombinedFile);
