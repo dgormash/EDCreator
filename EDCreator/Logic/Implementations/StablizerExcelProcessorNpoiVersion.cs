@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -55,10 +56,10 @@ namespace FDCreator.Logic.Implementations
                 _cellWriter.SetCellValue(18, cellNum, stabilizerData.ConnectionTwo.TreadSize);
                 //L
                 var inches = InchesValueRetriever.GetInchesValue(stabilizerData.Length);
-                _cellWriter.SetCellValue(22, cellNum, LengthConverter.InchesToMeters(inches).ToString("0.000"));
+                _cellWriter.SetCellValue(22, cellNum, LengthConverter.InchesToMeters(inches).ToString("0.000", CultureInfo.InvariantCulture));
                 //L1
                 inches = InchesValueRetriever.GetInchesValue(stabilizerData.FishingNeckTongSpace);
-                _cellWriter.SetCellValue(23, cellNum, LengthConverter.InchesToMeters(inches).ToString("0.000"));
+                _cellWriter.SetCellValue(23, cellNum, LengthConverter.InchesToMeters(inches).ToString("0.000", CultureInfo.InvariantCulture));
                 //OD
                 _cellWriter.SetCellValue(29, cellNum, stabilizerData.ConnectionOne.Od);
                 //ID
@@ -67,7 +68,7 @@ namespace FDCreator.Logic.Implementations
                 _cellWriter.SetCellValue(31, cellNum, stabilizerData.StabilizerOd);
                 //BladeLength
                 inches = InchesValueRetriever.GetInchesValue(stabilizerData.LobeLength);
-                _cellWriter.SetCellValue(32, cellNum, LengthConverter.InchesToMeters(inches).ToString("0.000"));
+                _cellWriter.SetCellValue(32, cellNum, LengthConverter.InchesToMeters(inches).ToString("0.000", CultureInfo.InvariantCulture));
                 //BladeWidth
                 _cellWriter.SetCellValue(34, cellNum, stabilizerData.LobeWidth);
 

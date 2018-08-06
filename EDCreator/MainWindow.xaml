@@ -5,6 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EDCreator"
         mc:Ignorable="d"
-        Title="Fishing Diagram Creator ver. 1.1.2.3" Height="410" Width="640" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+        Title="Fishing Diagram Creator ver. 1.1.2.5" Height="410" Width="640" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
 <Frame x:Name="MainWindowFrame" NavigationUIVisibility="Hidden"  />
 </Window>
