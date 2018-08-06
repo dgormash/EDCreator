@@ -12,11 +12,11 @@
     <StackPanel Orientation="Vertical">
 
         <TextBlock Text="Select your tool" Margin="0 50 0 0" FontWeight="Bold" HorizontalAlignment="Center" FontSize="25" FontFamily="Impact"/>
-        <RadioButton x:Name="RbDumbIron" Content="Dumb Iron" Margin="268 10 0 0"  FontSize="15" FontFamily="Impact" FontWeight="ExtraLight"/>
+        <RadioButton x:Name="RbDumbIron" Content="Dumb Iron" Margin="268 10 0 0"  FontSize="15" FontFamily="Impact" FontWeight="ExtraLight" Foreground="CadetBlue"/>
         <TextBlock Text="Smart tools" Margin="0 10 0 0" HorizontalAlignment="Center"  FontSize="20" FontFamily="Impact" FontWeight="ExtraLight"/>
-        <RadioButton x:Name="RbTelescope" Content="Telescope" Margin="268,10,0,0"  FontSize="15" FontFamily="Impact" />
-        <RadioButton x:Name="RbGdis" Content="GDIS" Margin="268,10,0,0"  FontSize="15" FontFamily="Impact"/>
-        <RadioButton x:Name="RbArc" Content="ARC" Margin="268 10 0 0"  FontSize="15" FontFamily="Impact"/>
+        <RadioButton x:Name="RbTelescope" Content="Telescope" Margin="268,10,0,0"  FontSize="15" FontFamily="Impact" Foreground="CadetBlue"/>
+        <RadioButton x:Name="RbGdis" Content="GDIS" Margin="268,10,0,0"  FontSize="15" FontFamily="Impact" Foreground="CadetBlue"/>
+        <RadioButton x:Name="RbArc" Content="ARC" Margin="268 10 0 0"  FontSize="15" FontFamily="Impact" Foreground="CadetBlue"/>
         <Button Content="Proceed &gt;&gt;" MaxWidth="150" Click="Button_Click" Margin="245,20,0,0" FontSize="15" FontWeight="Bold" Height="38" HorizontalAlignment="Left" Width="141"/>
     </StackPanel>
 </Page>
