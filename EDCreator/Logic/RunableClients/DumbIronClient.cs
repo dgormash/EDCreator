@@ -95,7 +95,7 @@ namespace FDCreator.Logic.RunableClients
                     break;
                 default:
                     MessageBox.Show(
-                        $"A nonstandart name (\"{_toolCode}\") was received while reading the file. Perhaps there is no handler for the file, or the file is not an inspection file",
+                        $"A nonstandart name (\"{_toolCode}\") was received while reading the file. Perhaps there is no handler for this file, or this file is not an inspection file",
                         "Warining", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
             }
