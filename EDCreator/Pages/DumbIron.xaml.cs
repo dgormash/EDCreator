@@ -89,6 +89,7 @@ namespace FDCreator.Pages
             if (files.Length != 0)
             {
                 XlsxCombiner.SessionStartTime = ApplicationPropetries.GetApplicationSessionStratTime();
+                XlsxCombiner.StartForName = headerData.FieldPadWellField;
                 XlsxCombiner.CombineXlsxFilesFromWorkDir(files);
                 MessageBox.Show("Task completed", "Message", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 XlsxTotalFishingDiagramOpener.ShowTotalDiagram(XlsxCombiner.CombinedFile);

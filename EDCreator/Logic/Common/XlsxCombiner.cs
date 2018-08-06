@@ -10,6 +10,7 @@ namespace FDCreator.Logic.Common
     public static class XlsxCombiner
     {
         public static string CombinedFile { get; private set; }
+        public static string StartForName { private get; set; }
         private static readonly Application Excel;
         public static string SessionStartTime { get; set; }
 
@@ -43,7 +44,7 @@ namespace FDCreator.Logic.Common
                 }
 
                 CombinedFile = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
-                    }\out\Field_Pad_Well_FishingDiagram_{DateTime.Now.ToString("yy-MM-dd-HH-mm-ss")}.xlsx";
+                    }\out\{StartForName}_{DateTime.Now.ToString("yy-MM-dd-HH-mm-ss")}.xlsx";
                 Excel.Workbooks[1].SaveCopyAs(CombinedFile);
             }
             catch (Exception e)
