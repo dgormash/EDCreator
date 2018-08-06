@@ -7,16 +7,16 @@
       mc:Ignorable="d" 
       d:DesignHeight="410" d:DesignWidth="640"
       Title="ToolsSelector">
-<Page.Resources>
-</Page.Resources>
+    <Page.Resources>
+    </Page.Resources>
     <StackPanel Orientation="Vertical">
-        
-        <TextBlock Text="Select your tool"/>
-        <RadioButton x:Name="RbDumbIron" Content="Dumb Iron"/>
-        <TextBlock Text="Smart tools"/>
-        <RadioButton x:Name="RbTelescope" Content="Telescope"/>
-        <RadioButton x:Name="RbGdis" Content="GDIS"/>
-        <RadioButton x:Name="RbArc" Content="ARC"/>
-        <Button Content="Proceed >>" MaxWidth="100" Click="Button_Click" />
+
+        <TextBlock Text="Select your tool" Margin="0 50 0 0" FontWeight="Bold" HorizontalAlignment="Center" FontSize="25"/>
+        <RadioButton x:Name="RbDumbIron" Content="Dumb Iron" Margin="268 10 0 0"  FontSize="15"/>
+        <TextBlock Text="Smart tools" Margin="0 10 0 0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18"/>
+        <RadioButton x:Name="RbTelescope" Content="Telescope" Margin="268,10,0,0"  FontSize="15" />
+        <RadioButton x:Name="RbGdis" Content="GDIS" Margin="268,10,0,0"  FontSize="15" />
+        <RadioButton x:Name="RbArc" Content="ARC" Margin="268 10 0 0"  FontSize="15"/>
+        <Button Content="Proceed &gt;&gt;" MaxWidth="150" Click="Button_Click" Margin="245,20,0,0" FontSize="15" FontWeight="Bold" Height="38" HorizontalAlignment="Left" Width="141"/>
     </StackPanel>
 </Page>
